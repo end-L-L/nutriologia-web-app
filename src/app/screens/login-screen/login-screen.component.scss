@@ -1,0 +1,57 @@
+
+@media (min-width: 960px) and (orientation: landscape){
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/assets/images/login.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;  // Para que el fondo no cubra el contenido.
+  }
+
+
+  .wrapper {
+    position: relative;
+    z-index: 1;  // Para asegurar que el contenido esté por encima del fondo.
+  }
+
+  .section-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  // Centra el contenido verticalmente en la pantalla.
+  }
+
+  .title{
+    font-size: 32px;
+    text-align: center;
+    font-family: Nexa-Bold;
+    letter-spacing: 0px;
+    color: #231F20;
+    text-transform: uppercase;
+    opacity: 1;
+  }
+}
+
+.card{
+  width: 27rem;
+  height: 27.813rem;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 3rem;
+}
+input{
+  width: 296px;
+  height: 48px;
+}

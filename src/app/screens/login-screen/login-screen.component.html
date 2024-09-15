@@ -1,0 +1,36 @@
+<section>
+  <div class="background"></div>
+  <div class="wrapper">
+    <div class="section-center">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="title">Inicio de Sesión</h3>
+          <div class="container-inputs">   <!-- contiene los input -->
+            <div class="pt-3 mb-3">
+              <input type="email"  class="form-control" id="email" placeholder="Correo electrónico">
+            </div>
+            <!-- Input para contraseña -->
+            <div class="pt-3 mb-3">
+              <div class="input-group input-group-merge">
+                <input id="show-password" name="password_user" class="form-control pwd" placeholder="Contraseña" >
+                <div class="input-group-text" id="show-password" data-password="false">
+                </div>
+              </div>
+            </div>
+
+            <!-- Label olvidé contraseña -->
+            <div class="mb-3">
+              <label class="form-check-label" for="checkbox-signin">Olvidé mi contraseña</label>
+            </div>
+            <!-- Botones -->
+            <div class="d-flex flex-column align-items-center mb-3 w-100" style="text-align: center;">
+              <button class="btn btn-primary" type="submit" >Iniciar sesión</button>
+              <label class="form-check-label pt-3" for="checkbox-signin" (click)="registrar()">Registrarse</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

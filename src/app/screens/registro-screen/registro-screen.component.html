@@ -1,0 +1,57 @@
+<div class="wrapper">
+  <!-- Va a englobar todo el formulario con la cabecera -->
+   <div class="background"></div>
+  <div class="section-registro">
+      <div class="body-registro">
+        <div class="row mt-3 mb-3">
+          <div class="form-group col-12">
+            <label class="title-user" for="tipo_usuario">Registro</label>
+          </div>
+        </div>
+        <mat-form-field class="mat-input" appearance="outline">
+            <mat-label>Nombre de usuario</mat-label>
+            <input matInput placeholder="Escribe nombre de usuario">
+        </mat-form-field>
+
+        <mat-form-field class="mat-input" appearance="outline">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput placeholder="Escribe correo electrónico">
+        </mat-form-field>
+
+        <mat-form-field class="mat-input" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput  type="{{ inputType_1 }}" placeholder="Escribe contraseña">
+            <mat-icon matSuffix class="eye-icon" (click)="showPassword()">{{hide_1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="mat-input" appearance="outline">
+            <mat-label>Confirmar contraseña</mat-label>
+            <input matInput  type="{{ inputType_2 }}" placeholder="Confirma la contraseña">
+            <mat-icon matSuffix class="eye-icon" (click)="showPwdConfirmar()">{{hide_2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Telefono</mat-label>
+          <input matInput placeholder="Escribe telefono">
+        </mat-form-field>
+
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Tipo de usuario</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo.viewValue">
+              {{tipo.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+
+        <div class="section-buttons">
+            <button class="btn btn-danger">Cancelar</button>
+            <button  class="btn btn-primary" type="submit">Registrar</button>
+            <button  class="btn btn-primary" type="submit">Actualizar</button>
+        </div>
+      </div>
+  </div>
+</div>
+
