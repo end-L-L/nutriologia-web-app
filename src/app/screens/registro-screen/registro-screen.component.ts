@@ -15,6 +15,7 @@ public hide_1: boolean = false;
 public hide_2: boolean = false;
 public inputType_1: string = 'password';
 public inputType_2: string = 'password';
+public password: string = "";
 
 constructor(
   private router: Router,
