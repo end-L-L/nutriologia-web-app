@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FacadeService } from '../../services/facade.service';
+import { FacadeService } from '../../../services/facade.service';
 
 @Component({
   selector: 'app-login-screen',
