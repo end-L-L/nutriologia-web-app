@@ -4,6 +4,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  // Requerido por Angular Material
 
+//Este import es para los servicios HTTP
+import { HttpClientModule } from '@angular/common/http';
+
 // Importaciones de Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -32,6 +35,7 @@ import { RegistroScreenComponent } from './screens/registro-screen/registro-scre
     MatIconModule, //para los iconos
     MatButtonModule,
     MatSelectModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

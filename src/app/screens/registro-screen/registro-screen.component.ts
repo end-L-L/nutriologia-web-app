@@ -57,7 +57,7 @@ public regresar(){
 
   //para el select
   public tipos: any[] = [
-    {value: '1', viewValue: 'Casero'},
+    {value: '1', viewValue: 'Propietario'},
     {value: '2', viewValue: 'Estudiante'}
   ]
 
