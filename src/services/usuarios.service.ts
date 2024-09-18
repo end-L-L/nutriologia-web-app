@@ -91,30 +91,30 @@ export class UsuariosService {
     return this.http.post<any>(`${environment.url_api}/usuarios/`,data, httpOptions)
   }
 
-  // public obtenerListaMaestros (): Observable <any>{
+  // public obtenerListaUsuarios (): Observable <any>{
   //   var token = this.facadeService.getSessionToken();
   //   var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-  //   return this.http.get<any>(`${environment.url_api}/lista-maestros/`, {headers:headers});
+  //   return this.http.get<any>(`${environment.url_api}/lista-usuarios/`, {headers:headers});
   // }
 
 
     //Funcion para obtener al maestro con su ID
-    public getMaestroByID(idUser: Number){
-      return this.http.get<any>(`${environment.url_api}/maestros/?id=${idUser}` ,httpOptions);
+    public getUsuarioByID(idUser: Number){
+      return this.http.get<any>(`${environment.url_api}/usuarios/?id=${idUser}` ,httpOptions);
     }
 
       //Funcion para editar
-  // public editarMaestro (data: any): Observable <any>{
+  // public editarUsuario (data: any): Observable <any>{
   //   var token = this.facadeService.getSessionToken();
   //   var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-  //   return this.http.put<any>(`${environment.url_api}/maestros-edit/`, data, {headers:headers});
+  //   return this.http.put<any>(`${environment.url_api}/usuarios-edit/`, data, {headers:headers});
   // }
 
-  // Funcion para eliminar Maestro
-  // public eliminarMaestro(idUser: number): Observable <any>{
+  // Funcion para eliminar usuario
+  // public eliminarUsuario(idUser: number): Observable <any>{
   //   var token = this.facadeService.getSessionToken();
   //   var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-  //   return this.http.delete<any>(`${environment.url_api}/maestros-edit/?id=${idUser}`, {headers:headers});
+  //   return this.http.delete<any>(`${environment.url_api}/usuarios-edit/?id=${idUser}`, {headers:headers});
   // }
 
 }

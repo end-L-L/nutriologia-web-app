@@ -18,6 +18,7 @@ import {MatSelectModule} from '@angular/material/select';
 // Otros componentes
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
 import { RegistroScreenComponent } from './screens/registro-screen/registro-screen.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RegistroScreenComponent } from './screens/registro-screen/registro-scre
     MatButtonModule,
     MatSelectModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

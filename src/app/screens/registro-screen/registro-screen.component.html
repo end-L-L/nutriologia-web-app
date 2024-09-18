@@ -7,54 +7,69 @@
           <div class="form-group col-12">
             <label class="title-user" for="tipo_usuario">Registro</label>
           </div>
+          <br>
         </div>
+
         <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Escribe nombre ">
+            <input matInput [(ngModel)]="usuario.first_name" placeholder="Escribe nombre ">
         </mat-form-field>
+        <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>
+
 
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Apellidos</mat-label>
-          <input matInput placeholder="Escribe apellidos">
+          <input matInput [(ngModel)]="usuario.last_name" placeholder="Escribe apellidos">
       </mat-form-field>
+           <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
 
         <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Correo electrónico</mat-label>
-            <input matInput placeholder="Escribe correo electrónico">
+            <input matInput [(ngModel)]="usuario.email" placeholder="Escribe correo electrónico">
         </mat-form-field>
+        <div *ngIf="errors.email" class="invalid-feedback">{{ errors.email }}</div>
+
 
         <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Contraseña</mat-label>
-            <input matInput  type="{{ inputType_1 }}" placeholder="Escribe contraseña">
+            <input matInput [(ngModel)]="usuario.password" type="{{ inputType_1 }}" placeholder="Escribe contraseña">
             <mat-icon matSuffix class="eye-icon" (click)="showPassword()">{{hide_1 ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
+        <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
+
 
         <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Confirmar contraseña</mat-label>
-            <input matInput  type="{{ inputType_2 }}" placeholder="Confirma la contraseña">
+            <input matInput [(ngModel)]="usuario.confirmar_password" type="{{ inputType_2 }}" placeholder="Confirma la contraseña">
             <mat-icon matSuffix class="eye-icon" (click)="showPwdConfirmar()">{{hide_2 ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
+        <div *ngIf="errors.confirmar_password" class="invalid-feedback">{{ errors.confirmar_password }}</div>
+
 
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Telefono</mat-label>
-          <input matInput placeholder="Escribe telefono">
+          <input matInput [(ngModel)]="usuario.telefono" placeholder="Escribe telefono">
         </mat-form-field>
+        <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
+
+
 
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Tipo de usuario</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="usuario.tipo">
             <mat-option *ngFor="let tipo of tipos" [value]="tipo.viewValue">
               {{tipo.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <div *ngIf="errors.tipo" class="invalid-feedback">{{ errors.tipo }}</div>
 
 
 
         <div class="section-buttons">
-            <button class="btn btn-danger">Cancelar</button>
-            <button  class="btn btn-primary" type="submit">Registrar</button>
-            <button  class="btn btn-primary" type="submit">Actualizar</button>
+            <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
+            <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registrar()">Registrar</button>
+            <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="registrar()">Actualizar</button>
         </div>
       </div>
   </div>
