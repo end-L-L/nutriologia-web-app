@@ -1,22 +1,30 @@
-<section>
+<section class="login">
   <div class="background"></div>
+
   <div class="wrapper">
     <div class="section-center">
       <div class="card">
         <div class="card-body">
           <h3 class="title">Inicio de Sesión</h3>
+
           <div class="container-inputs">   <!-- contiene los input -->
             <div class="pt-3 mb-3">
-              <input type="email"  class="form-control" id="email" placeholder="Correo electrónico">
+              <input type="email" [(ngModel)]="username" class="form-control" id="email" placeholder="Correo electrónico">
+              <div *ngIf="errors.username" class="invalid-feedback">{{ errors.username }}</div>
             </div>
             <!-- Input para contraseña -->
             <div class="pt-3 mb-3">
               <div class="input-group input-group-merge">
-                <input id="show-password" name="password_user" class="form-control pwd" placeholder="Contraseña" >
+                <input type="{{type}}" [(ngModel)]="password" id="show-password" name="password_user" class="form-control pwd" placeholder="Contraseña" >
                 <div class="input-group-text" id="show-password" data-password="false">
+                  <i *ngIf="type == 'password'" class="bi bi-eye-fill" (click)="showPassword()"></i>
+                  <i *ngIf="type == 'text'" class="bi bi-eye-slash-fill" (click)="showPassword()"></i>
                 </div>
               </div>
+
             </div>
+
+            <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
 
             <!-- Label olvidé contraseña -->
 

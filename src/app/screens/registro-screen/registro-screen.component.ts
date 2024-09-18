@@ -93,7 +93,7 @@ public regresar(){
     //validar la contraseña que coincida
     if(this.usuario.password == this.usuario.confirmar_password){
 
-      //Vamos a consumir el servicoi de registrar usuario
+      //Vamos a consumir el servicio de registrar usuario
       //Si todo es correcto se registra/se llama al servicio
     this.usuariosService.registrarUsuario(this.usuario).subscribe(
       (response)=>{
