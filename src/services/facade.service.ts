@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ValidatorService } from './tools/validator.service';
 import { ErrorService } from './tools/error.service';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 
 const httpOptions = {
@@ -57,6 +58,66 @@ export class FacadeService {
 
     return error;
   }
+
+    //Servicios para login y para cerrar sesión
+  //Iniciar sesión
+  login(username:String, password:String): Observable<any> {
+    var data={
+      username: username,
+      password: password
+    }
+    return this.http.post<any>(`${environment.url_api}/token/`,data);
+  }
+
+    //Cerrar sesión
+    logout(): Observable<any> {
+      var headers: any;
+      var token = this.getSessionToken();
+      headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
+      return this.http.get<any>(`${environment.url_api}/logout/`, {headers: headers});
+    }
+
+    //Funciones para las cookies y almacenar datos de inicio de sesión
+    //Funciones para utilizar las cookies en web
+    retrieveSignedUser(){
+      var headers: any;
+      var token = this.getSessionToken();
+      headers = new HttpHeaders({'Authorization': 'Bearer '+token});
+      return this.http.get<any>(`${environment.url_api}/me/`,{headers:headers});
+    }
+
+    getCookieValue(key:string){
+      return this.cookieService.get(key);
+    }
+
+    saveCookieValue(key:string, value:string){
+      var secure = environment.url_api.indexOf("https")!=-1;
+      this.cookieService.set(key, value, undefined, undefined, undefined, secure, secure?"None":"Lax");
+    }
+
+    getSessionToken(){
+      return this.cookieService.get(session_cookie_name);
+    }
+
+    destroyUser(){
+      this.cookieService.deleteAll();
+    }
+
+    getUserEmail(){
+      return this.cookieService.get(user_email_cookie_name);
+    }
+
+    getUserCompleteName(){
+      return this.cookieService.get(user_complete_name_cookie_name);
+    }
+
+    getUserId(){
+      return this.cookieService.get(user_id_cookie_name);
+    }
+
+    getUserGroup(){
+      return this.cookieService.get(group_name_cookie_name);
+    }
 
   saveUserData(user_data:any){
     var secure = environment.url_api.indexOf("https")!=-1;

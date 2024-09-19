@@ -19,12 +19,18 @@ import {MatSelectModule} from '@angular/material/select';
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
 import { RegistroScreenComponent } from './screens/registro-screen/registro-screen.component';
 import { FormsModule } from '@angular/forms';
+import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
+import { EstudianteScreenComponent } from './screens/estudiante-screen/estudiante-screen.component';
+import { PropietarioScreenComponent } from './screens/propietario-screen/propietario-screen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginScreenComponent,
-    RegistroScreenComponent
+    RegistroScreenComponent,
+    HomeScreenComponent,
+    EstudianteScreenComponent,
+    PropietarioScreenComponent
   ],
   imports: [
     BrowserModule,

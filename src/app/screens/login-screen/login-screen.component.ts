@@ -20,7 +20,9 @@ export class LoginScreenComponent implements OnInit {
     private facadeService: FacadeService,
   ){}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   public login(){
     this.errors = [];

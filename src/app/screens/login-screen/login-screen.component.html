@@ -21,10 +21,8 @@
                   <i *ngIf="type == 'text'" class="bi bi-eye-slash-fill" (click)="showPassword()"></i>
                 </div>
               </div>
-
+              <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
             </div>
-
-            <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
 
             <!-- Label olvidé contraseña -->
 
@@ -35,7 +33,7 @@
             <!-- Botones -->
              <br>
             <div class="d-flex flex-column align-items-center mb-3 w-100" style="text-align: center;">
-              <button class="btn btn-primary" type="submit" >Iniciar sesión</button>
+              <button class="btn btn-primary" type="submit" (click)="login()" >Iniciar sesión</button>
 
               <label class="form-check-label pt-3" for="checkbox-signin" (click)="registrar()">Registrarse</label>
             </div>
