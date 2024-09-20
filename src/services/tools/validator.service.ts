@@ -7,7 +7,6 @@ export class ValidatorService {
 
   constructor() { }
 
-  //Funciones para validaciones
   required(input:any){
     return (input != undefined && input != null && input != "" && input.toString().trim().length > 0);
   }
@@ -25,13 +24,6 @@ export class ValidatorService {
     return input.match(regEx); // Invalid format
   }
 
-  date(input:any){
-    var regEx = /^\d{4}-\d{2}-\d{2}$/;
-    if(!input.match(regEx)) return false;  // Invalid format
-    var d = new Date(input);
-    if(Number.isNaN(d.getTime())) return false; // Invalid date
-    return d.toISOString().slice(0,10) === input;
-  }
 
   between(input:any, min:any, max:any){
     return (max >= input >= min);
@@ -59,16 +51,6 @@ export class ValidatorService {
     }
 
     return (decimals >= size);
-  }
-
-  dateBetween(input:any, min:any, max:any){
-
-    input = new Date(input).getTime();
-    min = new Date(min).getTime();
-    max = new Date(max).getTime();
-
-    return  (max >= input && input  >= min);
-
   }
 
   words(input:any){

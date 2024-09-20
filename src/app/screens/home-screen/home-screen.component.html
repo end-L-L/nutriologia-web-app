@@ -1,0 +1,13 @@
+<div class="wrapper"></div>
+  <div class="section-home">
+    <div class="body-home">
+      <!-- Home para el estudiante -->
+      <section class="home-estudiante" *ngIf="tipo == 'estudiante'">
+        <app-estudiante-screen></app-estudiante-screen>
+      </section>
+      <!-- Home para el propietario -->
+      <section class="home-propietario" *ngIf="tipo == 'propietario'">
+        <app-propietario-screen></app-propietario-screen>
+      </section>
+    </div>
+  </div>

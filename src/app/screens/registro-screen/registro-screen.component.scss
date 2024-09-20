@@ -117,3 +117,11 @@ mat-form-field {
 .eye-icon:hover {
   color: #495057; /* Color oscuro al hacer hover */
 }
+
+.invalid-feedback {
+  display: block!important;
+  width: 100%;
+  font-size: 0.75rem;
+  color: #ff5b5b;
+  font-family: Nexa;
+}
