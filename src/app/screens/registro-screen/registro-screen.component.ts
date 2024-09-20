@@ -68,6 +68,7 @@ public regresar(){
   }
 
   //para el select
+<<<<<<< HEAD
   private _roles: any[] = [
     { value: '1', viewValue: 'Propietario' },
     { value: '2', viewValue: 'Estudiante' }
@@ -77,6 +78,17 @@ public regresar(){
   }
   public set roles(value: any[]) {
     this._roles = value;
+=======
+  private _tipos: any[] = [
+    { value: '1', viewValue: 'Propietario' },
+    { value: '2', viewValue: 'Estudiante' }
+  ];
+  public get tipos(): any[] {
+    return this._tipos;
+  }
+  public set tipos(value: any[]) {
+    this._tipos = value;
+>>>>>>> 98cfb0ff86e38a112bc6d123f9185bb5ad20734e
   }
 
   //registro

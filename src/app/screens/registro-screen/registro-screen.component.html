@@ -50,12 +50,21 @@
           <input matInput [(ngModel)]="usuario.telefono" placeholder="Escribe telefono">
         </mat-form-field>
 
+<<<<<<< HEAD
         <div *ngIf="errors.rol" class="invalid-feedback">{{ errors.rol }}</div>
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Tipo de usuario</mat-label>
           <mat-select [(ngModel)]="usuario.rol">
             <mat-option *ngFor="let rol of roles" [value]="rol.viewValue">
               {{rol.viewValue}}
+=======
+        <div *ngIf="errors.tipo" class="invalid-feedback">{{ errors.tipo }}</div>
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Tipo de usuario</mat-label>
+          <mat-select [(ngModel)]="usuario.tipo">
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo.viewValue">
+              {{tipo.viewValue}}
+>>>>>>> 98cfb0ff86e38a112bc6d123f9185bb5ad20734e
             </mat-option>
           </mat-select>
         </mat-form-field>

@@ -22,16 +22,26 @@ export class LoginScreenComponent implements OnInit {
 
   ngOnInit(): void {}
 
+<<<<<<< HEAD
   public login(){
     //Validar
+=======
+  }
+
+  public login(){
+>>>>>>> 98cfb0ff86e38a112bc6d123f9185bb5ad20734e
     this.errors = [];
 
     this.errors = this.facadeService.validarLogin(this.username, this.password);
     if(!$.isEmptyObject(this.errors)){
       return false;
     }
+<<<<<<< HEAD
     //Si pasa la validación ir a la página de home
     this.facadeService.login(this.username, this.password).subscribe(
+=======
+    this.facadeService.validarLogin(this.username, this.password).subscribe(
+>>>>>>> 98cfb0ff86e38a112bc6d123f9185bb5ad20734e
       (response)=>{
         this.facadeService.saveUserData(response);
         this.router.navigate(["home"]);
@@ -39,7 +49,6 @@ export class LoginScreenComponent implements OnInit {
         alert("No se pudo iniciar sesión");
       }
     );
-
   }
 
   public registrar(){

@@ -76,8 +76,13 @@ export class UsuariosService {
       error["telefono"] = this.errorService.required;
     }
 
+<<<<<<< HEAD
     if(!this.validatorService.required(data["rol"])){
       error["rol"] = this.errorService.required;
+=======
+    if(!this.validatorService.required(data["tipo"])){
+      error["tipo"] = this.errorService.required;
+>>>>>>> 98cfb0ff86e38a112bc6d123f9185bb5ad20734e
     }
 
     return error;
@@ -88,7 +93,11 @@ export class UsuariosService {
   //SERVICIO PARA REGISTRAR NUEVO USUARIO
 
   public registrarUsuario (data: any):Observable <any>{
+<<<<<<< HEAD
     return this.http.post<any>(`${environment.url_api}/admin/`,data, httpOptions)
+=======
+    return this.http.post<any>(`${environment.url_api}/usuarios/`,data, httpOptions)
+>>>>>>> 98cfb0ff86e38a112bc6d123f9185bb5ad20734e
   }
 
   // public obtenerListaUsuarios (): Observable <any>{
