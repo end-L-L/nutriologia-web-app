@@ -1,0 +1,89 @@
+.wrapper {
+  width: 100%;
+  background-color: #d21c43; /* Fondo rojo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+}
+
+.navbar-logo .app-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones se ajusten a la pantalla */
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.filter-button {
+  background-color: white;
+  color: #d21c43;
+  border: none; /* Elimina el borde */
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+  background-color: #f2f2f2;
+}
+
+.separator {
+  margin: 0 15px;
+  color: white;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: white;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+  .navbar-logo .app-title {
+    font-size: 22px; /* Ajusta el tamaño del título en pantallas pequeñas */
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+    margin-top: 15px;
+  }
+
+  .filter-button {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .user-menu {
+    margin-left: 0;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+    top: 40px;
+  }
+}

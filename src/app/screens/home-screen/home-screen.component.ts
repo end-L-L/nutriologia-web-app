@@ -8,7 +8,7 @@ import { FacadeService } from 'src/services/facade.service';
   styleUrls: ['./home-screen.component.scss']
 })
 export class HomeScreenComponent implements OnInit{
-  public tipo:string = "";
+  public rol:string = "";
   public token: string="";
 
   constructor(
@@ -26,7 +26,7 @@ export class HomeScreenComponent implements OnInit{
       this.router.navigate([""]);
     }
 
-    this.tipo = this.facadeService.getUserGroup();
-    console.log("Tipo: ", this.tipo);
+    this.rol = this.facadeService.getUserGroup();
+    console.log("Tipo: ", this.rol);
   }
 }

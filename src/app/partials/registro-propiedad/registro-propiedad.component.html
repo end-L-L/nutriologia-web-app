@@ -1,0 +1,101 @@
+<div class="wrapper">
+    <!-- Va a englobar todo el formulario con la cabecera -->
+    <div class="background"></div>
+    <div class="section-registro">
+      <div class="body-registro">
+        <div class="row mt-3 mb-3">
+          <div class="form-group col-12">
+            <label class="title-user" for="tipo_usuario">Registro de casa o deparmento</label>
+          </div>
+          <br>
+        </div>
+
+        <div *ngIf="errors.direccion" class="invalid-feedback">{{ errors.direccion }}</div>
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Dirección</mat-label>
+          <input matInput [(ngModel)]="propiedad.direccion" placeholder="Escribe la direccion de tu propiedad/casa ">
+        </mat-form-field>
+
+        <div *ngIf="errors.habitaciones" class="invalid-feedback">{{ errors.habitaciones }}</div>
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Número de habitaciones</mat-label>
+          <input matInput [(ngModel)]="propiedad.habitaciones" placeholder="Escribe el numero de habitaciones">
+        </mat-form-field>
+
+        <div *ngIf="errors.capacidad" class="invalid-feedback">{{ errors.capacidad }}</div>
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Capacidad</mat-label>
+          <mat-select [(ngModel)]="propiedad.capacidad">
+            <mat-option *ngFor="let capacidad of capacidades" [value]="capacidad.viewValue">
+              {{ capacidad.viewValue }}
+            </mat-option> <!-- Se añadió el cierre correcto de mat-option -->
+          </mat-select>
+        </mat-form-field>
+
+        <div *ngIf="errors.precio" class="invalid-feedback">{{ errors.precio }}</div>
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>precio</mat-label>
+          <input matInput [(ngModel)]="propiedad.precio" placeholder="Escribe el precio">
+        </mat-form-field>
+
+        <div *ngIf="errors.servicios" class="invalid-feedback">{{ errors.servicio }}</div>
+          <mat-form-field class="mat-input" appearance="outline">
+            <mat-label>Servicios</mat-label>
+            <mat-select [(ngModel)]="propiedad.servicios" multiple>
+              <mat-option *ngFor="let servicio of servicios" [value]="servicio.nombre">
+                {{ servicio.nombre }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="errors.sanitario" class="invalid-feedback">{{ errors.sanitario }}</div>
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Numero de sanitarios</mat-label>
+        <mat-select [(ngModel)]="propiedad.sanitario">
+          <mat-option *ngFor="let sanitario of sanitarios" [value]="sanitario.viewValue">
+            {{ sanitario.viewValue }}
+          </mat-option> <!-- Se añadió el cierre correcto de mat-option -->
+        </mat-select>
+      </mat-form-field>
+
+        <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>telefono</mat-label>
+          <input matInput [(ngModel)]="propiedad.telefono" placeholder="Escribe numero de telefono">
+        </mat-form-field>
+
+        <div *ngIf="errors.estado" class="invalid-feedback">{{ errors.estado }}</div>
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="propiedad.estado">
+          <mat-option *ngFor="let estado of estados" [value]="estado.viewValue">
+            {{ estado.viewValue }}
+          </mat-option> <!-- Se añadió el cierre correcto de mat-option -->
+        </mat-select>
+      </mat-form-field>
+
+
+     <!-- Aqui va la carga de fotos aqui llega-->
+
+
+      <!-- Aqui va la carga de fotos
+      <div class="image-upload-section">
+        <label for="file-input" class="file-upload-label">Subir imágenes</label>
+        <input id="file-input" type="file" (change)="onFileSelected($event)" multiple accept="image/*" class="file-input">
+
+         Previsualización de imágenes
+        <div class="image-preview" *ngIf="selectedImages.length > 0">
+          <div *ngFor="let img of selectedImages; let i = index">
+            <img [src]="img" alt="Imagen {{i+1}}" width="100">
+          </div>
+        </div>
+      </div>
+-->
+      <div class="section-buttons">
+          <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
+          <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registrar()">Registrar</button>
+          <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="registrar()">Actualizar</button>
+        </div>
+      </div>
+    </div>

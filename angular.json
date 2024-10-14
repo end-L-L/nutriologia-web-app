@@ -34,11 +34,7 @@
               "@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": [
-<<<<<<< HEAD
                "node_modules/jquery/dist/jquery.min.js"
-=======
-              "node_modules/jquery/dist/jquery.min.js"
->>>>>>> 98cfb0ff86e38a112bc6d123f9185bb5ad20734e
             ]
           },
           "configurations": {
@@ -104,11 +100,7 @@
               "@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": [
-<<<<<<< HEAD
                "node_modules/jquery/dist/jquery.min.js"
-=======
-              "node_modules/jquery/dist/jquery.min.js"
->>>>>>> 98cfb0ff86e38a112bc6d123f9185bb5ad20734e
             ]
           }
         }

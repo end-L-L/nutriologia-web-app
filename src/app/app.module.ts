@@ -14,6 +14,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 // Otros componentes
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
@@ -22,6 +29,10 @@ import { FormsModule } from '@angular/forms';
 import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
 import { EstudianteScreenComponent } from './screens/estudiante-screen/estudiante-screen.component';
 import { PropietarioScreenComponent } from './screens/propietario-screen/propietario-screen.component';
+import { NavbarComponent } from './partials/navbar/navbar.component';
+import { SobreMiComponent } from './screens/sobre-mi/sobre-mi.component';
+import { RegistroPropiedadComponent } from './partials/registro-propiedad/registro-propiedad.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +41,11 @@ import { PropietarioScreenComponent } from './screens/propietario-screen/propiet
     RegistroScreenComponent,
     HomeScreenComponent,
     EstudianteScreenComponent,
-    PropietarioScreenComponent
+    PropietarioScreenComponent,
+    NavbarComponent,
+    SobreMiComponent,
+    RegistroPropiedadComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -44,6 +59,16 @@ import { PropietarioScreenComponent } from './screens/propietario-screen/propiet
     MatSelectModule,
     HttpClientModule,
     FormsModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

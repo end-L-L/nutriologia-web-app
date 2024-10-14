@@ -1,230 +1,95 @@
-<<<<<<< HEAD
-@media (min-width: 960px) and (orientation: landscape) {
-  .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('/assets/images/login.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-  }
+/* Estilos globales para el componente login */
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #fff; /* Fondo blanco por defecto */
+  background: url('/assets/images/login.png') no-repeat center center; /* Aplica la imagen de fondo directamente */
+  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
 
   .wrapper {
-    position: relative;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     z-index: 1;
   }
 
-  .section-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
   .title {
-    font-size: 2rem;
     text-align: center;
-    font-family: 'Nexa-Bold', sans-serif;
-    color: #231F20;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
+    font-weight: bold;
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 15px;
   }
 
-  .card {
-    width: 27rem;
-    height: auto;
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  }
-
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .icon {
+    text-align: center;
+    font-size: 60px;
+    color: #333;
+    margin-bottom: 20px;
   }
 
   .container-inputs {
-    width: 100%;
-  }
-
-  input.form-control {
-    width: 95%;
-    height: 48px;
-    padding: 0 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-  }
-
-  input.form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-=======
-// Ajustes generales de los inputs
-.input-group {
-  position: relative;
-  display: flex;
-  width: 100%;
-  margin-bottom: 1.5rem; // Separación entre los inputs
-
-  // Ajustes para el input
-  .form-control {
-    border-radius: 0.5rem;
-    padding-right: 2.5rem;
-    border-right: none;
-    &:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    }
->>>>>>> 98cfb0ff86e38a112bc6d123f9185bb5ad20734e
-  }
-
-  // Contenedor del ícono de "ojito"
-  .input-group-text {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    border-left: none;
-    background-color: transparent;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #e2e6ea;
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
     }
 
-    // Estilos para el ícono
-    i {
-      font-size: 1.2rem;
+    .input-group-append .input-group-text {
+      background-color: transparent;
+      border-left: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #000;
+      color: #fff;
+      border-radius: 8px;
+    }
+
+    .invalid-feedback {
+      color: red;
+    }
+
+    .register {
       color: #000;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    label {
+      font-size: 14px;
     }
   }
 }
 
-// Botones
-.btn-primary {
-  background-color: #231F20;
-  border-color: #231F20;
-  color: #fff;
-  width: 100%;
-  padding: 0.75rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
+/* Responsivo para pantallas pequeñas */
+@media only screen and (max-width: 600px) {
+  .login {
+    .wrapper {
+      max-width: 95%;
+      padding: 20px;
+    }
 
-  &:hover {
-    background-color: #d66074;
-  }
-}
+    .container-inputs .form-control {
+      font-size: 14px;
+    }
 
-// Título
-.title {
-  font-size: 2rem;
-  text-align: center;
-  font-family: 'Nexa-Bold', sans-serif;
-  color: #231F20;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-}
-
-// Fondo y estructura de la tarjeta
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/assets/images/login.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-
-.wrapper {
-  position: relative;
-  z-index: 1;
-}
-
-.section-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.card {
-  width: 27rem;
-  height: auto;
-  background-color: #FFFFFF;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-inputs {
-  width: 100%;
-
-  // Agregar espaciado para los inputs en el contenedor
-  .pt-3 {
-    padding-top: 1rem !important; // Espacio superior entre los inputs
-  }
-
-  .mb-3 {
-    margin-bottom: 1.5rem !important; // Espacio inferior para los inputs
-  }
-}
-
-// Ajustes para el campo de texto (correo electrónico)
-input.form-control {
-  width: 95%;
-  height: 48px;
-  padding: 0 15px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-}
-
-input.form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-// Ajustes para el label de "Olvidé mi contraseña"
-.forgot-password {
-  font-size: 0.9rem;
-  color: #6c757d;
-  text-decoration: none;
-
-  &:hover {
-    color: #343a40;
-    text-decoration: underline;
-  }
-}
-
-// Label general
-.form-check-label {
-  color: #1b1718;
-  cursor: pointer;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
+    .container-inputs .btn-primary {
+      font-size: 16px;
+    }
   }
 }

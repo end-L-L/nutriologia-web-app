@@ -1,0 +1,42 @@
+
+
+/* Contenido principal debajo del navbar */
+.content {
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px; /* Centrar y limitar el ancho del contenido */
+  background-color: #ffffff; /* Fondo blanco para contraste */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  color: #231f20;
+  margin-bottom: 15px;
+}
+
+.content p {
+  font-size: 1rem;
+  color: #6c757d;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Media Query para pantallas más grandes (desktop) */
+@media (min-width: 960px) {
+  .content {
+    max-width: 800px; /* Aumenta el ancho máximo en pantallas grandes */
+    padding: 30px; /* Mayor espacio en pantallas grandes */
+  }
+
+  .content h2 {
+    font-size: 2.2rem; /* Aumenta el tamaño de la fuente en pantallas grandes */
+    margin-bottom: 20px;
+  }
+
+  .content p {
+    font-size: 1.2rem; /* Aumenta ligeramente el tamaño del texto */
+  }
+}

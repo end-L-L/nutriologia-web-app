@@ -121,7 +121,7 @@ export class FacadeService {
 
   saveUserData(user_data:any){
     var secure = environment.url_api.indexOf("https")!=-1;
-    if(user_data.rol == "administrador"){
+    if(user_data.rol == "Propietario" && "Estudiante"){
       this.cookieService.set(user_id_cookie_name, user_data.id, undefined, undefined, undefined, secure, secure?"None":"Lax");
       this.cookieService.set(user_email_cookie_name, user_data.email, undefined, undefined, undefined, secure, secure?"None":"Lax");
       this.cookieService.set(user_complete_name_cookie_name, user_data.first_name + " " + user_data.last_name, undefined, undefined, undefined, secure, secure?"None":"Lax");

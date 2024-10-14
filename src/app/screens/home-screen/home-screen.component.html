@@ -1,13 +1,16 @@
-<div class="wrapper"></div>
+
+<div class="wrapper">
   <div class="section-home">
     <div class="body-home">
       <!-- Home para el estudiante -->
-      <section class="home-estudiante" *ngIf="tipo == 'estudiante'">
+      <section class="home-estudiante" *ngIf="rol == 'Estudiante'">
         <app-estudiante-screen></app-estudiante-screen>
       </section>
       <!-- Home para el propietario -->
-      <section class="home-propietario" *ngIf="tipo == 'propietario'">
+      <section class="home-propietario" *ngIf="rol == 'Propietario'">
         <app-propietario-screen></app-propietario-screen>
       </section>
     </div>
   </div>
+</div>
+

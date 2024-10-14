@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <nav class="navbar">
+  <div class="navbar-content">
+  <!-- Logo or Title -->
+  <div class="navbar-logo">
+  <span class="app-title">RooMate</span>
+  </div>
+
+        <!-- Filter Buttons -->
+  <div class="filter-buttons">
+  <button class="filter-button">Precio</button>
+  <button class="filter-button">Universidad</button>
+  <button class="filter-button">Tipo</button>
+  <span class="separator">|</span>
+  <button class="filter-button">Mascotas</button>
+  <button class="filter-button">Wifi</button>
+  <button class="filter-button">Cocina</button>
+  <button class="filter-button">Estacionamiento</button>
+  <button class="filter-button">Lavadora</button>
+  <button class="filter-button">Amueblado</button>
+  <button class="filter-button">Seguridad</button>
+  <button class="filter-button">Dryer</button>
+  <button class="filter-button">Filters</button>
+  <button class="filter-button" (click)="registropropiedad()">Agregar</button>
+  </div>
+
+        <!-- User Menu -->
+  <div class="user-menu dropdown">
+  <img src="path-to-user-icon.png" alt="User Icon" class="user-icon dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+  <li><a class="dropdown-item" (click)="goToHome()">Home</a></li> <!-- Opción Home -->
+  <li><a class="dropdown-item" (click)="viewProfile()">Ver Perfil</a></li>
+  <li><a class="dropdown-item" (click)="editAccount()">Editar Cuenta</a></li>
+  <li><a class="dropdown-item" (click)="deleteAccount()">Eliminar Cuenta</a></li>
+  <li><a class="dropdown-item" (click)="goToLogin()">Cerrar Sesion</a></li>
+  <li><a class="dropdown-item" (click)="registropropiedad()">Agregar propiedad</a></li>
+  </ul>
+  </div>
+  </div>
+  </nav>
+  </div>

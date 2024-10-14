@@ -1,47 +1,50 @@
 <section class="login">
-  <div class="background"></div>
+
 
   <div class="wrapper">
-    <div class="section-center">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="title">Inicio de Sesión</h3>
+<div class="section-center">
+<div class="card">
+<div class="card-body">
+<h3 class="title">Login</h3>
+<div class="icon">
+<i class="bi bi-person-circle"></i> <!-- Icono de usuario -->
+</div>
 
           <div class="container-inputs">   <!-- contiene los input -->
-            <div class="pt-3 mb-3">
-              <input type="email" [(ngModel)]="username" class="form-control" id="email" placeholder="Correo electrónico">
-              <div *ngIf="errors.username" class="invalid-feedback">{{ errors.username }}</div>
-            </div>
-            <!-- Input para contraseña -->
-            <div class="pt-3 mb-3">
-              <div class="input-group input-group-merge">
-                <input type="{{type}}" [(ngModel)]="password" id="show-password" name="password_user" class="form-control pwd" placeholder="Contraseña" >
-                <div class="input-group-text" id="show-password" data-password="false">
-                  <i *ngIf="type == 'password'" class="bi bi-eye-fill" (click)="showPassword()"></i>
-                  <i *ngIf="type == 'text'" class="bi bi-eye-slash-fill" (click)="showPassword()"></i>
-                </div>
-              </div>
-              <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
-            </div>
+<div class="pt-3 mb-3">
+<input type="email" [(ngModel)]="username" class="form-control" id="email" placeholder="USERNAME">
+<div *ngIf="errors.username" class="invalid-feedback">{{ errors.username }}</div>
+</div>
+<!-- Input para contraseña con ícono dentro del input -->
+<div class="pt-3 mb-3">
+<div class="input-group input-group-merge">
+<input type="{{type}}" [(ngModel)]="password" id="show-password" name="password_user" class="form-control pwd" placeholder="PASSWORD" >
+<div class="input-group-append">
+<span class="input-group-text" id="toggle-password" (click)="showPassword()">
+<i *ngIf="type == 'password'" class="bi bi-eye"></i>
+<i *ngIf="type == 'text'" class="bi bi-eye-slash"></i>
+</span>
+</div>
+</div>
+<div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
+</div>
 
             <!-- Label olvidé contraseña -->
-
-            <div class="mb-3">
-              <label class="form-check-label" for="checkbox-signin">Olvidé mi contraseña</label>
-            </div>
+<div class="mb-3 text-center">
+<label class="form-check-label" for="checkbox-signin">Forgot password?</label>
+</div>
 
             <!-- Botones -->
-             <br>
-            <div class="d-flex flex-column align-items-center mb-3 w-100" style="text-align: center;">
-              <button class="btn btn-primary" type="submit" (click)="login()" >Iniciar sesión</button>
+<br>
+<div class="d-flex flex-column align-items-center mb-3 w-100" style="text-align: center;">
+<button class="btn btn-primary" type="submit" (click)="login()">LOGIN</button>
 
-              <label class="form-check-label pt-3" for="checkbox-signin" (click)="registrar()">Registrarse</label>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+              <label class="form-check-label pt-3" for="checkbox-signin" (click)="registrar()">¿No tienes una cuenta? <span class="register">Registrate</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
+
