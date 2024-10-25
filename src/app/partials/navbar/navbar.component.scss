@@ -1,89 +1,82 @@
-.wrapper {
-  width: 100%;
-  background-color: #d21c43; /* Fondo rojo */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.wrapper{
+  width: 100vw;
+  //height: 100vh;
+}
+.bg-light{
+  background-color: #003B5C!important;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  flex-wrap: wrap;
+.navbar{
+  padding: 0 0 0 0!important;
 }
 
-.navbar-logo .app-title {
+.navbar-brand{
+  padding-left: 20px;
   font-size: 28px;
+  font-family: Nexa;
+  text-align: center;
+  opacity: 1;
+  color: #FFFFFF;
+  margin: 0 0 0 0!important;
+}
+.nav-link{
+  font-size: 20px;
+  font-family: Nexa;
+  text-align: center;
+  opacity: 1;
   font-weight: bold;
-  color: white;
+  color: #FFFFFF;
+  margin: 0 0 0 0!important;
 }
 
-.filter-buttons {
-  display: flex;
-  flex-wrap: wrap; /* Permite que los botones se ajusten a la pantalla */
-  gap: 10px;
-  margin-top: 10px;
-  align-items: center;
-}
-
-.filter-button {
-  background-color: white;
-  color: #d21c43;
-  border: none; /* Elimina el borde */
-  border-radius: 20px; /* Bordes redondeados */
-  padding: 8px 15px;
+li a {
+  display: block;
+  text-decoration: none;
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
+  text-transform: capitalize;
 }
 
-.filter-button:hover {
-  background-color: #f2f2f2;
+/* Change the link color on hover */
+li a:hover {
+  background-color: #0092B8;
+  color: #FFFFFF;
+  margin: 0;
 }
 
-.separator {
-  margin: 0 15px;
-  color: white;
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  font-size: 20px;
+  font-family: Nexa;
+  text-align: center;
+  opacity: 1;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+.active {
+  background-color: #03aed8;
+  margin: 0 0 0 0!important;
 }
 
-.user-menu {
-  position: relative;
+.bi-person-circle{
+  font-size: 20pt;
+  color: #FFFFFF;
 }
-
-.user-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  background-color: white;
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.dropdown-toggle{
+  font-size: 15pt;
+  color: #FFFFFF;
 }
-
-/* Media Queries para pantallas pequeñas */
-@media (max-width: 768px) {
-  .navbar-logo .app-title {
-    font-size: 22px; /* Ajusta el tamaño del título en pantallas pequeñas */
-  }
-
-  .filter-buttons {
-    flex-direction: column;
-    margin-top: 15px;
-  }
-
-  .filter-button {
-    width: 100%;
-    margin-right: 0;
-  }
-
-  .user-menu {
-    margin-left: 0;
-  }
-
-  .dropdown-menu {
-    width: 100%;
-    top: 40px;
-  }
+.dropdown-menu[data-bs-popper] {
+  right: 0!important;
+  left: auto;
+}
+.navbar-toggler-icon{
+  color: #FFFFFF;
+}
+.navbar-toggler-icon {
+  vertical-align: 0;
 }

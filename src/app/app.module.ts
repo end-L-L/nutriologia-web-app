@@ -9,29 +9,27 @@ import { HttpClientModule } from '@angular/common/http';
 
 // Importaciones de Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {MatSelectModule} from '@angular/material/select';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 // Otros componentes
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
 import { RegistroScreenComponent } from './screens/registro-screen/registro-screen.component';
 import { FormsModule } from '@angular/forms';
-import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
-import { EstudianteScreenComponent } from './screens/estudiante-screen/estudiante-screen.component';
-import { PropietarioScreenComponent } from './screens/propietario-screen/propietario-screen.component';
 import { NavbarComponent } from './partials/navbar/navbar.component';
-import { SobreMiComponent } from './screens/sobre-mi/sobre-mi.component';
-import { RegistroPropiedadComponent } from './partials/registro-propiedad/registro-propiedad.component';
+import { RegistroAdminComponent } from './partials/registro-admin/registro-admin.component';
+import { RegistroNutriologoComponent } from './partials/registro-nutriologo/registro-nutriologo.component';
+import { RegistroPacienteComponent } from './partials/registro-paciente/registro-paciente.component';
 
 
 @NgModule({
@@ -39,12 +37,10 @@ import { RegistroPropiedadComponent } from './partials/registro-propiedad/regist
     AppComponent,
     LoginScreenComponent,
     RegistroScreenComponent,
-    HomeScreenComponent,
-    EstudianteScreenComponent,
-    PropietarioScreenComponent,
     NavbarComponent,
-    SobreMiComponent,
-    RegistroPropiedadComponent,
+    RegistroAdminComponent,
+    RegistroNutriologoComponent,
+    RegistroPacienteComponent,
 
   ],
   imports: [
@@ -56,6 +52,7 @@ import { RegistroPropiedadComponent } from './partials/registro-propiedad/regist
     MatDialogModule, // Importa MatDialogModule aquí
     MatIconModule, //para los iconos
     MatButtonModule,
+    MatRadioModule,
     MatSelectModule,
     HttpClientModule,
     FormsModule,

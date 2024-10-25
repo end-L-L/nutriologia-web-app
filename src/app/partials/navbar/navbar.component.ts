@@ -1,13 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FacadeService } from 'src/services/facade.service';
+declare var $:any;
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
-  dropdownOpen = false;
+export class NavbarComponent implements OnInit{
+  @Input() tipo:string = "";
+  @Input() rol:string ="";
+
+  public token : string = "";
+  public editar:boolean = false;
 
   constructor(
     private router: Router,
@@ -15,35 +20,57 @@ export class NavbarComponent {
     public activatedRoute: ActivatedRoute,
   ){}
 
-  toggleDropdown() {
-    this.dropdownOpen = !this.dropdownOpen;
+  ngOnInit(): void {
+    this.rol = this.facadeService.getUserGroup();
+    console.log("Rol user: ", this.rol);
+    //Validar que haya inicio de sesión
+    //Obtengo el token del login
+    this.token = this.facadeService.getSessionToken();
+    //El primer if valida si existe un parámetro en la URL
+    if(this.activatedRoute.snapshot.params['id'] != undefined){
+      this.editar = true;
+    }
+
   }
 
-  // Método para navegar a la pantalla de Ver Perfil (Sobre Mí)
-  viewProfile() {
-    this.router.navigate(['/sobre-mi']);
+  //Cerrar sesión
+  public logout(){
+    this.facadeService.logout().subscribe(
+      (response)=>{
+        console.log("Entró");
+        this.facadeService.destroyUser();
+        //Navega al login
+        this.router.navigate(["/"]);
+      }, (error)=>{
+        console.error(error);
+      }
+    );
   }
 
-  registropropiedad() {
-    this.router.navigate(['/registro-propiedad']);
+  public goRegistro(){
+    this.router.navigate(["registro-usuarios"]);
   }
 
-  // Método para navegar a la pantalla de Editar Cuenta (Sobre Mí también, con opción de edición)
-  editAccount() {
-    this.router.navigate(['/sobre-mi'], { queryParams: { editMode: true } });
+  public clickNavLink(link: string){
+    this.router.navigate([link]);
+    setTimeout(() => {
+      this.activarLink(link);
+    }, 100);
+  }
+  public activarLink(link: string){
+    if(link == "pacientes"){
+      $("#principal").removeClass("active");
+      $("#nutriologo").removeClass("active");
+      $("#paciente").addClass("active");
+    }else if(link == "nutriologos"){
+      $("#principal").removeClass("active");
+      $("#paciente").removeClass("active");
+      $("#nutriologo").addClass("active");
+    }else if(link == "home"){
+      $("#paciente").removeClass("active");
+      $("#nutriologo").removeClass("active");
+      $("#principal").addClass("active");
+    }
   }
 
-  // Método de ejemplo para eliminar la cuenta
-  deleteAccount() {
-    // Lógica de eliminación de cuenta
-    console.log('Cuenta eliminada');
-  }
-
-  goToHome(){
-    this.router.navigate(["home"])
-  }
-
-  goToLogin(){
-    this.router.navigate(['login']);
-  }
 }

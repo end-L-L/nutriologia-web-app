@@ -1,41 +1,50 @@
 <div class="wrapper">
-  <nav class="navbar">
-  <div class="navbar-content">
-  <!-- Logo or Title -->
-  <div class="navbar-logo">
-  <span class="app-title">RooMate</span>
-  </div>
-
-        <!-- Filter Buttons -->
-  <div class="filter-buttons">
-  <button class="filter-button">Precio</button>
-  <button class="filter-button">Universidad</button>
-  <button class="filter-button">Tipo</button>
-  <span class="separator">|</span>
-  <button class="filter-button">Mascotas</button>
-  <button class="filter-button">Wifi</button>
-  <button class="filter-button">Cocina</button>
-  <button class="filter-button">Estacionamiento</button>
-  <button class="filter-button">Lavadora</button>
-  <button class="filter-button">Amueblado</button>
-  <button class="filter-button">Seguridad</button>
-  <button class="filter-button">Dryer</button>
-  <button class="filter-button">Filters</button>
-  <button class="filter-button" (click)="registropropiedad()">Agregar</button>
-  </div>
-
-        <!-- User Menu -->
-  <div class="user-menu dropdown">
-  <img src="path-to-user-icon.png" alt="User Icon" class="user-icon dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-  <li><a class="dropdown-item" (click)="goToHome()">Home</a></li> <!-- Opción Home -->
-  <li><a class="dropdown-item" (click)="viewProfile()">Ver Perfil</a></li>
-  <li><a class="dropdown-item" (click)="editAccount()">Editar Cuenta</a></li>
-  <li><a class="dropdown-item" (click)="deleteAccount()">Eliminar Cuenta</a></li>
-  <li><a class="dropdown-item" (click)="goToLogin()">Cerrar Sesion</a></li>
-  <li><a class="dropdown-item" (click)="registropropiedad()">Agregar propiedad</a></li>
-  </ul>
-  </div>
-  </div>
-  </nav>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ng-container *ngIf="tipo!='registro-usuarios'; else registraUsers">
+            <!-- 1Todo el menú de los usuarios -->
+            <li class="nav-item">
+              <a class="nav-link active" id="principal" aria-current="page" (click)="clickNavLink('home')">Inicio</a>
+            </li>
+            <li class="nav-item" *ngIf="rol!='paciente'">
+              <a class="nav-link" id="paciente" aria-current="page" (click)="clickNavLink('pacientes')">Pacientes</a>
+            </li>
+            <li class="nav-item" *ngIf="rol!='nutriologo' && rol!='paciente'">
+              <a class="nav-link" id="nutriologo" (click)="clickNavLink('nutriologos')">Nutriologos</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Registrar
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" (click)="goRegistro()" *ngIf="rol!='alumno'">Alumnos</a></li>
+                <li><a class="dropdown-item" (click)="goRegistro()" *ngIf="rol!='maestro' && rol!='alumno'">Maestros</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" (click)="clickNavLink('materias')" *ngIf="rol!='maestro' && rol!='alumno'">Materias</a></li>
+              </ul>
+            </li>
+          </ng-container>
+          <ng-template #registraUsers>
+            <label class="navbar-brand" href="#">Registro de usuarios del sistema</label>
+          </ng-template>
+        </ul>
+        <form class="d-flex">
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngIf="token != ''"><a class="dropdown-item" (click)="logout()">Cerrar Sesión</a></li>
+              <li *ngIf="tipo=='registro-usuarios' && token == ''"><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+            </ul>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+</div>

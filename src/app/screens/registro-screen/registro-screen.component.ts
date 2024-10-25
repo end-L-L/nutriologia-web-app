@@ -1,123 +1,132 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatRadioChange } from '@angular/material/radio';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { Location } from '@angular/common';
-import { UsuariosService } from 'src/services/usuarios.service';
+import { AdministradoresService } from 'src/services/admin.service';
+import { PacienteService } from 'src/services/paciente.service';
 import { FacadeService } from 'src/services/facade.service';
-declare var $:any;
-
+import { NutriologoService } from 'src/services/nutriologo.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-registro-screen',
   templateUrl: './registro-screen.component.html',
   styleUrls: ['./registro-screen.component.scss']
 })
-export class RegistroScreenComponent {
+export class RegistroScreenComponent implements OnInit{
 
-  //Para contraseñas
-public hide_1: boolean = false;
-public hide_2: boolean = false;
-public inputType_1: string = 'password';
-public inputType_2: string = 'password';
-public password: string = "";
+  public tipo:string = "registro-usuarios";
+  //JSON para los usuarios (admin, maestros, alumnos)
+  public user:any ={};
 
-public usuario:any= {};
-public token: string = "";
-public errors:any={};
-public editar:boolean = false;
-public idUser: Number = 0;
+  public isUpdate:boolean = false;
+  public errors:any = {};
+  //Banderas para el tipo de usuario
+  public isAdmin:boolean = false;
+  public isNutriologo:boolean = false;
+  public isPaciente:boolean = false;
+  public editar: boolean = false;
+  public tipo_user:string = "";
+  //Info del usuario
+  public idUser: Number = 0;
+  public rol: string = "";
 
-constructor(
-  private router: Router,
-  private activatedRoute: ActivatedRoute,
-  private location: Location,
-  public dialog: MatDialog,
-  private usuariosService: UsuariosService,
-  private facadeService: FacadeService,
-){}
+  constructor(
+    private location : Location,
+    public activatedRoute: ActivatedRoute,
+    private router: Router,
+    private facadeService: FacadeService,
+    private administradoresService: AdministradoresService,
+    private pacienteService: PacienteService,
+    private nutriologoService: NutriologoService
+  ){}
 
-
-
-public regresar(){
-  this.location.back();
-}
-
-  //Funciones para password
-  showPassword()
-  {
-    if(this.inputType_1 == 'password'){
-      this.inputType_1 = 'text';
-      this.hide_1 = true;
+  ngOnInit(): void {
+    //Obtener de la URL el rol para saber cual editar
+    if(this.activatedRoute.snapshot.params['rol'] != undefined){
+      this.rol = this.activatedRoute.snapshot.params['rol'];
+      console.log("Rol detect: ", this.rol);
     }
-    else{
-      this.inputType_1 = 'password';
-      this.hide_1 = false;
+    //El if valida si existe un parámetro en la URL
+    if(this.activatedRoute.snapshot.params['id'] != undefined){
+      this.editar = true;
+      //Asignamos a nuestra variable global el valor del ID que viene por la URL
+      this.idUser = this.activatedRoute.snapshot.params['id'];
+      console.log("ID User: ", this.idUser);
+      //Al iniciar la vista obtiene el usuario por su ID
+      this.obtenerUserByID();
     }
+
   }
 
-  showPwdConfirmar()
-  {
-    if(this.inputType_2 == 'password'){
-      this.inputType_2 = 'text';
-      this.hide_2 = true;
-    }
-    else{
-      this.inputType_2 = 'password';
-      this.hide_2 = false;
-    }
-  }
-
-  //para el select
-  private _roles: any[] = [
-    { value: '1', viewValue: 'Propietario' },
-    { value: '2', viewValue: 'Estudiante' }
-  ];
-  public get roles(): any[] {
-    return this._roles;
-  }
-  public set roles(value: any[]) {
-    this._roles = value;
-  }
-
-  //registro
-  public registrar(){
-    //Validar
-    this.errors = [];
-
-    this.errors = this.usuariosService.validarUsuario(this.usuario, this.editar);
-    if(!$.isEmptyObject(this.errors)){
-      return false;
-    }
-
-    //Invocacion del servicio
-    //validar la contraseña que coincida
-    if(this.usuario.password == this.usuario.confirmar_password){
-
-      //Vamos a consumir el servicio de registrar usuario
-      //Si todo es correcto se registra/se llama al servicio
-    this.usuariosService.registrarUsuario(this.usuario).subscribe(
-      (response)=>{
-        alert("Usuario registrado correctamente")
-        console.log("Usuario registrado: ", response);
-        this.router.navigate(["/"]);
-      }, (error)=>{
-        alert("No se pudo registrar usuario");
-      }
+  //Función para obtener un solo usuario por su ID
+  public obtenerUserByID(){
+    if(this.rol == "administrador"){
+      this.administradoresService.getAdminByID(this.idUser).subscribe(
+        (response)=>{
+          this.user = response;
+          //Agregamos valores faltantes
+          this.user.first_name = response.user.first_name;
+          this.user.last_name = response.user.last_name;
+          this.user.email = response.user.email;
+          this.user.tipo_usuario = this.rol;
+          this.isAdmin = true;
+          //this.user.fecha_nacimiento = response.fecha_nacimiento.split("T")[0];
+          console.log("Datos user: ", this.user);
+        }, (error)=>{
+          alert("No se pudieron obtener los datos del usuario para editar");
+        }
       );
+    }else if(this.rol == "nutriologo"){
+      this.nutriologoService.getNutriologoByID(this.idUser).subscribe(
+        (response)=>{
+          this.user = response;
+          //Agregamos valores faltantes
+          this.user.first_name = response.user.first_name;
+          this.user.last_name = response.user.last_name;
+          this.user.email = response.user.email;
+          this.user.tipo_usuario = this.rol;
+          this.isNutriologo = true;
+          console.log("Datos nutriologo: ", this.user);
+        }, (error)=>{
+          alert("No se pudieron obtener los datos del usuario para editar");
+        }
+      );
+    }else if(this.rol == "paciente"){
+      this.pacienteService.getPacienteByID(this.idUser).subscribe(
+        (response)=>{
+          this.user = response;
+          //Agregamos valores faltantes
+          this.user.first_name = response.user.first_name;
+          this.user.last_name = response.user.last_name;
+          this.user.email = response.user.email;
+          this.user.tipo_usuario = this.rol;
+          this.isPaciente = true;
+          console.log("Datos paciente: ", this.user);
+        }, (error)=>{
+          alert("No se pudieron obtener los datos del usuario para editar");
+        }
+      );
+  }
+}
 
-    }else{
-      alert("Las contraseñas no coinciden");
-      this.usuario.password="";
-      this.usuario.confirmar_password="";
+  public radioChange(event: MatRadioChange) {
+
+    if(event.value == "administrador"){
+      this.isAdmin = true;
+      this.tipo_user = "administrador"
+      this.isPaciente = false;
+      this.isNutriologo = false;
+    }else if (event.value == "nutriologo"){
+      this.isAdmin = false;
+      this.isNutriologo = true;
+      this.tipo_user = "nutriologo"
+      this.isPaciente = false;
+    }else if (event.value == "paciente"){
+      this.isAdmin = false;
+      this.isNutriologo = false;
+      this.isPaciente = true;
+      this.tipo_user = "paciente"
     }
-
-    this.errors = this.usuariosService.validarUsuario(this.usuario, this.editar);
-    if(!$.isEmptyObject(this.errors)){
-      return false;
-    }
-
   }
 
 }
-
-//Cambios desde AQUI :)

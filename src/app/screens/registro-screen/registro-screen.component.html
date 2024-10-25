@@ -1,68 +1,69 @@
 <div class="wrapper">
-  <!-- Va a englobar todo el formulario con la cabecera -->
-  <div class="background"></div>
   <div class="section-registro">
+    <div class="header-registro">
+      <app-navbar [tipo]="tipo"></app-navbar>
+    </div>
     <div class="body-registro">
-      <div class="row mt-3 mb-3">
-        <div class="form-group col-12">
-          <label class="title-user" for="tipo_usuario">Registro</label>
+      <section class="slider">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/assets/images/img1.jpg" class="d-block img-slider">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/img2.jpg" class="d-block img-slider">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/img3.jpg" class="d-block img-slider">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        <br>
-      </div>
+      </section>
+      <section class="rol-user">
+        <div class="container">
+          <!-- Radio buttons -->
+          <div class="row mt-5" style="text-align: center;">
+            <div class="form-group col-12">
+              <label class="title-user" for="tipo_usuario">Tipo de usuario</label>
+            </div>
+            <div class="row mt-3" style="text-align: center;">
+              <div class="form-group col-12">
+                <mat-radio-group [(ngModel)]="user.tipo_usuario" (change)="radioChange($event)" [disabled]="editar">
+                  <mat-radio-button value="administrador">Administrador</mat-radio-button>
+                  <mat-radio-button value="nutriologo">Nutriologo</mat-radio-button>
+                  <mat-radio-button value="paciente">Paciente</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+          <!-- Form del admin -->
+          <section class="forms-registro">
+            <section class="registro-admin" *ngIf="isAdmin">
+              <app-registro-admin [rol]="tipo_user" [datos_user]="user"></app-registro-admin>
+            </section>
+            <section class="registro-nutriologo" *ngIf="isNutriologo">
+              <app-registro-nutriologo [rol]="tipo_user" [datos_user]="user"></app-registro-nutriologo>
+            </section>
+            <section class="registro-paciente" *ngIf="isPaciente">
+              <app-registro-paciente [rol]="tipo_user" [datos_user]="user"></app-registro-paciente>
+            </section>
+          </section>
 
-      <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input matInput [(ngModel)]="usuario.first_name" placeholder="Escribe nombre ">
-      </mat-form-field>
-
-      <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Apellidos</mat-label>
-        <input matInput [(ngModel)]="usuario.last_name" placeholder="Escribe apellidos">
-      </mat-form-field>
-
-      <div *ngIf="errors.email" class="invalid-feedback">{{ errors.email }}</div>
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Correo electrónico</mat-label>
-        <input matInput [(ngModel)]="usuario.email" placeholder="Escribe correo electrónico">
-      </mat-form-field>
-
-      <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
-      <mat-form-field class="mat-input" appearance="outline" *ngIf="!editar">
-        <mat-label>Contraseña</mat-label>
-        <input matInput [(ngModel)]="usuario.password" type="{{ inputType_1 }}" placeholder="Escribe contraseña">
-        <mat-icon matSuffix class="eye-icon" (click)="showPassword()">{{ hide_1 ? 'visibility_off' : 'visibility' }}</mat-icon>
-      </mat-form-field>
-
-      <div *ngIf="errors.confirmar_password" class="invalid-feedback">{{ errors.confirmar_password }}</div>
-      <mat-form-field class="mat-input" appearance="outline" *ngIf="!editar">
-        <mat-label>Confirmar contraseña</mat-label>
-        <input matInput [(ngModel)]="usuario.confirmar_password" type="{{ inputType_2 }}" placeholder="Confirma la contraseña">
-        <mat-icon matSuffix class="eye-icon" (click)="showPwdConfirmar()">{{ hide_2 ? 'visibility_off' : 'visibility' }}</mat-icon>
-      </mat-form-field>
-
-      <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Teléfono</mat-label>
-        <input matInput [(ngModel)]="usuario.telefono" placeholder="Escribe teléfono">
-      </mat-form-field>
-
-      <div *ngIf="errors.rol" class="invalid-feedback">{{ errors.rol }}</div>
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Tipo de usuario</mat-label>
-        <mat-select [(ngModel)]="usuario.rol">
-          <mat-option *ngFor="let rol of roles" [value]="rol.viewValue">
-            {{ rol.viewValue }}
-          </mat-option> <!-- Se añadió el cierre correcto de mat-option -->
-        </mat-select>
-      </mat-form-field>
-
-      <div class="section-buttons">
-        <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
-        <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registrar()">Registrar</button>
-        <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="registrar()">Actualizar</button>
-      </div>
+        </div>
+      </section>
     </div>
   </div>
 </div>
