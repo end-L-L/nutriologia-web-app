@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-input-label',
+  selector: 'input-label',
   templateUrl: './input-label.component.html',
-  styleUrls: ['./input-label.component.scss']
+  styleUrls: ['./input-label.component.scss'],
 })
-export class InputLabelComponent {
-
-}
+export class InputLabelComponent {}
