@@ -17,12 +17,13 @@ header>h3 {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 1.25rem;
+    min-height: 30dvh;
 }
 
 main {
     display: grid;
     min-height: 100dvh;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
     gap: 2rem;
 }
 
@@ -40,9 +41,12 @@ section:nth-child(2) {
     grid-template-columns: 1fr 1fr;
 }
 
+section:nth-child(3) > .card {
+    min-height: fit-content;
+}
+
 .grid-cols-2-layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    /* Adjust gap as needed */
+    gap: 1.5rem;
 }

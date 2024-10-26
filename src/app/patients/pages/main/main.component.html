@@ -33,22 +33,22 @@
           <h3>📈 Resumen diario</h3>
         </header>
         <div class="grid-cols-2-layout">
-          <div>
-            <label>🔥 Calorías: {{ macronutrientes.calorias }} / {{ macronutrientes.caloriasMax }}</label>
+          <input-container>
+            <input-label>🔥 Calorías: {{ macronutrientes.calorias }} / {{ macronutrientes.caloriasMax }}</input-label>
             <progress-bar [value]="macronutrientes.calorias" [max]="macronutrientes.caloriasMax" />
-          </div>
-          <div>
-            <label>🍗 Proteínas: {{ macronutrientes.proteinas }}g / {{ macronutrientes.proteinasMax }}g</label>
+          </input-container>
+          <input-container>
+            <input-label>🍗 Proteínas: {{ macronutrientes.proteinas }}g / {{ macronutrientes.proteinasMax }}g</input-label>
             <progress-bar [value]="macronutrientes.proteinas" [max]="macronutrientes.proteinasMax" />
-          </div>
-          <div>
-            <label>🍞 Carbohidratos: {{ macronutrientes.carbohidratos }}g / {{ macronutrientes.carbohidratosMax }}g</label>
+          </input-container>
+          <input-container>
+            <input-label>🍞 Carbohidratos: {{ macronutrientes.carbohidratos }}g / {{ macronutrientes.carbohidratosMax }}g</input-label>
             <progress-bar [value]="macronutrientes.carbohidratos" [max]="macronutrientes.carbohidratosMax" />
-          </div>
-          <div>
-            <label>🥑 Grasas: {{ macronutrientes.grasas }}g / {{ macronutrientes.grasasMax }}g</label>
+          </input-container>
+          <input-container>
+            <input-label>🥑 Grasas: {{ macronutrientes.grasas }}g / {{ macronutrientes.grasasMax }}g</input-label>
             <progress-bar [value]="macronutrientes.grasas" [max]="macronutrientes.grasasMax" />
-          </div>
+          </input-container>
         </div>
       </article>
     </section>
