@@ -6,15 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-  public value = 0;
-  public max = 100;
+  public macronutrientes = {
+    calorias: 0,
+    caloriasMax: 2000,
+    proteinas: 0,
+    proteinasMax: 100,
+    carbohidratos: 0,
+    carbohidratosMax: 100,
+    grasas: 0,
+    grasasMax: 100,
+  };
 
   constructor() {
     const interval = setInterval(() => {
-      this.value += 10;
-      if (this.value >= this.max) {
+      this.macronutrientes.calorias += 10;
+      if (this.macronutrientes.calorias >= this.macronutrientes.caloriasMax) {
         clearInterval(interval);
       }
-    }, 500);
+    }, 1000);
   }
 }
