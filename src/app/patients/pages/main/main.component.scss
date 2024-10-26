@@ -1,0 +1,35 @@
+.patients-container {
+    max-width: 80dvw;
+    margin: 2rem auto;
+}
+
+header > h2 {
+    font-size: 1.5rem;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+main {
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+section {
+    display: grid;
+    gap: 2rem;
+}
+
+section:nth-child(1) {
+    grid-template-columns: 1fr 33%;
+}
+
+section:nth-child(2) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

@@ -4,9 +4,7 @@ import { PatientsRoutingModule } from './patients-routing.module';
 import { MainComponent } from './pages/main/main.component';
 
 @NgModule({
-  declarations: [
-    MainComponent
-  ],
+  declarations: [MainComponent],
   imports: [CommonModule, PatientsRoutingModule],
 })
 export class PatientsModule {}
