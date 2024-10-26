@@ -1,12 +1,14 @@
+import type { Macros } from '../../interfaces';
+
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'main-page',
+  selector: 'patients-main-page',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-  public macronutrientes = {
+  public macronutrientes: Macros = {
     calorias: 0,
     caloriasMax: 2000,
     proteinas: 0,
