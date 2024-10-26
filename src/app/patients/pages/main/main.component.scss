@@ -17,13 +17,12 @@ header>h3 {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 1.25rem;
-    min-height: 30dvh;
 }
 
 main {
     display: grid;
     min-height: 100dvh;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(3, max-content);
     gap: 2rem;
 }
 
@@ -41,12 +40,29 @@ section:nth-child(2) {
     grid-template-columns: 1fr 1fr;
 }
 
-section:nth-child(3) > .card {
-    min-height: fit-content;
+section:nth-child(2) > .card {
+    min-height: 30dvh;
+}
+
+section:nth-child(odd){
+    height: fit-content;
 }
 
 .grid-cols-2-layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+}
+
+form {
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: 1fr 1fr;
+}
+
+form>div {
+    display: grid;
+    grid-template-columns: repeat(2, auto) max-content;
+    gap: 1rem;
+    align-items: end;
 }
