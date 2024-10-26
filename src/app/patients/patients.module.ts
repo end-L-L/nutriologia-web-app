@@ -6,9 +6,18 @@ import { MainComponent } from './pages/main/main.component';
 import { ProgressBarComponent } from './components/ui/progress-bar';
 import { ButtonComponent } from './components/ui/button';
 import { InputComponent, InputContainerComponent, InputLabelComponent } from './components/ui/input';
+import { SelectComponent } from './components/ui/select';
 
 @NgModule({
-  declarations: [MainComponent, ProgressBarComponent, InputComponent, InputLabelComponent, InputContainerComponent, ButtonComponent],
+  declarations: [
+    MainComponent,
+    ProgressBarComponent,
+    InputComponent,
+    InputLabelComponent,
+    InputContainerComponent,
+    ButtonComponent,
+    SelectComponent,
+  ],
   imports: [CommonModule, PatientsRoutingModule],
 })
 export class PatientsModule {}
