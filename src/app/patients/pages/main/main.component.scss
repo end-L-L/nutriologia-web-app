@@ -4,11 +4,11 @@
     padding: 2rem 0;
 }
 
-header > h2 {
+header>h2 {
     font-size: 1.75rem;
 }
 
-header > h3 {
+header>h3 {
     font-size: 1.25rem;
     font-weight: 500;
 }
@@ -38,4 +38,11 @@ section:nth-child(1) {
 section:nth-child(2) {
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+.grid-cols-2-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    /* Adjust gap as needed */
 }

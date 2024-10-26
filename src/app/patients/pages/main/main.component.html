@@ -6,34 +6,49 @@
     <section>
       <article class="card">
         <header>
-          <h3>Agregar alimento</h3>
+          <h3>🍽 Agregar alimento</h3>
         </header>
       </article>
       <article class="card">
         <header>
-          <h3>Calorías totales</h3>
-        </header>
-      </article>
-    </section>
-    <section>
-      <article class="card">
-        <header>
-          <h3>Alimentos consumidos hoy</h3>
-        </header>
-      </article>
-      <article class="card">
-        <header>
-          <h3>Distribución de macro nutrientes</h3>
+          <h3>🔥 Calorías totales</h3>
         </header>
       </article>
     </section>
     <section>
       <article class="card">
         <header>
-          <h3>Resumen diario</h3>
+          <h3>🍽 Alimentos consumidos hoy</h3>
         </header>
-        <div>
-          <progress-bar [value]="value" [max]="max" />
+      </article>
+      <article class="card">
+        <header>
+          <h3>📊 Distribución de macro nutrientes</h3>
+        </header>
+      </article>
+    </section>
+    <section>
+      <article class="card">
+        <header>
+          <h3>📈 Resumen diario</h3>
+        </header>
+        <div class="grid-cols-2-layout">
+          <div>
+            <label>🔥 Calorías: </label>
+            <progress-bar [value]="value" [max]="max" />
+          </div>
+          <div>
+            <label>🍗 Proteínas: g</label>
+            <progress-bar [value]="value" [max]="max" />
+          </div>
+          <div>
+            <label>🍞 Carbohidratos: g</label>
+            <progress-bar [value]="value" [max]="max" />
+          </div>
+          <div>
+            <label>🥑 Grasas: g</label>
+            <progress-bar [value]="value" [max]="max" />
+          </div>
         </div>
       </article>
     </section>
