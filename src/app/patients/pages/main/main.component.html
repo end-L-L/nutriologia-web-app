@@ -34,6 +34,10 @@
       <article class="card">
         <header>
           <h3>🔥 Calorías totales</h3>
+          <div class="main_calories_container">
+            <input-label>{{ macronutrientes.calorias }} / {{ macronutrientes.caloriasMax }}</input-label>
+            <progress-bar [value]="macronutrientes.calorias" [max]="macronutrientes.caloriasMax" />
+          </div>
         </header>
       </article>
     </section>
