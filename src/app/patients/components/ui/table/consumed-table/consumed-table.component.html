@@ -10,13 +10,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><strong>Alimento</strong></td>
-      <td>100 g</td>
-      <td>95</td>
-      <td>1</td>
-      <td>25</td>
-      <td>0</td>
+    <tr *ngFor="let food of foodList">
+      <td>
+        <strong>{{ food.alimento }}</strong>
+      </td>
+      <td>{{ food.cantidad }} g</td>
+      <td>{{ food.calorias }}</td>
+      <td>{{ food.proteinas }}</td>
+      <td>{{ food.carbohidratos }}</td>
+      <td>{{ food.grasas }}</td>
     </tr>
   </tbody>
 </table>
