@@ -7,6 +7,7 @@ import { ProgressBarComponent } from './components/ui/progress-bar';
 import { ButtonComponent } from './components/ui/button';
 import { InputComponent, InputContainerComponent, InputLabelComponent } from './components/ui/input';
 import { SelectComponent } from './components/ui/select';
+import { ConsumedTableComponent } from './components/ui/table/consumed-table/consumed-table.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SelectComponent } from './components/ui/select';
     InputContainerComponent,
     ButtonComponent,
     SelectComponent,
+    ConsumedTableComponent,
   ],
   imports: [CommonModule, PatientsRoutingModule],
 })
