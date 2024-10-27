@@ -10,6 +10,7 @@ import { SelectComponent } from './components/ui/select';
 import { PieChartComponent } from './components/pie-chart';
 import { CardComponent } from './components/ui/card';
 import { SubtitleComponent } from './components/ui/titles';
+import { ConsumedTableComponent } from './components/ui/table/consumed-table/consumed-table.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SubtitleComponent } from './components/ui/titles';
     PieChartComponent,
     CardComponent,
     SubtitleComponent,
+    ConsumedTableComponent,
   ],
   imports: [CommonModule, PatientsRoutingModule],
 })

@@ -8,3 +8,13 @@ export interface Macros {
   grasas: number;
   grasasMax: number;
 }
+
+export interface ConsumedFood {
+  alimento: string;
+  cantidad: number;
+  calorias: number;
+  proteinas: number;
+  carbohidratos: number;
+  grasas: number;
+  id: number;
+}
