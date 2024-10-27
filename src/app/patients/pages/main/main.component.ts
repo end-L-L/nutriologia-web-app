@@ -14,17 +14,35 @@ export class MainComponent {
     proteinas: 0,
     proteinasMax: 100,
     carbohidratos: 0,
-    carbohidratosMax: 100,
+    carbohidratosMax: 300,
     grasas: 0,
     grasasMax: 100,
   };
 
   constructor() {
     const interval = setInterval(() => {
-      this.macronutrientes.calorias += 10;
-      if (this.macronutrientes.calorias >= this.macronutrientes.caloriasMax) {
+      // Create a new object reference
+      this.macronutrientes = {
+        ...this.macronutrientes,
+        grasas: this.macronutrientes.grasas + this.getRandomValue(),
+        calorias: this.macronutrientes.calorias + this.getRandomValue(100),
+        proteinas: this.macronutrientes.proteinas + this.getRandomValue(),
+        carbohidratos: this.macronutrientes.carbohidratos + this.getRandomValue(),
+      };
+
+      if (this.isSomeoneMaxed()) {
         clearInterval(interval);
       }
     }, 1000);
+  }
+
+  // ONLY FOR DEVELOPMENT PURPOSES
+  private isSomeoneMaxed() {
+    const { proteinas, carbohidratos, grasas, calorias, caloriasMax, proteinasMax, carbohidratosMax, grasasMax } = this.macronutrientes;
+    return proteinas >= proteinasMax || carbohidratos >= carbohidratosMax || grasas >= grasasMax || calorias >= caloriasMax;
+  }
+
+  private getRandomValue(multiply = 10) {
+    return Math.trunc(Math.random() * multiply);
   }
 }

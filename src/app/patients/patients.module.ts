@@ -7,6 +7,9 @@ import { ProgressBarComponent } from './components/ui/progress-bar';
 import { ButtonComponent } from './components/ui/button';
 import { InputComponent, InputContainerComponent, InputLabelComponent } from './components/ui/input';
 import { SelectComponent } from './components/ui/select';
+import { PieChartComponent } from './components/pie-chart';
+import { CardComponent } from './components/ui/card';
+import { SubtitleComponent } from './components/ui/titles';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { SelectComponent } from './components/ui/select';
     InputContainerComponent,
     ButtonComponent,
     SelectComponent,
+    PieChartComponent,
+    CardComponent,
+    SubtitleComponent,
   ],
   imports: [CommonModule, PatientsRoutingModule],
 })
