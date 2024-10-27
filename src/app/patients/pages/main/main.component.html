@@ -31,11 +31,7 @@
           </div>
         </form>
       </article>
-      <article class="card">
-        <header>
-          <h3>🔥 Calorías totales</h3>
-        </header>
-      </article>
+      <total-calories [calories]="{ value: macronutrientes.calorias, max: macronutrientes.caloriasMax }"></total-calories>
     </section>
     <section>
       <article class="card">
