@@ -11,6 +11,7 @@ import { PieChartComponent } from './components/pie-chart';
 import { CardComponent } from './components/ui/card';
 import { SubtitleComponent } from './components/ui/titles';
 import { ConsumedTableComponent } from './components/ui/table/consumed-table/consumed-table.component';
+import { TotalCaloriesComponent } from './components/total-calories';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ConsumedTableComponent } from './components/ui/table/consumed-table/con
     CardComponent,
     SubtitleComponent,
     ConsumedTableComponent,
+    TotalCaloriesComponent,
   ],
   imports: [CommonModule, PatientsRoutingModule],
 })
