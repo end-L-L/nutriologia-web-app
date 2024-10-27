@@ -45,7 +45,7 @@ export class PieChartComponent implements OnInit, OnChanges, OnDestroy {
       },
       series: [
         {
-          name: 'Access From',
+          name: 'Macro',
           type: 'pie',
           radius: '50%',
           data: this.transformData(data),
