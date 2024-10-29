@@ -49,10 +49,10 @@ export class MainComponent {
   }
 
   //funcion para abrir el historial de calorias diario
-  openHistorial(){
-    this.dialog.open(ModalHistorialComponent,{
-      width:'60%', height:'400px'})
+  openHistorial() {
+    this.dialog.open(ModalHistorialComponent, {
+      width: '60%',
+      height: '400px',
+    });
   }
-
-
 }
