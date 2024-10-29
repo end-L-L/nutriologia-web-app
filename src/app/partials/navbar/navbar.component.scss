@@ -3,7 +3,7 @@
   //height: 100vh;
 }
 .bg-light{
-  background-color: #003B5C!important;
+  background-color: #39DD68!important;
 }
 
 .navbar{
@@ -13,7 +13,7 @@
 .navbar-brand{
   padding-left: 20px;
   font-size: 28px;
-  font-family: Nexa;
+  font-family: bold;
   text-align: center;
   opacity: 1;
   color: #FFFFFF;
@@ -21,7 +21,7 @@
 }
 .nav-link{
   font-size: 20px;
-  font-family: Nexa;
+  font-family: bold;
   text-align: center;
   opacity: 1;
   font-weight: bold;
@@ -38,7 +38,7 @@ li a {
 
 /* Change the link color on hover */
 li a:hover {
-  background-color: #0092B8;
+  background-color: #2DBB55;
   color: #FFFFFF;
   margin: 0;
 }
@@ -51,14 +51,14 @@ li a:hover {
 }
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
   font-size: 20px;
-  font-family: Nexa;
+  font-family: bold;
   text-align: center;
   opacity: 1;
   font-weight: bold;
   color: #FFFFFF;
 }
 .active {
-  background-color: #03aed8;
+  background-color: #2DBB55;
   margin: 0 0 0 0!important;
 }
 

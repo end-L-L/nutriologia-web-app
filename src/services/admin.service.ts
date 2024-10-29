@@ -69,6 +69,12 @@ export class AdministradoresService {
     }else if(!this.validatorService.numeric(data["telefono"])){
       alert("El formato es solo números");
       error["telefono"] = this.errorService.numeric;
+    }else if(!this.validatorService.min(data["telefono"], 10)){
+      error["telefono"] = this.errorService.min(12);
+      alert("La longitud de caracteres deL telefono es menor, deben ser 10");
+    }else if(!this.validatorService.max(data["telefono"], 10)){
+      error["telefono"] = this.errorService.max(13);
+      alert("La longitud de caracteres deL telefono es mayor, deben ser 10");
     }
 
     //Return arreglo

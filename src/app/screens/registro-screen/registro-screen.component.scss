@@ -47,7 +47,7 @@
 
 .title-user {
   font-size: 28px;
-  font-family: 'Nexa-Bold', sans-serif;
+  font-family: 'bold', sans-serif;
   color: #231F20;
   text-transform: capitalize;
   margin-bottom: 1rem;
@@ -80,7 +80,7 @@ mat-form-field {
   border-color: #0f0203 !important;
   border-radius: 8px !important;
   text-align: center;
-  font-family: 'Nexa-Bold';
+  font-family: 'bold';
   font-size: 16px;
   font-weight: bold;
   color: #FFFFFF;
@@ -98,7 +98,7 @@ mat-form-field {
   background-color: #eb1313 !important; /* Añadir color rojo para el botón de cancelar */
   border-radius: 8px !important;
   text-align: center;
-  font-family: 'Nexa-Bold';
+  font-family: 'bold';
   font-size: 16px;
   font-weight: bold;
   color: #FFFFFF;
@@ -123,5 +123,13 @@ mat-form-field {
   width: 100%;
   font-size: 0.75rem;
   color: #ff5b5b;
-  font-family: Nexa;
+  font-family: bold;
 }
+
+.img-slider {
+  width: 1400px;  // Ajusta el tamaño según lo necesario
+  height: 600px;  // Mantiene la proporción original de las imágenes
+  object-fit: cover; // Recorta la imagen si es necesario para llenar el espacio
+  border-radius: 8px; // Agrega bordes redondeados, opcional
+}
+
