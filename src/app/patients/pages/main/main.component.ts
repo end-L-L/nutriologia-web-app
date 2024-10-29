@@ -80,6 +80,11 @@ export class MainComponent {
       return;
     }
 
+    if (amount <= 0) {
+      alert('Por favor, ingresa un valor mayor a cero');
+      return;
+    }
+
     const alimentoInfo = this.alimentosDB[name.toLowerCase()] as (typeof this.alimentosDB)[keyof typeof this.alimentosDB];
     let factor = 1;
 
