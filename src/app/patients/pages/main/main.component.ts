@@ -103,7 +103,14 @@ export class MainComponent {
 
     this.consumedFoodList = [...this.consumedFoodList, nuevoRegistro];
     const macros: Macros = {
-      ...this.macronutrientes,
+      caloriasMax: this.macronutrientes.caloriasMax,
+      proteinasMax: this.macronutrientes.proteinasMax,
+      carbohidratosMax: this.macronutrientes.carbohidratosMax,
+      grasasMax: this.macronutrientes.grasasMax,
+      calorias: 0,
+      proteinas: 0,
+      carbohidratos: 0,
+      grasas: 0,
     };
 
     this.consumedFoodList.forEach((food) => {
