@@ -1,0 +1,13 @@
+select {
+    padding: 0.5rem .75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    height: calc(22px + 1rem);
+}
+
+select:focus {
+    outline: black solid 2px;
+}

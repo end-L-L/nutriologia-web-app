@@ -1,0 +1,26 @@
+label {
+    font-weight: 500;
+}
+
+[data-size='small'] {
+    font-size: 0.75rem;
+}
+
+[data-size='medium'] {
+    font-size: 1rem;
+}
+
+[data-size='large'] {
+    font-size: 1.25rem;
+}
+
+[data-size='xl'] {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+[data-size='2xl'] {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 2.25rem;
+}

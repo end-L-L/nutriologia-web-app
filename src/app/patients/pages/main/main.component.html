@@ -1,0 +1,76 @@
+<div class="patients-container">
+  <header class="header-top">
+    <h2>Registro de Consumo Calórico</h2>
+    <button-component class="btn-historial" (click)="openHistorial()">Ver Historial</button-component>
+  </header>
+  <main>
+    <section>
+      <article class="card">
+        <header>
+          <h3>🍽 Agregar alimento</h3>
+        </header>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <input-container>
+            <input-label>Alimento</input-label>
+            <select-component formControlName="name" placeholder="Selecciona un alimento">
+              <option value="" disabled selected>Selecciona un alimento</option>
+              <option *ngFor="let alimento of alimentosDB | keyvalue" [value]="alimento.key">{{ alimento.key | titlecase }}</option>
+            </select-component>
+          </input-container>
+          <div>
+            <input-container>
+              <input-label>Cantidad</input-label>
+              <input-component placeholder="Ej: 100" type="number" formControlName="amount"></input-component>
+            </input-container>
+            <input-container>
+              <input-label>Unidad</input-label>
+              <select-component formControlName="unit" placeholder="Selecciona una unidad">
+                <option value="" disabled selected>Selecciona una unidad</option>
+                <option value="g">Gramos</option>
+                <option value="u">Unidades</option>
+              </select-component>
+            </input-container>
+            <input-container>
+              <button-component type="submit">Agregar</button-component>
+            </input-container>
+          </div>
+        </form>
+      </article>
+      <total-calories [calories]="{ value: macronutrientes.calorias, max: macronutrientes.caloriasMax }"></total-calories>
+    </section>
+    <section>
+      <article class="card">
+        <header>
+          <h3>🍽 Alimentos consumidos hoy</h3>
+          <app-consumed-table [foodList]="consumedFoodList"></app-consumed-table>
+        </header>
+      </article>
+      <pie-chart [data]="macronutrientes" />
+    </section>
+    <section>
+      <article class="card">
+        <header>
+          <h3>📈 Resumen diario</h3>
+        </header>
+        <div class="grid-cols-2-layout">
+          <input-container>
+            <input-label>🔥 Calorías: {{ macronutrientes.calorias }} / {{ macronutrientes.caloriasMax }}</input-label>
+            <progress-bar [value]="macronutrientes.calorias" [max]="macronutrientes.caloriasMax" />
+          </input-container>
+          <input-container>
+            <input-label>🍗 Proteínas: {{ macronutrientes.proteinas }}g / {{ macronutrientes.proteinasMax }}g</input-label>
+            <progress-bar [value]="macronutrientes.proteinas" [max]="macronutrientes.proteinasMax" />
+          </input-container>
+          <input-container>
+            <input-label>🍞 Carbohidratos: {{ macronutrientes.carbohidratos }}g / {{ macronutrientes.carbohidratosMax }}g</input-label>
+            <progress-bar [value]="macronutrientes.carbohidratos" [max]="macronutrientes.carbohidratosMax" />
+          </input-container>
+          <input-container>
+            <input-label>🥑 Grasas: {{ macronutrientes.grasas }}g / {{ macronutrientes.grasasMax }}g</input-label>
+            <progress-bar [value]="macronutrientes.grasas" [max]="macronutrientes.grasasMax" />
+          </input-container>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>

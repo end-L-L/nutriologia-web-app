@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: 500;
+}
+
+strong {
+  font-weight: 500;
+}
+
+.detalles{
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: solid #bdbdbd 1px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.detalles:hover {
+  background-color: hsla(0, 0%, 80%, 0.9);
+
+}
