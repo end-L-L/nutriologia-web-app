@@ -1,3 +1,3 @@
-<select>
+<select [value]="value" (change)="onChange($event)" (blur)="onTouched()" [disabled]="disabled">
   <ng-content></ng-content>
 </select>
