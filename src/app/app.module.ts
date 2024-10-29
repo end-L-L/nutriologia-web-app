@@ -30,6 +30,7 @@ import { NavbarComponent } from './partials/navbar/navbar.component';
 import { RegistroAdminComponent } from './partials/registro-admin/registro-admin.component';
 import { RegistroNutriologoComponent } from './partials/registro-nutriologo/registro-nutriologo.component';
 import { RegistroPacienteComponent } from './partials/registro-paciente/registro-paciente.component';
+import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriologo-screen.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { RegistroPacienteComponent } from './partials/registro-paciente/registro
     RegistroAdminComponent,
     RegistroNutriologoComponent,
     RegistroPacienteComponent,
+    NutriologoScreenComponent,
 
   ],
   imports: [

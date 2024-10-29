@@ -22,10 +22,8 @@
                 Registrar
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" (click)="goRegistro()" *ngIf="rol!='alumno'">Alumnos</a></li>
-                <li><a class="dropdown-item" (click)="goRegistro()" *ngIf="rol!='maestro' && rol!='alumno'">Maestros</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" (click)="clickNavLink('materias')" *ngIf="rol!='maestro' && rol!='alumno'">Materias</a></li>
+                <li><a class="dropdown-item" (click)="goRegistro()" *ngIf="rol!='paciente'">Paciente</a></li>
+                <li><a class="dropdown-item" (click)="goRegistro()" *ngIf="rol!='paciente' && rol!='nutriologo'">Nutriologo</a></li>
               </ul>
             </li>
           </ng-container>

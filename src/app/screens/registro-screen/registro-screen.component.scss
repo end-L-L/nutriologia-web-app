@@ -125,3 +125,11 @@ mat-form-field {
   color: #ff5b5b;
   font-family: bold;
 }
+
+.img-slider {
+  width: 1400px;  // Ajusta el tamaño según lo necesario
+  height: 600px;  // Mantiene la proporción original de las imágenes
+  object-fit: cover; // Recorta la imagen si es necesario para llenar el espacio
+  border-radius: 8px; // Agrega bordes redondeados, opcional
+}
+
