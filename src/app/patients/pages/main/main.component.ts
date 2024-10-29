@@ -21,7 +21,7 @@ export class MainComponent {
 
   form = new FormGroup({
     name: new FormControl(''),
-    unit: new FormControl<'g' | 'u'>('g'),
+    unit: new FormControl<'g' | 'u' | ''>(''),
     amount: new FormControl(0),
   });
 
@@ -121,6 +121,10 @@ export class MainComponent {
     });
 
     this.macronutrientes = macros;
-    this.form.reset();
+    this.form.reset({
+      name: null,
+      amount: 0,
+      unit: null,
+    });
   }
 }
