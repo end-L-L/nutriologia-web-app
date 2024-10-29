@@ -1,6 +1,8 @@
+import { MatDialog } from '@angular/material/dialog';
 import type { Macros } from '../../interfaces';
 
 import { Component } from '@angular/core';
+import { ModalHistorialComponent } from '../../components/modal-historial/modal-historial.component';
 
 @Component({
   selector: 'patients-main-page',
@@ -19,7 +21,7 @@ export class MainComponent {
     grasasMax: 100,
   };
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     const interval = setInterval(() => {
       // Create a new object reference
       this.macronutrientes = {
@@ -44,5 +46,13 @@ export class MainComponent {
 
   private getRandomValue(multiply = 10) {
     return Math.trunc(Math.random() * multiply);
+  }
+
+  //funcion para abrir el historial de calorias diario
+  openHistorial() {
+    this.dialog.open(ModalHistorialComponent, {
+      width: '60%',
+      height: '400px',
+    });
   }
 }

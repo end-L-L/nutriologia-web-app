@@ -18,3 +18,11 @@ export interface ConsumedFood {
   grasas: number;
   id: number;
 }
+
+export interface dailyFood {
+  fecha: string;
+  calorias: number;
+  objetivoCumplido: string;
+  detalles: string;
+  id: number;
+}

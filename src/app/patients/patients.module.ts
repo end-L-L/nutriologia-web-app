@@ -12,6 +12,8 @@ import { CardComponent } from './components/ui/card';
 import { SubtitleComponent } from './components/ui/titles';
 import { ConsumedTableComponent } from './components/ui/table/consumed-table/consumed-table.component';
 import { TotalCaloriesComponent } from './components/total-calories';
+import { ModalHistorialComponent } from './components/modal-historial/modal-historial.component';
+import { DailyTableComponent } from './components/ui/table/daily-table/daily-table.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { TotalCaloriesComponent } from './components/total-calories';
     SubtitleComponent,
     ConsumedTableComponent,
     TotalCaloriesComponent,
+    ModalHistorialComponent,
+    DailyTableComponent,
   ],
   imports: [CommonModule, PatientsRoutingModule],
 })

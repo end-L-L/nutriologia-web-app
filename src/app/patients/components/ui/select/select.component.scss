@@ -11,9 +11,3 @@ select {
 select:focus {
     outline: black solid 2px;
 }
-
-@media (width <= 640px) {
-    select {
-        height: calc(22px + 1.25rem) !important;
-    }
-}
