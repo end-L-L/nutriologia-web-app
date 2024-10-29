@@ -9,25 +9,28 @@
         <header>
           <h3>🍽 Agregar alimento</h3>
         </header>
-        <form>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <input-container>
             <input-label>Alimento</input-label>
-            <input-component placeholder="Ej: Manzana"></input-component>
+            <select-component formControlName="name" placeholder="Selecciona un alimento">
+              <option value="" disabled selected hidden>Selecciona un alimento</option>
+              <option *ngFor="let alimento of alimentosDB | keyvalue" [value]="alimento.key">{{ alimento.key | titlecase }}</option>
+            </select-component>
           </input-container>
           <div>
             <input-container>
               <input-label>Cantidad</input-label>
-              <input-component placeholder="Ej: 100"></input-component>
+              <input-component placeholder="Ej: 100" type="number" formControlName="amount"></input-component>
             </input-container>
             <input-container>
               <input-label>Unidad</input-label>
-              <select-component>
-                <option>Gramos</option>
-                <option>Unidades</option>
+              <select-component formControlName="unit" placeholder="Selecciona una unidad">
+                <option value="g" selected>Gramos</option>
+                <option value="u">Unidades</option>
               </select-component>
             </input-container>
             <input-container>
-              <button-component>Agregar</button-component>
+              <button-component type="submit">Agregar</button-component>
             </input-container>
           </div>
         </form>
@@ -38,7 +41,7 @@
       <article class="card">
         <header>
           <h3>🍽 Alimentos consumidos hoy</h3>
-          <app-consumed-table></app-consumed-table>
+          <app-consumed-table [foodList]="consumedFoodList"></app-consumed-table>
         </header>
       </article>
       <pie-chart [data]="macronutrientes" />
