@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Calorías</th>
+      <th>Objetivo Cumplido</th>
+      <th>Detalles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let food of foodList">
+      <td>
+        <strong>{{ food.fecha }}</strong>
+      </td>
+      <td>{{ food.calorias }} g</td>
+      <td>{{ food.objetivoCumplido }}</td>
+      <td>
+        <button class="detalles">Detalles</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

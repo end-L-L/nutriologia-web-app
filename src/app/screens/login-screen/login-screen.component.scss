@@ -1,0 +1,95 @@
+/* Estilos globales para el componente login */
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #fff; /* Fondo blanco por defecto */
+  background: url('/assets/images/login.png') no-repeat center center; /* Aplica la imagen de fondo directamente */
+  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+
+  .wrapper {
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    z-index: 1;
+  }
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .icon {
+    text-align: center;
+    font-size: 60px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .container-inputs {
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .input-group-append .input-group-text {
+      background-color: transparent;
+      border-left: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #000;
+      color: #fff;
+      border-radius: 8px;
+    }
+
+    .invalid-feedback {
+      color: red;
+    }
+
+    .register {
+      color: #000;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    label {
+      font-size: 14px;
+    }
+  }
+}
+
+/* Responsivo para pantallas pequeñas */
+@media only screen and (max-width: 600px) {
+  .login {
+    .wrapper {
+      max-width: 95%;
+      padding: 20px;
+    }
+
+    .container-inputs .form-control {
+      font-size: 14px;
+    }
+
+    .container-inputs .btn-primary {
+      font-size: 16px;
+    }
+  }
+}

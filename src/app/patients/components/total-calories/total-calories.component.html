@@ -1,0 +1,9 @@
+<card-component>
+  <header>
+    <app-subtitle>🔥 Calorías totales</app-subtitle>
+  </header>
+  <input-container>
+    <input-label size="2xl">{{ calories.value }} / {{ calories.max }}</input-label>
+    <progress-bar [value]="calories.value" [max]="calories.max"></progress-bar>
+  </input-container>
+</card-component>
