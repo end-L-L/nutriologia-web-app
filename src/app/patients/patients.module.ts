@@ -14,6 +14,7 @@ import { ConsumedTableComponent } from './components/ui/table/consumed-table/con
 import { TotalCaloriesComponent } from './components/total-calories';
 import { ModalHistorialComponent } from './components/modal-historial/modal-historial.component';
 import { DailyTableComponent } from './components/ui/table/daily-table/daily-table.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,6 @@ import { DailyTableComponent } from './components/ui/table/daily-table/daily-tab
     ModalHistorialComponent,
     DailyTableComponent,
   ],
-  imports: [CommonModule, PatientsRoutingModule],
+  imports: [CommonModule, PatientsRoutingModule, ReactiveFormsModule],
 })
 export class PatientsModule {}
