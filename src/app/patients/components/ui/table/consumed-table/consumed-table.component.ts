@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ConsumedFood } from 'src/app/patients/interfaces';
 
 @Component({
@@ -7,15 +7,5 @@ import { ConsumedFood } from 'src/app/patients/interfaces';
   styleUrls: ['./consumed-table.component.scss'],
 })
 export class ConsumedTableComponent {
-  public foodList: ConsumedFood[] = [
-    {
-      alimento: 'Arroz',
-      cantidad: 100,
-      calorias: 130,
-      proteinas: 2,
-      carbohidratos: 28,
-      grasas: 0,
-      id: 1,
-    },
-  ];
+  @Input() foodList: ConsumedFood[] = [];
 }
