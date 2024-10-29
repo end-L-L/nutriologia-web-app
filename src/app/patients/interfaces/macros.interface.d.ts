@@ -17,6 +17,7 @@ export interface ConsumedFood {
   carbohidratos: number;
   grasas: number;
   id: number;
+  unit: 'g' | 'u';
 }
 
 export interface dailyFood {
