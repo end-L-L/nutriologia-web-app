@@ -1,0 +1,7 @@
+<div class="progress-bar-container">
+  <div
+    [style.width.%]="(value / max) * 100 <= 100 ? (value / max) * 100 : 100"
+    [attr.data-progress-bar-full]="isFull()"
+    class="progress-bar"
+  ></div>
+</div>
