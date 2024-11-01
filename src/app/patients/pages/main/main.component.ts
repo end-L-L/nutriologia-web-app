@@ -1,5 +1,5 @@
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import type { ConsumedFood, Macros } from '../../interfaces';
 
 import { Component } from '@angular/core';
