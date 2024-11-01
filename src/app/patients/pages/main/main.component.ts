@@ -50,7 +50,6 @@ export class MainComponent {
     const { amount, name, unit } = value;
 
     if (!name || !amount || !unit) {
-      console.log(name, amount, unit);
       alert('Por favor, rellena todos los campos');
       return;
     }
