@@ -7,7 +7,6 @@ import { RegistroNutriologoComponent } from './partials/registro-nutriologo/regi
 import { RegistroPacienteComponent } from './partials/registro-paciente/registro-paciente.component';
 import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriologo-screen.component';
 
-
 const routes: Routes = [
   { path: '', component: LoginScreenComponent, pathMatch: 'full' },
   { path: 'registro-usuarios', component: RegistroScreenComponent, pathMatch: 'full' },
@@ -18,10 +17,11 @@ const routes: Routes = [
   { path: 'registro-screen', component: RegistroScreenComponent, pathMatch: 'full' },
   { path: 'nutriologo-screen', component: NutriologoScreenComponent, pathMatch: 'full' },
   { path: 'patients', loadChildren: () => import('./patients/patients.module').then((m) => m.PatientsModule), pathMatch: 'full' },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule) },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

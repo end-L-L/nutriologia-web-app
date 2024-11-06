@@ -1,0 +1,31 @@
+/* Centrar el formulario en la pantalla */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5; /* Color de fondo suave para que el formulario destaque */
+}
+  
+  /* Estilos para el formulario */
+form {
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0; /* Borde para delimitar el formulario */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle un poco de profundidad */
+}
+
+/* Espaciado entre los campos del formulario */
+mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+/* Alinear el botón */
+button {
+    width: 100%;
+}
+  
