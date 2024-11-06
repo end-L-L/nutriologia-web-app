@@ -6,6 +6,7 @@ import { RegistroAdminComponent } from './partials/registro-admin/registro-admin
 import { RegistroNutriologoComponent } from './partials/registro-nutriologo/registro-nutriologo.component';
 import { RegistroPacienteComponent } from './partials/registro-paciente/registro-paciente.component';
 import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriologo-screen.component';
+import { EstadisticasComponent } from './screens/estadisticas/estadisticas.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'registro-screen', component: RegistroScreenComponent, pathMatch: 'full' },
   { path: 'nutriologo-screen', component: NutriologoScreenComponent, pathMatch: 'full' },
   { path: 'patients', loadChildren: () => import('./patients/patients.module').then((m) => m.PatientsModule), pathMatch: 'full' },
+  { path: 'estadisticas', component: EstadisticasComponent, pathMatch: 'full'},
 ];
 
 @NgModule({

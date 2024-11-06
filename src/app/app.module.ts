@@ -30,6 +30,9 @@ import { RegistroAdminComponent } from './partials/registro-admin/registro-admin
 import { RegistroNutriologoComponent } from './partials/registro-nutriologo/registro-nutriologo.component';
 import { RegistroPacienteComponent } from './partials/registro-paciente/registro-paciente.component';
 import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriologo-screen.component';
+import { EstadisticasComponent } from './screens/estadisticas/estadisticas.component';
+import { NgChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriolog
     RegistroAdminComponent,
     RegistroNutriologoComponent,
     RegistroPacienteComponent,
-    NutriologoScreenComponent
+    NutriologoScreenComponent,
+    EstadisticasComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,11 @@ import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriolog
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgChartsModule,
+    
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

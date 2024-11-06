@@ -62,15 +62,23 @@ export class NavbarComponent implements OnInit{
       $("#principal").removeClass("active");
       $("#nutriologo").removeClass("active");
       $("#paciente").addClass("active");
+      $("#estadisticas").removeClass("active"); 
     }else if(link == "nutriologos"){
       $("#principal").removeClass("active");
       $("#paciente").removeClass("active");
+      $("#estadisticas").removeClass("active"); 
       $("#nutriologo").addClass("active");
     }else if(link == "home"){
       $("#paciente").removeClass("active");
       $("#nutriologo").removeClass("active");
       $("#principal").addClass("active");
-    }
+      $("#estadisticas").removeClass("active"); 
+    }else if(link == "estadisticas"){
+      $("#paciente").removeClass("active");
+      $("#nutriologo").removeClass("active");
+      $("#principal").removeClass("active");
+      $("#estadisticas").addClass("active"); 
+      }
   }
 
 }

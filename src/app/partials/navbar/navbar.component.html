@@ -17,6 +17,9 @@
             <li class="nav-item" *ngIf="rol!='nutriologo' && rol!='paciente'">
               <a class="nav-link" id="nutriologo" (click)="clickNavLink('nutriologos')">Nutriologos</a>
             </li>
+            <li class="nav-item" *ngIf="rol!='nutriologo' && rol!='paciente'">
+              <a class="nav-link" id="estadisticas" (click)="clickNavLink('estadisticas')">Estadisticas</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Registrar
