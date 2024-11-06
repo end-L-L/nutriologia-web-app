@@ -1,0 +1,41 @@
+<section class="login">
+    <div class="wrapper">
+        <div class="section-center">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="title">Nutriología Web App</h3>
+                    <div class="icon">
+                        <i class="bi bi-person-circle"></i> <!-- Icono de usuario -->
+                    </div>
+
+                    <div class="container-inputs"> <!-- contiene los input -->
+                        <div class="pt-3 mb-3">
+                            <input type="email" [(ngModel)]="username" class="form-control" id="email"
+                                placeholder="Usuario">
+                            <div *ngIf="errors.username" class="invalid-feedback">{{ errors.username }}</div>
+                        </div>
+                        <!-- Input para contraseña con ícono dentro del input -->
+                        <div class="pt-3 mb-3">
+                            <div class="input-group input-group-merge">
+                                <input type="{{type}}" [(ngModel)]="password" id="show-password" name="password_user"
+                                    class="form-control pwd" placeholder="Contraseña">
+                            </div>
+
+                            <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
+                        </div>
+
+                        <!-- Botones -->
+                        <br>
+                        <div class="d-flex flex-column align-items-center mb-3 w-100" style="text-align: center;">
+                            <button class="btn btn-primary" type="submit" (click)="login()">LOGIN</button>
+
+                            <label class="form-check-label pt-3" for="checkbox-signin" (click)="registrar()">
+                                <span class="register">Registrarse</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
