@@ -35,7 +35,7 @@ export class NutriologoService {
     }
 
   }
-//Validación para el formulario
+///Validación para el formulario
   public validarNutriologo(data: any, editar: boolean){
     console.log("Validando nutriologo... ", data);
     let error: any = [];
