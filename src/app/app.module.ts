@@ -29,6 +29,8 @@ import { NavbarComponent } from './partials/navbar/navbar.component';
 import { RegistroNutriologoComponent } from './partials/registro-nutriologo/registro-nutriologo.component';
 import { RegistroPacienteComponent } from './partials/registro-paciente/registro-paciente.component';
 import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriologo-screen.component';
+import { EstadisticasComponent } from './screens/estadisticas/estadisticas.component';
+import { NgChartsModule } from 'ng2-charts';
 import { EliminarUserModalComponent } from './modals/eliminar-user-modal/eliminar-user-modal.component';
 import { EditarUserModalComponent } from './modals/editar-user-modal/editar-user-modal.component';
 import { DietaTiempoComponent } from './partials/dieta-tiempo/dieta-tiempo.component';
@@ -43,6 +45,7 @@ import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.co
     RegistroNutriologoComponent,
     RegistroPacienteComponent,
     NutriologoScreenComponent,
+    EstadisticasComponent,
     EliminarUserModalComponent,
     EditarUserModalComponent,
     DietaTiempoComponent,
@@ -66,7 +69,8 @@ import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.co
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgChartsModule,  
   ],
   providers: [],
   bootstrap: [AppComponent],

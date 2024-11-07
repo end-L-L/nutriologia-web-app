@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h2>Seguimiento de Calorías</h2>
+    <canvas id="caloriasChart" width="600"
+    height="400"></canvas>
+    
+    <h2>Seguimiento de Porciones</h2>
+    <canvas id="porcionesChart" width="600"
+    height="400"></canvas>
+
+    <h2>Seguimiento de peso</h2>
+    <canvas
+                    baseChart
+                    width="600"
+                    height="400"
+                    type="line"
+                    [data]="lineChartData"
+                    [options]="lineChartOption"
+                    chartType="line"></canvas>
+  </div>
