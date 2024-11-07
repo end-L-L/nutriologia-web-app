@@ -7,10 +7,9 @@ declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   ngOnInit(): void { }
 
   constructor(
@@ -23,11 +22,10 @@ export class LoginComponent implements OnInit {
   public type: string = 'password';
   public errors: any = {};
 
-
   userToken = {
-    'username': '',
-    'password': ''
-  }
+    username: '',
+    password: '',
+  };
 
   // función para iniciar sesión
   login() {
@@ -36,20 +34,19 @@ export class LoginComponent implements OnInit {
     console.log(this.password);
 
     this.userToken.username = this.username;
-    this.userToken.password = this.password
-
+    this.userToken.password = this.password;
 
     console.log(this.userToken);
     this.apiService.iniciarSesion(this.userToken).subscribe({
       next: (response) => {
-        alert("Sesión Iniciada Correctamente");
+        alert('Sesión Iniciada Correctamente');
         console.log(response);
-        this.router.navigate(["/nutriologo-screen"]);
+        this.router.navigate(['/nutriologo-screen']);
       },
       error: (response) => {
-        alert("¡Error!: No se Pudo Iniciar Sesión");
+        alert('¡Error!: No se Pudo Iniciar Sesión');
         console.log(response.error);
-      }
+      },
     });
   }
 
