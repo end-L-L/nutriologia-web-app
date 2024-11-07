@@ -1,0 +1,38 @@
+.wrapper {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #2591B5;
+}
+
+.section-registro{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%; /* Ajusta el alto del contenedor al 100% de la pantalla */
+}
+
+.title-user {
+  font-size: 28px;
+  text-align: center;
+  font-family: Bold;
+  letter-spacing: 2px;
+  color: #000000;
+  text-transform: capitalize;
+  opacity: 1;
+}
+
+
+

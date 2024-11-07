@@ -10,9 +10,21 @@
 
         <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Nombre</mat-label>
-            <input matInput [(ngModel)]="nutriologo.name" placeholder="Escribe nombre">
+            <input matInput [(ngModel)]="nutriologo.first_name" placeholder="Escribe nombre">
         </mat-form-field>
-        <div *ngIf="errors.name" class="invalid-feedback">{{ errors.name }}</div>
+        <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>
+
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Apellidos</mat-label>
+          <input matInput [(ngModel)]="nutriologo.last_name" placeholder="Escribe apellidos">
+        </mat-form-field>
+        <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
+
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Cedula</mat-label>
+          <input matInput [(ngModel)]="nutriologo.cedula" placeholder="Escribe numero de cedula">
+        </mat-form-field>
+        <div *ngIf="errors.cedula" class="invalid-feedback">{{ errors.cedula }}</div>
 
         <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Correo electrónico</mat-label>
@@ -44,9 +56,8 @@
         <div class="section-buttons">
             <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
             <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registrar()">Registrar</button>
-            <!-- Va a englobar todo el formulario con la cabecera -
             <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
-          -->
+
         </div>
       </div>
   </div>

@@ -39,7 +39,7 @@ export class LoginScreenComponent implements OnInit {
   }
 
   public registrar() {
-    this.router.navigate(['registro-usuarios']);
+    this.router.navigate(['registro-usuarios/nutriologo/']);
   }
 
   public showPassword() {
