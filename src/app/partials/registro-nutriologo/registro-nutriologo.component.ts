@@ -84,7 +84,7 @@ export class RegistroNutriologoComponent implements OnInit{
           this.router.navigate(['']);
         },
         error: (response) => {
-          alert('¡Error!: No se Pudo Registrar Usuario \n Response:' + response.error.message);
+          alert('¡Error!: No se Pudo Registrar Usuario \nResponse: ' + response.error.message);
           //console.log(response.error);
         },
       });
