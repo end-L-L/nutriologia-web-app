@@ -36,33 +36,8 @@ export class MainComponent {
     grasasMax: 100,
   };
 
-  constructor(private dialog: MatDialog) {
-    // const interval = setInterval(() => {
-    //   // Create a new object reference
-    //   this.macronutrientes = {
-    //     ...this.macronutrientes,
-    //     grasas: this.macronutrientes.grasas + this.getRandomValue(),
-    //     calorias: this.macronutrientes.calorias + this.getRandomValue(100),
-    //     proteinas: this.macronutrientes.proteinas + this.getRandomValue(),
-    //     carbohidratos: this.macronutrientes.carbohidratos + this.getRandomValue(),
-    //   };
-    //   if (this.isSomeoneMaxed()) {
-    //     clearInterval(interval);
-    //   }
-    // }, 1000);
-  }
+  constructor(private dialog: MatDialog) {}
 
-  // ONLY FOR DEVELOPMENT PURPOSES
-  // private isSomeoneMaxed() {
-  //   const { proteinas, carbohidratos, grasas, calorias, caloriasMax, proteinasMax, carbohidratosMax, grasasMax } = this.macronutrientes;
-  //   return proteinas >= proteinasMax || carbohidratos >= carbohidratosMax || grasas >= grasasMax || calorias >= caloriasMax;
-  // }
-
-  // private getRandomValue(multiply = 10) {
-  //   return Math.trunc(Math.random() * multiply);
-  // }
-
-  //funcion para abrir el historial de calorias diario
   openHistorial() {
     this.dialog.open(ModalHistorialComponent, {
       width: '60%',
@@ -77,6 +52,11 @@ export class MainComponent {
     if (!name || !amount || !unit) {
       console.log(name, amount, unit);
       alert('Por favor, rellena todos los campos');
+      return;
+    }
+
+    if (amount <= 0) {
+      alert('Por favor, ingresa un valor mayor a cero');
       return;
     }
 
