@@ -32,9 +32,9 @@ export class NutriologoScreenComponent {
   ){}
 
   ngOnInit(): void {
-    this.name_user = this.facadeService.getUserCompleteName();
+    //this.name_user = this.facadeService.getUserCompleteName();
     //Lista de admins
-    this.obtenerPacientes();
+    //this.obtenerPacientes();
   }
 
   //Obtener lista de usuarios

@@ -46,7 +46,7 @@ export class RegistroNutriologoComponent implements OnInit{
       this.editar = true;
       //Asignamos a nuestra variable global el valor del ID que viene por la URL
       this.idUser = this.activatedRoute.snapshot.params['id'];
-      console.log("ID User: ", this.idUser);
+      //console.log("ID User: ", this.idUser);
       //Al iniciar la vista asignamos los datos del user
       this.nutriologo = this.datos_user;
     }else{
@@ -55,7 +55,7 @@ export class RegistroNutriologoComponent implements OnInit{
       this.token = this.facadeService.getSessionToken();
     }
     //Imprimir datos en consola
-    console.log("Nutriologo: ", this.nutriologo);
+    //console.log("Nutriologo: ", this.nutriologo);
 
   }
 
@@ -74,16 +74,20 @@ export class RegistroNutriologoComponent implements OnInit{
     // Validamos que las contraseñas coincidan
     //Validar la contraseña
     if(this.nutriologo.password == this.nutriologo.confirmar_password){
-      //Aquí si todo es correcto vamos a registrar - aquí se manda a consumir el servicio
-      this.nustriologoService.registrarNutriologo(this.nutriologo).subscribe(
-        (response)=>{
-          alert("Usuario registrado correctamente");
-          console.log("Usuario registrado: ", response);
-          this.router.navigate(["/"]);
-        }, (error)=>{
-          alert("No se pudo registrar usuario");
-        }
-      );
+
+      let post_data = this.nustriologoService.createPost(this.nutriologo);
+
+      this.nustriologoService.registrarNutriologo(post_data).subscribe({
+        next: (response) => {
+          alert('Usuario Registrado Correctamente');
+          //console.log(response);
+          this.router.navigate(['']);
+        },
+        error: (response) => {
+          alert('¡Error!: No se Pudo Registrar Usuario \n Response:' + response.error.message);
+          //console.log(response.error);
+        },
+      });
     }else{
       alert("Las contraseñas no coinciden");
       this.nutriologo.password="";

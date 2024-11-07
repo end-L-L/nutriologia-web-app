@@ -27,6 +27,12 @@
         <div *ngIf="errors.cedula" class="invalid-feedback">{{ errors.cedula }}</div>
 
         <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input matInput [(ngModel)]="nutriologo.telefono" mask='(000) 000-0000' placeholder="Escribe teléfono">
+        </mat-form-field>
+        <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
+
+        <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Correo electrónico</mat-label>
             <input matInput [(ngModel)]="nutriologo.email" placeholder="Escribe correo electrónico" [disabled]="editar">
         </mat-form-field>
@@ -45,13 +51,6 @@
             <mat-icon matSuffix class="eye-icon" (click)="showPwdConfirmar()">{{hide_2 ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
         <div *ngIf="errors.confirmar_password" class="invalid-feedback">{{ errors.confirmar_password }}</div>
-
-        <mat-form-field class="mat-input" appearance="outline">
-          <mat-label>Teléfono</mat-label>
-          <input matInput [(ngModel)]="nutriologo.telefono" mask='(000) 000-0000' placeholder="Escribe teléfono">
-        </mat-form-field>
-        <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
-
 
         <div class="section-buttons">
             <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
