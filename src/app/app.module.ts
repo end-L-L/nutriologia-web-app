@@ -45,7 +45,7 @@ import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.co
     RegistroNutriologoComponent,
     RegistroPacienteComponent,
     NutriologoScreenComponent,
-    EstadisticasComponent
+    EstadisticasComponent,
     EliminarUserModalComponent,
     EditarUserModalComponent,
     DietaTiempoComponent,
