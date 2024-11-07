@@ -2,15 +2,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import type { ConsumedFood, Macros } from '../../interfaces';
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalHistorialComponent } from '../../components/modal-historial/modal-historial.component';
+import { debounceTime } from 'rxjs';
+import { FoodService } from '../../services';
 
 @Component({
   selector: 'patients-main-page',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   public alimentosDB = {
     manzana: { calorias: 95, proteinas: 0.5, carbohidratos: 25, grasas: 0.3, porcion: '1 unidad (182g)' },
     pollo: { calorias: 165, proteinas: 31, carbohidratos: 0, grasas: 3.6, porcion: '100g' },
@@ -36,9 +38,20 @@ export class MainComponent {
     grasasMax: 100,
   };
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private foodService: FoodService) {}
 
-  openHistorial() {
+  ngOnInit(): void {
+    this.form.valueChanges.pipe(debounceTime(500)).subscribe(({ amount, name, unit }) => {
+      if (!name) {
+        return;
+      }
+      this.foodService.getFoodsData(name)?.subscribe((response) => {
+        console.log(response);
+      });
+    });
+  }
+
+  public openHistorial() {
     this.dialog.open(ModalHistorialComponent, {
       width: '60%',
       height: '400px',
@@ -106,4 +119,6 @@ export class MainComponent {
       unit: null,
     });
   }
+
+  public handleChange(event: Event) {}
 }
