@@ -26,16 +26,17 @@ export class LoginScreenComponent implements OnInit {
       return false;
     }
 
-    // Si pasa la validación, ir a la página de home
-    this.facadeService.login(this.username, this.password).subscribe(
-      (response) => {
-        this.facadeService.saveUserData(response);
-        this.router.navigate(["home"]);
+    this.facadeService.login(this.username, this.password).subscribe({
+      next: (response) => {
+        alert('Sesión Iniciada Correctamente');
+        console.log(response);
+        this.router.navigate(['/nutriologo-screen']);
       },
-      (error) => {
-        alert("No se pudo iniciar sesión");
-      }
-    );
+      error: (response) => {
+        alert('¡Error!: No se Pudo Iniciar Sesión');
+        console.log(response.error);
+      },
+    });
   }
 
   public registrar() {
