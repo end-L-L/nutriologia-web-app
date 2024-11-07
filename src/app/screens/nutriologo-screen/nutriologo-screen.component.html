@@ -1,25 +1,56 @@
+<app-navbar [tipo]="tipo"></app-navbar>
 <div class="wrapper">
-  <div class="header-home">
-    <app-navbar [rol]="rol"></app-navbar>
-  </div>
+  <div class="header-home"></div>
   <div class="body-nutriologo">
     <div class="row mt-5 mb-5">
       <div class="col-12">
-        <div class="containe">
-        <div class="row mt-3 mb-5" style="text-align: center;">
-          <div class="alert alert-primary" role="alert">
-        <span class="title-perfil">Bienvenido {{name_user}}</span>
-        <span class="title-perfil">{{rol}}</span>
+        <div class="container">
+          <div class="row mt-3 mb-5 text-center">
+            <div class="col-12">
+              <div class="alert alert-primary" role="alert">
+                <span class="title-table">Lista de pacientes asignados y estadísticas</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3 mb-5 text-center1">
+            <div class="col-3">
+              <div class="alert alert-primary1" role="alert">
+                <span class="title-table1" (click)="goRegistrar()">+ Agregar paciente</span>
+              </div>
+            </div>
+          </div>
+          <!-- Lista de pacientes generada dinámicamente -->
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-group">
+                <!-- Utiliza *ngFor para iterar sobre el arreglo de pacientes -->
+                <li
+                  *ngFor="let paciente of pacientes"
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  {{ paciente.nombre }}
+                  <div>
+                    <span class="me-3">
+                      <td class="td estadisticas">
+                        <i class="bi bi-graph-up-arrow"></i>
+                      </td>
+
+                      <span class="td editar" (click)="goEditar(paciente.id)">
+                        <i class="bi bi-pencil-square"></i>
+                      </span>
+                      <span class="td eliminar" (click)="delete(paciente.id)">
+                        <i class="bi bi-trash3-fill"></i>
+                      </span>
+
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-    <div class="container">
-      <div class="row mt-3 mb-5" style="text-align: center;">
-        <div class="col-12">
-          <div class="alert alert-primary" role="alert">
-            <span class="title-table">Lista de pacientes asignados</span>
-          </div>
-        </div>
-      </div>

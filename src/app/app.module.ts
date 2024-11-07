@@ -26,10 +26,13 @@ import { LoginScreenComponent } from './screens/login-screen/login-screen.compon
 import { RegistroScreenComponent } from './screens/registro-screen/registro-screen.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './partials/navbar/navbar.component';
-import { RegistroAdminComponent } from './partials/registro-admin/registro-admin.component';
 import { RegistroNutriologoComponent } from './partials/registro-nutriologo/registro-nutriologo.component';
 import { RegistroPacienteComponent } from './partials/registro-paciente/registro-paciente.component';
 import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriologo-screen.component';
+import { EliminarUserModalComponent } from './modals/eliminar-user-modal/eliminar-user-modal.component';
+import { EditarUserModalComponent } from './modals/editar-user-modal/editar-user-modal.component';
+import { DietaTiempoComponent } from './partials/dieta-tiempo/dieta-tiempo.component';
+import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.component';
 
 @NgModule({
   declarations: [
@@ -37,10 +40,13 @@ import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriolog
     LoginScreenComponent,
     RegistroScreenComponent,
     NavbarComponent,
-    RegistroAdminComponent,
     RegistroNutriologoComponent,
     RegistroPacienteComponent,
-    NutriologoScreenComponent
+    NutriologoScreenComponent,
+    EliminarUserModalComponent,
+    EditarUserModalComponent,
+    DietaTiempoComponent,
+    DietaPorcionComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FacadeService } from 'src/services/facade.service';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-//import { EditarUserModalComponent } from 'src/app/modals/editar-user-modal/editar-user-modal.component';
+import { EditarUserModalComponent } from 'src/app/modals/editar-user-modal/editar-user-modal.component';
 
 //Para poder usar jquery definir esto
 declare var $:any;
@@ -90,19 +90,18 @@ export class RegistroNutriologoComponent implements OnInit{
       this.nutriologo.confirmar_password="";
     }
   }
-/*                      Por ver si agregamos la funcionalidad de editar
   public actualizar(){
     //Validación
     this.errors = [];
 
-    this.errors = this.administradoresService.validarAdmin(this.admin, this.editar);
+    this.errors = this.nustriologoService.validarNutriologo(this.nutriologo, this.editar);
     if(!$.isEmptyObject(this.errors)){
       return false;
     }
     console.log("Pasó la validación");
 
     const dialogRef = this.dialog.open(EditarUserModalComponent,{
-      data: {rol: 'administrador'}, //Se pasan valores a través del componente
+      data: {rol: 'nutriologo'}, //Se pasan valores a través del componente
       height: '288px',
       width: '328px',
     });
@@ -110,23 +109,23 @@ export class RegistroNutriologoComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       if(result.isEdit){
-        this.administradoresService.editarAdmin(this.admin).subscribe(
+        this.nustriologoService.editarNutriologo(this.nutriologo).subscribe(
           (response)=>{
-            alert("Administrador editado correctamente");
-            console.log("Administrador editado: ", response);
+            alert("Nutriologo editado correctamente");
+            console.log("Nutriologo editado: ", response);
             //Si se editó, entonces mandar al home
             this.router.navigate(["home"]);
           }, (error)=>{
-            alert("No se pudo editar al administrador");
+            alert("No se pudo editar al nutriologo");
             console.log("Error: ", error);
           }
         );
       }else{
-        console.log("No se editó al administrador");
+        console.log("No se editó al nutriologo");
       }
     });
   }
-*/
+
   //Funciones para password
   showPassword()
   {
