@@ -1,6 +1,8 @@
 .wrapper {
   width: 100vw;
-  height: 90vh;
+  height: 94vh;
+  background-color: #ffffff;
+  background: url('/assets/images/logo.jpeg');
 }
 
 .header-home {
@@ -37,7 +39,7 @@
 }
 
 .body-nutriologo {
-  background: url('/assets/images/logo.jpeg');
+  // background: url('/assets/images/logo.jpeg');
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
