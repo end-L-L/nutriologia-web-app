@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Alimento</th>
+      <th>Cantidad</th>
+      <th title="Calorías">Cal</th>
+      <th title="Proteínas">P</th>
+      <th title="Carbohidratos">C</th>
+      <th title="Grasas">G</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let food of foodList">
+      <td>
+        <strong>{{ food.alimento | titlecase }}</strong>
+      </td>
+      <td>{{ food.cantidad }}{{ food.unit }}</td>
+      <td>{{ food.calorias }}</td>
+      <td>{{ food.proteinas }}</td>
+      <td>{{ food.carbohidratos }}</td>
+      <td>{{ food.grasas }}</td>
+    </tr>
+  </tbody>
+</table>
