@@ -10,9 +10,15 @@
 
         <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Nombre</mat-label>
-            <input matInput [(ngModel)]="paciente.name" placeholder="Escribe nombre">
+            <input matInput [(ngModel)]="paciente.first_name" placeholder="Escribe nombre">
         </mat-form-field>
-        <div *ngIf="errors.name" class="invalid-feedback">{{ errors.name }}</div>
+        <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>
+
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput [(ngModel)]="paciente.last_name" placeholder="Escribe apellidos">
+      </mat-form-field>
+      <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
 
         <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Correo electrónico</mat-label>
@@ -40,6 +46,35 @@
         </mat-form-field>
         <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
 
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Edad</mat-label>
+          <input matInput [(ngModel)]="paciente.edad" placeholder="Escribe edad">
+        </mat-form-field>
+        <div *ngIf="errors.edad" class="invalid-feedback">{{ errors.edad }}</div>
+
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Peso</mat-label>
+          <input matInput [(ngModel)]="paciente.peso" placeholder="Escribe peso">
+        </mat-form-field>
+        <div *ngIf="errors.peso" class="invalid-feedback">{{ errors.peso }}</div>
+
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Estatura</mat-label>
+          <input matInput [(ngModel)]="paciente.estatura" placeholder="Escribe estatura">
+        </mat-form-field>
+        <div *ngIf="errors.estatura" class="invalid-feedback">{{ errors.estatura }}</div>
+
+        <div *ngIf="errors.objetivo" class="invalid-feedback">{{ errors.objetivo }}</div>
+        <mat-form-field class="mat-input" appearance="outline">
+          <mat-label>Objetivo de dieta</mat-label>
+          <mat-select [(ngModel)]="paciente.objetivo">
+            <mat-option *ngFor="let objetivos of objetivos" [value]="objetivos.viewValue">
+              {{ objetivos.viewValue }}
+            </mat-option> <!-- Se añadió el cierre correcto de mat-option -->
+          </mat-select>
+        </mat-form-field>
+
+
         <div *ngIf="errors.dieta" class="invalid-feedback">{{ errors.dieta }}</div>
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Tipo de dieta</mat-label>
@@ -54,9 +89,7 @@
         <div class="section-buttons">
             <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
             <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registrar()">Registrar</button>
-            <!-- Va a englobar todo el formulario con la cabecera -
             <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
-          -->
         </div>
       </div>
   </div>

@@ -1,12 +1,10 @@
-/* Estilos globales para el componente login */
 .login {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #fff; /* Fondo blanco por defecto */
-  background: url('/assets/images/login.jpeg') no-repeat center center; /* Aplica la imagen de fondo directamente */
-  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+  background: url('/assets/images/logo.jpeg') no-repeat center center;
+  background-size: cover;
 
   .wrapper {
     max-width: 400px;
@@ -37,16 +35,51 @@
     .form-control {
       width: 100%;
       padding: 12px 15px;
-      margin-bottom: 20px;
       border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 16px;
     }
 
-    .input-group-append .input-group-text {
-      background-color: transparent;
-      border-left: none;
-      cursor: pointer;
+    .containe-inputs {
+      .form-control {
+        width: 100%;
+        padding: 11.5px 15px;
+        border: 1px solid #ddd;
+        //border-left: none;
+        border-right: none;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+
+      .form-control.pwd {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        flex: 1; // Asegura que el input ocupe el espacio necesario y el icono quede alineado
+      }
+
+      .input-group-text {
+        background-color: transparent;
+        border: 1px solid #ddd;
+        border-left: none; /* Elimina el borde que separa el ícono del campo de entrada */
+        cursor: pointer;
+        padding: 9.6px 12px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%; // Asegura que el icono tenga la misma altura que el campo de entrada
+      }
+
+      .input-group-text i {
+        font-size: 1.2em;
+        color: #333;
+      }
     }
 
     .btn-primary {

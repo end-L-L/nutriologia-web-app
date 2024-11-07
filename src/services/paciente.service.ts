@@ -25,11 +25,16 @@ export class PacienteService {
   public esquemaPaciente(){
     return {
       'rol':'',
-      'name': '',
+      'first_name': '',
+      'last_name': '',
       'email': '',
       'password': '',
       'confirmar_password': '',
       'telefono': '',
+      'edad': '',
+      'peso': '',
+      'estatura': '',
+      'objetivo': '',
       'dieta': '',
     }
   }
@@ -38,8 +43,12 @@ export class PacienteService {
     console.log("Validando paciente... ", data);
     let error: any = [];
 
-    if(!this.validatorService.required(data["name"])){
-      error["name"] = this.errorService.required;
+    if(!this.validatorService.required(data["first_name"])){
+      error["first_name"] = this.errorService.required;
+    }
+
+    if(!this.validatorService.required(data["last_name"])){
+      error["last_name"] = this.errorService.required;
     }
 
     if(!this.validatorService.required(data["email"])){
@@ -66,12 +75,32 @@ export class PacienteService {
       alert("El formato es solo números");
       error["telefono"] = this.errorService.numeric;
     }else if(!this.validatorService.min(data["telefono"], 10)){
-      error["telefono"] = this.errorService.min(12);
+      error["telefono"] = this.errorService.min(10);
       alert("La longitud de caracteres deL telefono es menor, deben ser 10");
     }else if(!this.validatorService.max(data["telefono"], 10)){
-      error["telefono"] = this.errorService.max(13);
+      error["telefono"] = this.errorService.max(10);
       alert("La longitud de caracteres deL telefono es mayor, deben ser 10");
     }
+
+    if(!this.validatorService.required(data["edad"])) {
+      error["edad"] = this.errorService.required;
+    } else if (!/^\d{1,2}$/.test(data["edad"])) { // Solo 1 o 2 dígitos
+      alert("La edad debe tener entre 1 y 2 dígitos");
+    }
+
+    if(!this.validatorService.required(data["peso"])) {
+      error["peso"] = this.errorService.required;
+    }else if (!this.validatorService.numeric(data["peso"])) {
+      alert("El formato es solo números");
+    }
+
+    if(!this.validatorService.required(data["estatura"])) {
+      error["estatura"] = this.errorService.required;
+    }else if (!/^\d+(\.\d+)?$/.test(data["estatura"])) { // Número entero o decimal
+      alert("La estatura debe ser un número, puede incluir decimales");
+    }
+
+
 
     if(!this.validatorService.required(data["dieta"])){
       error["dieta"] = this.errorService.required;

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FacadeService } from 'src/services/facade.service';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-//import { EditarUserModalComponent } from 'src/app/modals/editar-user-modal/editar-user-modal.component';
+import { EditarUserModalComponent } from 'src/app/modals/editar-user-modal/editar-user-modal.component';
 
 //Para poder usar jquery definir esto
 declare var $:any;
@@ -34,6 +34,12 @@ export class RegistroPacienteComponent implements OnInit{
 public dietas: any[] = [
   { value: '1', viewValue: 'Por tiempos' },
   { value: '2', viewValue: 'Por porciones' },
+];
+
+public objetivos: any[] = [
+  { value: '1', viewValue: 'Perdida de peso' },
+  { value: '2', viewValue: 'Ganar masa muscular' },
+  { value: '3', viewValue: 'Mejorar la salud' },
 ];
 
   constructor(
@@ -96,19 +102,18 @@ public dietas: any[] = [
       this.paciente.confirmar_password="";
     }
   }
-/*                      Por ver si agregamos la funcionalidad de editar
   public actualizar(){
     //Validación
     this.errors = [];
 
-    this.errors = this.administradoresService.validarAdmin(this.admin, this.editar);
+    this.errors = this.pacienteService.validarPaciente(this.paciente, this.editar);
     if(!$.isEmptyObject(this.errors)){
       return false;
     }
     console.log("Pasó la validación");
 
     const dialogRef = this.dialog.open(EditarUserModalComponent,{
-      data: {rol: 'administrador'}, //Se pasan valores a través del componente
+      data: {rol: 'paciente'}, //Se pasan valores a través del componente
       height: '288px',
       width: '328px',
     });
@@ -116,23 +121,23 @@ public dietas: any[] = [
 
     dialogRef.afterClosed().subscribe(result => {
       if(result.isEdit){
-        this.administradoresService.editarAdmin(this.admin).subscribe(
+        this.pacienteService.editarPaciente(this.paciente).subscribe(
           (response)=>{
-            alert("Administrador editado correctamente");
-            console.log("Administrador editado: ", response);
+            alert("Paciente editado correctamente");
+            console.log("Paciente editado: ", response);
             //Si se editó, entonces mandar al home
             this.router.navigate(["home"]);
           }, (error)=>{
-            alert("No se pudo editar al administrador");
+            alert("No se pudo editar al paciente");
             console.log("Error: ", error);
           }
         );
       }else{
-        console.log("No se editó al administrador");
+        console.log("No se editó al paciente");
       }
     });
   }
-*/
+
   //Funciones para password
   showPassword()
   {

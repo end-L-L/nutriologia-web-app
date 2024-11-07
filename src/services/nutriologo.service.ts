@@ -25,20 +25,27 @@ export class NutriologoService {
   public esquemaNutriologo(){
     return {
       'rol':'',
-      'name': '',
+      'first_name': '',
+      'last_name': '',
+      'cedula': '',
       'email': '',
       'password': '',
       'confirmar_password': '',
       'telefono': '',
     }
+
   }
 //Validación para el formulario
   public validarNutriologo(data: any, editar: boolean){
     console.log("Validando nutriologo... ", data);
     let error: any = [];
 
-    if(!this.validatorService.required(data["name"])){
-      error["name"] = this.errorService.required;
+    if(!this.validatorService.required(data["first_name"])){
+      error["first_name"] = this.errorService.required;
+    }
+
+    if(!this.validatorService.required(data["last_name"])){
+      error["last_name"] = this.errorService.required;
     }
 
     if(!this.validatorService.required(data["email"])){
@@ -70,6 +77,13 @@ export class NutriologoService {
     }else if(!this.validatorService.max(data["telefono"], 10)){
       error["telefono"] = this.errorService.max(13);
       alert("La longitud de caracteres deL telefono es mayor, deben ser 10");
+    }
+
+    if(!this.validatorService.required(data["cedula"])){
+      error["cedula"] = this.errorService.required;
+    }else if(!this.validatorService.numeric(data["cedula"])){
+      alert("El formato es solo números");
+      error["cedula"] = this.errorService.numeric;
     }
 
     //Return arreglo
