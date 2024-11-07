@@ -38,7 +38,7 @@ export class PacienteService {
       'dieta': '',
     }
   }
-//Validación para el formulario
+///Validación para el formulario
   public validarPaciente(data: any, editar: boolean){
     console.log("Validando paciente... ", data);
     let error: any = [];
