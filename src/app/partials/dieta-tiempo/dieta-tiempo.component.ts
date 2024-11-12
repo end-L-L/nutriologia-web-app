@@ -27,7 +27,6 @@ export class DietaTiempoComponent implements OnInit{
   public editar:boolean = false;
   public idUser: Number = 0;
   public alimentos_json: any [] = [];
-  contadores: number[] = [1];
 
   public alimentos:any[]= [
     {value: '1', nombre: 'Carne'},
@@ -68,6 +67,13 @@ export class DietaTiempoComponent implements OnInit{
     {value: '7', nombre: 'Domingo', comidas: this.comidas},
   ];
 
+  contadores = [
+    [1], // Proteínas
+    [1], // Frutas
+    [1], // Verduras
+    [1]  // Carbohidratos-legumbres
+  ];
+
   constructor(
     private location : Location,
     private router: Router,
@@ -75,9 +81,8 @@ export class DietaTiempoComponent implements OnInit{
     private tiempoService: TiempoService,
     private facadeService: FacadeService,
     public dialog: MatDialog
-
-
-  ){}
+  )
+  {}
 
   ngOnInit(): void {
     //El primer if valida si existe un parámetro en la URL
@@ -176,13 +181,13 @@ export class DietaTiempoComponent implements OnInit{
     }
   }
 
-  incrementar(index: number) {
-    this.contadores[index]++;
+  incrementar(sectionIndex: number, contadorIndex: number) {
+    this.contadores[sectionIndex][contadorIndex]++;
   }
 
-  decrementar(index: number) {
-    if (this.contadores[index] > 1) {
-      this.contadores[index]--;
+  decrementar(sectionIndex: number, contadorIndex: number) {
+    if (this.contadores[sectionIndex][contadorIndex] > 0) {
+      this.contadores[sectionIndex][contadorIndex]--;
     }
   }
 }
