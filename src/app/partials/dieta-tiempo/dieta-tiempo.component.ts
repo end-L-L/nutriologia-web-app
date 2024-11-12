@@ -27,6 +27,7 @@ export class DietaTiempoComponent implements OnInit{
   public editar:boolean = false;
   public idUser: Number = 0;
   public alimentos_json: any [] = [];
+  expanded: boolean = false;
 
   public alimentos:any[]= [
     {value: '1', nombre: 'Carne'},
@@ -101,7 +102,7 @@ export class DietaTiempoComponent implements OnInit{
     this.location.back();
   }
 
-  public Registrar(){
+  public registar(){
     //Validar
     this.errors = [];
 
@@ -173,6 +174,10 @@ export class DietaTiempoComponent implements OnInit{
     }else if (event.value == "Miercoles"){
       this.tipo_dia = "Miercoles"
     }
+  }
+
+  toggleExpanded() {
+    this.expanded = !this.expanded;
   }
 }
 

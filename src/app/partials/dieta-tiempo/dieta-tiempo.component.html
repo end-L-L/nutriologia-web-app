@@ -20,5 +20,35 @@
     </div>
   </div>
 
+  <div class="section, container">
+    <button (click)="toggleExpanded()">{{ expanded ? '-' : '+' }}</button>
+    <span>{{ Proteinas }}</span>
+    <img *ngIf="expanded" [src]="imageUrl" alt="{{ title }}" class="section-image"/>
+  </div>
+
+  <div class="section, container">
+    <button (click)="toggleExpanded()">{{ expanded ? '-' : '+' }}</button>
+    <span>{{ Frutas }}</span>
+    <img *ngIf="expanded" [src]="imageUrl" alt="{{ title }}" class="section-image"/>
+  </div>
+
+  <div class="section, container">
+    <button (click)="toggleExpanded()">{{ expanded ? '-' : '+' }}</button>
+    <span>{{ Verduras }}</span>
+    <img *ngIf="expanded" [src]="imageUrl" alt="{{ title }}" class="section-image"/>
+  </div>
+
+  <div class="section, container">
+    <button (click)="toggleExpanded()">{{ expanded ? '-' : '+' }}</button>
+    <span>{{ Carbohidratos-legumbres }}</span>
+    <img *ngIf="expanded" [src]="imageUrl" alt="{{ title }}" class="section-image"/>
+  </div>
+
+  <div class="section-buttons">
+    <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
+    <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registar()">Guardar</button>
+    <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+ </div>
+
 </div>
 </div>
