@@ -14,6 +14,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TiempoService {
+  guardarDieta(dataToSave: { proteinas: number; frutas: number; verduras: number; carbohidratosLegumbres: number; }) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(
     private http: HttpClient,

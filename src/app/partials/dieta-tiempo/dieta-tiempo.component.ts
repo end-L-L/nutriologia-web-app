@@ -8,7 +8,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditarUserModalComponent } from 'src/app/modals/editar-user-modal/editar-user-modal.component';
 import * as $ from 'jquery';
 
-
 @Component({
   selector: 'app-dieta-tiempo',
   templateUrl: './dieta-tiempo.component.html',
@@ -107,7 +106,7 @@ export class DietaTiempoComponent implements OnInit{
     this.location.back();
   }
 
-  public registar(){
+  public registrar(){
     //Validar
     this.errors = [];
 
@@ -189,6 +188,39 @@ export class DietaTiempoComponent implements OnInit{
     if (this.contadores[sectionIndex][contadorIndex] > 0) {
       this.contadores[sectionIndex][contadorIndex]--;
     }
+  }
+
+  guardar() {
+    // const dataToSave = {
+    //   proteinas: this.contadores[0][0],
+    //   frutas: this.contadores[1][0],
+    //   verduras: this.contadores[2][0],
+    //   carbohidratosLegumbres: this.contadores[3][0]
+    // };
+
+    // // Llama al servicio para guardar los datos
+    // this.tiempoService.guardarDieta(dataToSave).subscribe(
+    //   response => {
+    //     console.log('Datos guardados exitosamente:', response);
+    //     alert("Datos guardados exitosamente");
+    //     this.resetearContadores();
+    //   },
+    //   error => {
+    //     console.error('Error al guardar los datos:', error);
+    //     alert("Error al guardar los datos");
+    //   }
+    // );
+  }
+
+
+  // Método para resetear los contadores
+  resetearContadores() {
+    this.contadores = [
+      [0], // Proteínas
+      [0], // Frutas
+      [0], // Verduras
+      [0]  // Carbohidratos-legumbres
+    ];
   }
 }
 
