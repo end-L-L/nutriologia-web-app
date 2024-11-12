@@ -38,11 +38,12 @@
 .section {
   display: flex;
   align-items: center;
-  padding: 10px;
   border: 1px solid #ccc;
-  margin: 5px 0;
   background-color: white;
-  border-radius: 5px;
+  padding: 20px;
+  max-width: 300px;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 button {
@@ -55,12 +56,4 @@ button {
   width: 50px;
   height: 50px;
   margin-left: auto;
-}
-
-.container {
-  background-color: #b3d9ff;
-  padding: 20px;
-  max-width: 300px;
-  margin: 0 auto;
-  border-radius: 8px;
 }
