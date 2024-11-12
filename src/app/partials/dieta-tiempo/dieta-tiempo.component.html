@@ -1,4 +1,5 @@
 <app-navbar [tipo]="tipo"></app-navbar>
+
 <div class="wrapper">
   <div class="section-registro">
 
@@ -20,30 +21,51 @@
     </div>
   </div>
 
-  <div class="section">
-    <button (click)="toggleExpanded()">{{ expanded ? '-' : '+' }}</button>
-    <span>Proteina</span>
-    <img *ngIf="expanded" [src]="" alt="" class="section-image"/>
-  </div>
   <br>
   <div class="section">
-    <button (click)="toggleExpanded()">{{ expanded ? '-' : '+' }}</button>
+    <div *ngFor="let contador of contadores; let i = index" class="contador-container">
+    <button class="button-2" (click)="decrementar(i)">-</button>
+    <span>{{ contador }}</span>
+    <button class="button-2" (click)="incrementar(i)">+</button>
+    </div>
+    <span>Proteína</span>
+    <img src="/assets/images/res.jpeg" alt="" class="section-image"/>
+  </div>
+  <br>
+
+  <div class="section">
+    <div *ngFor="let contador of contadores; let i = index" class="contador-container">
+      <button class="button-2" (click)="decrementar(i)">-</button>
+      <span>{{ contador }}</span>
+      <button class="button-2" (click)="incrementar(i)">+</button>
+    </div>
     <span>Frutas</span>
-    <img *ngIf="expanded" [src]="" alt="" class="section-image"/>
+    <img src="/assets/images/manzana.jpeg" alt="" class="section-image"/>
   </div>
   <br>
+
   <div class="section">
-    <button (click)="toggleExpanded()">{{ expanded ? '-' : '+' }}</button>
+    <div *ngFor="let contador of contadores; let i = index" class="contador-container">
+      <button class="button-2" (click)="decrementar(i)">-</button>
+      <span>{{ contador }}</span>
+      <button class="button-2" (click)="incrementar(i)">+</button>
+    </div>
     <span>Verdura</span>
-    <img *ngIf="expanded" [src]="" alt="" class="section-image"/>
+    <img src="/assets/images/Espinacas.jpeg" alt="" class="section-image"/>
   </div>
   <br>
+
   <div class="section">
-    <button (click)="toggleExpanded()">{{ expanded ? '-' : '+' }}</button>
+    <div *ngFor="let contador of contadores; let i = index" class="contador-container">
+      <button class="button-2" (click)="decrementar(i)">-</button>
+      <span>{{ contador }}</span>
+      <button class="button-2" (click)="incrementar(i)">+</button>
+    </div>
     <span>Carbohidratos-legumbres</span>
-    <img *ngIf="expanded" [src]="" alt="" class="section-image"/>
+    <img src="/assets/images/avena.jpeg" alt="" class="section-image"/>
   </div>
-  <br>
+  <br><br>
+
   <div class="section-buttons">
     <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
     <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registar()">Guardar</button>

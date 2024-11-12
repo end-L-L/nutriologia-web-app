@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper {
   height: 100%;
   width: 100%;
   //Flex
@@ -8,7 +8,7 @@
   align-items: flex-start;
 }
 
-.section-registro{
+.section-registro {
   width: 100%;
   height: 100%;
   display: flex;
@@ -17,8 +17,8 @@
   align-items: center;
 }
 
-.body-registro{
-  width: 50vw!important;
+.body-registro {
+  width: 50vw !important;
   height: 90vh;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
   gap: 1.5rem;
 }
 
-.title-user{
+.title-user {
   font-size: 28px;
   text-align: left;
   font-family: Bold;
@@ -38,7 +38,7 @@
   opacity: 1;
 }
 
-.title-materias{
+.title-materias {
   font-size: 18px;
   text-align: center;
   font-family: Bold;
@@ -47,7 +47,7 @@
   opacity: 1;
 }
 
-.section-buttons{
+.section-buttons {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -59,9 +59,9 @@
 .btn-primary {
   width: 208px;
   height: 48px;
-  background-color: #0799b6!important;
-  border-color: #0799b6!important;
-  border-radius: 8px!important;
+  background-color: #0799b6 !important;
+  border-color: #0799b6 !important;
+  border-radius: 8px !important;
   opacity: 1;
   //Fuente
   text-align: center;
@@ -74,15 +74,15 @@
 }
 
 .btn-primary:hover {
-  background-color: #0799b6!important;
-  border-color: #0799b6!important;
+  background-color: #0799b6 !important;
+  border-color: #0799b6 !important;
 
 }
 
-.btn-danger{
+.btn-danger {
   width: 208px;
   height: 48px;
-  border-radius: 8px!important;
+  border-radius: 8px !important;
   opacity: 1;
   //Fuente
   text-align: center;
@@ -95,9 +95,9 @@
 }
 
 
-mat-form-field{
-  width: 100%!important;
-  height: 56px!important;
-  text-align: left!important;
+mat-form-field {
+  width: 100% !important;
+  height: 56px !important;
+  text-align: left !important;
   background-color: #FFFFFF;
 }

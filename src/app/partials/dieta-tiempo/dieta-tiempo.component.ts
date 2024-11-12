@@ -12,7 +12,7 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-dieta-tiempo',
   templateUrl: './dieta-tiempo.component.html',
-  styleUrls: ['./dieta-tiempo.component.scss']
+  styleUrls: ['./dieta-tiempo.component.scss'],
 })
 export class DietaTiempoComponent implements OnInit{
 
@@ -27,7 +27,7 @@ export class DietaTiempoComponent implements OnInit{
   public editar:boolean = false;
   public idUser: Number = 0;
   public alimentos_json: any [] = [];
-  expanded: boolean = false;
+  contadores: number[] = [1];
 
   public alimentos:any[]= [
     {value: '1', nombre: 'Carne'},
@@ -176,8 +176,14 @@ export class DietaTiempoComponent implements OnInit{
     }
   }
 
-  toggleExpanded() {
-    this.expanded = !this.expanded;
+  incrementar(index: number) {
+    this.contadores[index]++;
+  }
+
+  decrementar(index: number) {
+    if (this.contadores[index] > 1) {
+      this.contadores[index]--;
+    }
   }
 }
 
