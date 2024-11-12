@@ -68,10 +68,10 @@ export class DietaTiempoComponent implements OnInit{
   ];
 
   contadores = [
-    [1], // Proteínas
-    [1], // Frutas
-    [1], // Verduras
-    [1]  // Carbohidratos-legumbres
+    [0], // Proteínas
+    [0], // Frutas
+    [0], // Verduras
+    [0]  // Carbohidratos-legumbres
   ];
 
   constructor(
