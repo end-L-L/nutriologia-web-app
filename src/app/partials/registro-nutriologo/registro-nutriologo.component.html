@@ -29,7 +29,7 @@
         
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Teléfono</mat-label>
-          <input matInput [(ngModel)]="nutriologo.telefono" mask="000-000-0000" placeholder="Escribe teléfono">
+          <input matInput [(ngModel)]="nutriologo.telefono" mask='(000) 000-0000' placeholder="Escribe teléfono">
         </mat-form-field>
         <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
         
