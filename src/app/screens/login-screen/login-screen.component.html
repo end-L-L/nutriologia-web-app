@@ -38,10 +38,19 @@
 
             <!-- Botones -->
 <br>
+<!-- cambios agregados por david-->
 <div class="d-flex flex-column align-items-center mb-3 w-100" style="text-align: center;">
-<button class="btn btn-primary" type="submit" (click)="login()">Iniciar Sesión</button>
+  <button class="btn btn-primary" type="submit" (click)="login()" [disabled]="isLoading">
+    Iniciar Sesión
+  </button>
 
-              <label class="form-check-label pt-3" for="checkbox-signin" (click)="registrar()">¿No tienes una cuenta? <span class="register">Registrate</span></label>
+  <div *ngIf="isLoading" class="spinner-border" role="status">
+    <span class="sr-only"></span>
+  </div>
+
+  <label class="form-check-label pt-3" for="checkbox-signin" (click)="registrar()">
+    ¿No tienes una cuenta? <span class="register">Registrate</span>
+  </label>
 </div>
 </div>
 </div>

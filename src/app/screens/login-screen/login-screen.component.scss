@@ -66,7 +66,8 @@
     .input-group-text {
       background-color: transparent;
       border: 1px solid #ddd;
-      border-left: none; /* Elimina el borde que separa el ícono del campo de entrada */
+      border-left: none;
+      /* Elimina el borde que separa el ícono del campo de entrada */
       cursor: pointer;
       padding: 9.6px 12px;
       border-top-right-radius: 8px;
@@ -125,4 +126,11 @@
       font-size: 16px;
     }
   }
+}
+
+//cambios agregados por david
+.spinner-border {
+  width: 2rem;
+  height: 2rem;
+  border-width: 0.2em;
 }
