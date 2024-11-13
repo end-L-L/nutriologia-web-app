@@ -5,6 +5,7 @@ import { FacadeService } from 'src/services/facade.service';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarUserModalComponent } from 'src/app/modals/editar-user-modal/editar-user-modal.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 //Para poder usar jquery definir esto
 declare var $:any;
@@ -17,6 +18,9 @@ declare var $:any;
 export class RegistroNutriologoComponent implements OnInit{
   @Input() rol: string = "";
   @Input() datos_user: any = {};
+  registroForm: FormGroup; //agregado por david
+  cedulaHint: string = ''; // agregado por david
+
 
  //Para contraseñas
   public hide_1: boolean = false;
@@ -36,9 +40,31 @@ export class RegistroNutriologoComponent implements OnInit{
     public activatedRoute: ActivatedRoute,
     private nustriologoService: NutriologoService,
     private facadeService: FacadeService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private fb: FormBuilder // agregado por david
 
-  ){}
+  ){
+    // agregado por david
+    this.registroForm = this.fb.group({
+    first_name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+    last_name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+    cedula: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]],
+  });
+}
+  //agregado por david
+  validateLetters(event: KeyboardEvent) {
+    const charCode = event.charCode;
+    if (charCode >= 48 && charCode <= 57) {
+      event.preventDefault();
+    }
+  }
+  // agregado por david
+  updateCedulaHint(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.cedulaHint = `${input.value.length}/8`;
+  }
+
+  
 
   ngOnInit(): void {
     //El primer if valida si existe un parámetro en la URL
