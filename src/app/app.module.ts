@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Requerido por Angular Material
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask'; // Agredado por david para la mask del telefono 10 digitos
 
 //Este import es para los servicios HTTP
 import { HttpClientModule } from '@angular/common/http';
@@ -49,7 +50,8 @@ import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.co
     EliminarUserModalComponent,
     EditarUserModalComponent,
     DietaTiempoComponent,
-    DietaPorcionComponent
+    DietaPorcionComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -71,8 +73,11 @@ import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.co
     MatTableModule,
     MatPaginatorModule,
     NgChartsModule,  
+    NgxMaskDirective // Agredado por david para la mask del telefono 10 digitos
   ],
-  providers: [],
+  providers: [
+    provideNgxMask() // Agredado por david para la mask del telefono 10 digitos
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
