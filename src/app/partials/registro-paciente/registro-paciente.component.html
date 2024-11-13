@@ -1,7 +1,6 @@
 <div class="wrapper">
-  <!-- Va a englobar todo el formulario con la cabecera -->
-  <div class="section-registro">
-      <div class="body-registro">
+  <!-- Va a englobar todo el formulario con la cabecera , se elimino section-registro-->
+    <div class="body-registro">
         <div class="row mt-3 mb-3">
           <div class="form-group col-12">
             <label class="title-user" for="tipo_usuario">Ingresa los datos del paciente</label>
@@ -84,14 +83,10 @@
             </mat-option> <!-- Se añadió el cierre correcto de mat-option -->
           </mat-select>
         </mat-form-field>
-
-
         <div class="section-buttons">
             <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
             <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registrar()">Registrar</button>
             <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
         </div>
-      </div>
-  </div>
 </div>
 
