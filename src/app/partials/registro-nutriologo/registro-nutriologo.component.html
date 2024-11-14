@@ -25,7 +25,9 @@
           <input matInput [(ngModel)]="nutriologo.cedula" placeholder="Escribe número de cédula" maxlength="8" (input)="updateCedulaHint($event)">
         </mat-form-field>
         <div *ngIf="errors.cedula" class="invalid-feedback">{{ errors.cedula }}</div>
-        <span class = "cedula-hint">{{ cedulaHint }}</span>
+        <div class="hint-container">
+          <span class="cedula-hint">{{ cedulaHint }}</span>
+        </div>
         
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Teléfono</mat-label>

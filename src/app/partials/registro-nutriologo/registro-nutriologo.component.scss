@@ -92,16 +92,20 @@ mat-form-field {
 
 //agregado por david
 .mat-input {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  /* Necesario para que el span se posicione relativo a este contenedor */
+}
+
+.hint-container {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
 }
 
 .cedula-hint {
   position: absolute;
-  right: 25%;
-  /* Alinea el span a la derecha */
-  top: 61%;
-  /* Coloca el span justo debajo del input */
-  margin-top: 5px;
-  /* Ajusta la distancia desde el input */
+  left: 0;
+  top: 100%;
+  margin-top: -10px;
 }
