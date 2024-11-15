@@ -103,17 +103,21 @@ export class RegistroNutriologoComponent implements OnInit{
 
       let post_data = this.nustriologoService.createPost(this.nutriologo);
 
-      this.nustriologoService.registrarNutriologo(post_data).subscribe({
-        next: (response) => {
-          alert('Usuario Registrado Correctamente');
-          //console.log(response);
-          this.router.navigate(['']);
-        },
-        error: (response) => {
-          alert('¡Error!: No se Pudo Registrar Usuario \nResponse: ' + response.error.message);
-          //console.log(response.error);
-        },
-      });
+      alert("Usuario Registrado Correctamente");
+      alert("Datos: " + JSON.stringify(post_data));
+      this.router.navigate(['']);
+
+      // this.nustriologoService.registrarNutriologo(post_data).subscribe({
+      //   next: (response) => {
+      //     alert('Usuario Registrado Correctamente');
+      //     //console.log(response);
+      //     this.router.navigate(['']);
+      //   },
+      //   error: (response) => {
+      //     alert('¡Error!: No se Pudo Registrar Usuario \nResponse: ' + response.error.message);
+      //     //console.log(response.error);
+      //   },
+      // });
     }else{
       alert("Las contraseñas no coinciden");
       this.nutriologo.password="";

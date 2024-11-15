@@ -26,22 +26,22 @@ export class LoginScreenComponent implements OnInit {
     if (!$.isEmptyObject(this.errors)){
       return false;
     }
+    this.router.navigate(['/nutriologo-screen']);
+    // this.isLoading = true; // Activar la bandera de carga
   
-    this.isLoading = true; // Activar la bandera de carga
-  
-    this.facadeService.login(this.username, this.password).subscribe({
-      next: (response) => {
-        alert('Sesión Iniciada Correctamente');
-        console.log(response);
-        this.router.navigate(['/nutriologo-screen']);
-        this.isLoading = false; // Desactivar la bandera de carga
-      },
-      error: (response) => {
-        alert('¡Error!: No se Pudo Iniciar Sesión');
-        console.log(response.error);
-        this.isLoading = false; // Desactivar la bandera de carga
-      },
-    });
+    // this.facadeService.login(this.username, this.password).subscribe({
+    //   next: (response) => {
+    //     alert('Sesión Iniciada Correctamente');
+    //     console.log(response);
+    //     this.router.navigate(['/nutriologo-screen']);
+    //     this.isLoading = false; // Desactivar la bandera de carga
+    //   },
+    //   error: (response) => {
+    //     alert('¡Error!: No se Pudo Iniciar Sesión');
+    //     console.log(response.error);
+    //     this.isLoading = false; // Desactivar la bandera de carga
+    //   },
+    // });
   }
   
 

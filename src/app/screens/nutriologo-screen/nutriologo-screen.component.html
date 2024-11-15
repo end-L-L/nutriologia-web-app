@@ -8,16 +8,14 @@
           <div class="row mt-3 mb-5 text-center">
             <div class="col-12">
               <div class="alert alert-primary" role="alert">
-                <span class="title-table">Lista de pacientes</span>
+                <span class="title-table">Bienvenidos</span>
               </div>
             </div>
           </div>
 
           <div class="row mt-3 mb-5 text-center1">
             <div class="col-3">
-              <div class="alert alert-primary1" role="alert">
-                <span class="title-table1" (click)="goRegistrar()">+ Agregar paciente</span>
-              </div>
+
             </div>
           </div>
           <!-- Lista de pacientes generada dinámicamente -->
@@ -25,26 +23,32 @@
             <div class="col-12">
               <ul class="list-group">
                 <!-- Utiliza *ngFor para iterar sobre el arreglo de pacientes -->
-                <li
-                  *ngFor="let paciente of pacientes"
-                  class="list-group-item d-flex justify-content-between align-items-center"
-                >
-                  {{ paciente.nombre }}
-                  <div>
-                    <span class="me-3">
-                      <td class="td estadisticas">
-                        <i class="bi bi-graph-up-arrow"></i>
-                      </td>
-
-                      <span class="td editar" (click)="goEditar(paciente.id)">
-                        <i class="bi bi-pencil-square"></i>
-                      </span>
-                      <span class="td eliminar" (click)="delete(paciente.id)">
-                        <i class="bi bi-trash3-fill"></i>
-                      </span>
-
-                    </span>
-                  </div>
+                <li class="list-group-item d-flex justify-content-between align-items-center text-li">
+                  Gracias por participar en esta prueba
+                </li>
+                <br>
+                <li class="list-group-item d-flex justify-content-between align-items-center text-li-2">
+                  - por favor ayudanos a completar las tareas que se te plantearón para responder el cuestionario
+                </li>
+                <br>
+                <li class="list-group-item d-flex justify-content-between align-items-center text-li-2">
+                  - el apartado de las tareas a completar es la sección de "Registrar Consumo"
+                </li>
+                <br>
+                <li class="list-group-item d-flex justify-content-between align-items-center text-li-2">
+                  - dale un vistazo a la sección de "Estadísticas" para que compartas tu opinión
+                </li>
+                <br>
+                <li class="list-group-item d-flex justify-content-between align-items-center text-li-2">
+                  - puedes navegar por la aplicación para que al final compartas tu opinión acerca de la misma
+                </li>
+                <br>
+                <li class="list-group-item d-flex justify-content-between align-items-center text-li-2">
+                  - al final tendras un apartado para colocar tus comentarios
+                </li>
+                <br>
+                <li class="list-group-item d-flex justify-content-between align-items-center text-li-2">
+                  - tu opinión será de gran ayuda para mejorar la aplicación
                 </li>
               </ul>
             </div>
