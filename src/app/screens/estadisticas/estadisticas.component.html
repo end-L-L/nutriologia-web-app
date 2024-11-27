@@ -1,20 +1,67 @@
 <app-navbar></app-navbar>
-<div class="container">
-    <h2>Seguimiento de Calorías</h2>
-    <canvas id="caloriasChart" width="600"
-    height="400"></canvas>
-    
-    <h2>Seguimiento de Porciones</h2>
-    <canvas id="porcionesChart" width="600"
-    height="400"></canvas>
+<div class="wrapper">
+  <div class="section-home">
+    <div class="header-graficas">
+    </div>
+    <div class="body-home">
+      <div class="row mt-4 mb-4" style="text-align: center;">
+        <div class="col-12">
+          <span class="title-perfil">Análisis de Consumos</span>
+        </div>
+      </div>
 
-    <h2>Seguimiento de peso</h2>
-    <canvas
-                    baseChart
-                    width="600"
-                    height="400"
-                    type="line"
-                    [data]="lineChartData"
-                    [options]="lineChartOption"
-                    chartType="line"></canvas>
+      <div class="container">
+        <div class="row w-100" style="text-align: center;">
+                  
+          <!-- Gráfico de Barras -->
+          <div class="col-6 graph">
+            <canvas 
+              baseChart
+              chartType="bar"
+              [data]="barChartData1"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins">
+            </canvas>
+          </div>
+          
+          <!-- Gráfico de Barras -->
+          <div class="col-6 graph">
+            <canvas 
+              baseChart
+              chartType="bar"
+              [data]="barChartData2"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins">
+            </canvas>
+          </div>
+
+        </div>
+
+        <div class="row w-100 mt-5 mb-5" style="text-align: center;">
+          <div class="col-6 graph">
+            <!-- Gráfico Lineal -->
+            <canvas 
+              baseChart
+              type="line"
+              [data]="lineChartData"
+              [options]="lineChartOptions"
+              [plugins]="lineChartPlugins">
+            </canvas>
+          </div>
+
+          <!-- Gráfico Circular -->
+          <div class="col-6 graph" [style.height.px]="400">
+            <canvas
+              baseChart
+              type="pie"
+              [data]="pieChartData"
+              [plugins]="pieChartPlugins"
+              [options]="pieChartOption">
+            </canvas>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
+</div>
