@@ -22,23 +22,43 @@ export class NutriologoService {
     private facadeService: FacadeService
   ) { }
 
+  public createPost(data: any){
+    return {
+      'first_name': data.first_name,
+      'last_name': data.last_name,
+      'cedula': data.cedula,
+      'telefono': data.telefono,
+      'email': data.email,
+      'password': data.password,
+      'username': data.email,
+      'role': data.rol
+    }
+  }
+
   public esquemaNutriologo(){
     return {
       'rol':'',
-      'name': '',
+      'first_name': '',
+      'last_name': '',
+      'cedula': '',
       'email': '',
       'password': '',
       'confirmar_password': '',
       'telefono': '',
     }
+
   }
-//Validación para el formulario
+///Validación para el formulario
   public validarNutriologo(data: any, editar: boolean){
     console.log("Validando nutriologo... ", data);
     let error: any = [];
 
-    if(!this.validatorService.required(data["name"])){
-      error["name"] = this.errorService.required;
+    if(!this.validatorService.required(data["first_name"])){
+      error["first_name"] = this.errorService.required;
+    }
+
+    if(!this.validatorService.required(data["last_name"])){
+      error["last_name"] = this.errorService.required;
     }
 
     if(!this.validatorService.required(data["email"])){
@@ -72,6 +92,13 @@ export class NutriologoService {
       alert("La longitud de caracteres deL telefono es mayor, deben ser 10");
     }
 
+    if(!this.validatorService.required(data["cedula"])){
+      error["cedula"] = this.errorService.required;
+    }else if(!this.validatorService.numeric(data["cedula"])){
+      alert("El formato es solo números");
+      error["cedula"] = this.errorService.numeric;
+    }
+
     //Return arreglo
     return error;
   }
@@ -79,7 +106,7 @@ export class NutriologoService {
   //Aquí van los servicios HTTP
   //Servicio para registrar un nuevo usuario
   public registrarNutriologo (data: any): Observable <any>{
-    return this.http.post<any>(`${environment.url_api}/nutriologo/`,data, httpOptions);
+    return this.http.post<any>(`${environment.url_api}/api/v1/nutriologos/crear/`,data, httpOptions);
   }
 
   public obtenerListaNutriologos (): Observable <any>{

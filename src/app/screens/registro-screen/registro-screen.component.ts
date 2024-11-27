@@ -41,6 +41,15 @@ export class RegistroScreenComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+
+    if (this.activatedRoute.snapshot.params['rol'] === 'paciente') {
+      this.isPaciente = true;
+      this.tipo_user = "paciente";
+    } else if (this.activatedRoute.snapshot.params['rol'] === 'nutriologo') {
+      this.isNutriologo = true;
+      this.tipo_user = "nutriologo";
+    }
+
     //Obtener de la URL el rol para saber cual editar
     if(this.activatedRoute.snapshot.params['rol'] != undefined){
       this.rol = this.activatedRoute.snapshot.params['rol'];

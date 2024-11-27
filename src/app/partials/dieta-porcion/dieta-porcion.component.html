@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <!-- Va a englobar todo el formulario con la cabecera -->
+  <div class="section-registro">
+      <div class="body-registro">
+        <div class="row mt-3 mb-3">
+          <div class="form-group col-12">
+            <label class="title-user" >Selección de dieta por porción</label>
+          </div>
+        </div>
+
+        <mat-form-field class="mat-input" appearance="outline">
+            <mat-label>Edad</mat-label>
+            <input matInput [(ngModel)]="porcion.edad" placeholder="Escribe edad">
+        </mat-form-field>
+       <div *ngIf="errors.edad" class="invalid-feedback">{{ errors.edad }}</div>
+
+       <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Peso</mat-label>
+        <input matInput [(ngModel)]="porcion.peso" placeholder="Escribe peso">
+    </mat-form-field>
+   <div *ngIf="errors.peso" class="invalid-feedback">{{ errors.peso }}</div>
+
+
+        <div class="section-buttons">
+            <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
+            <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="Registrar()">Registrar</button>
+            <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+        </div>
+
+      </div>
+  </div>
+</div>
+

@@ -1,9 +1,11 @@
-.wrapper{
+.wrapper {
   width: 100vw;
-  height: 90vh;
+  height: 94vh;
+  background-color: #ffffff;
+  background: url('/assets/images/logo.jpeg');
 }
 
-.header-home{
+.header-home {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -11,99 +13,95 @@
   width: 100%;
 }
 
-.body-nutriologo{
-  background: url('/assets/images/logo.jpeg');
+.alert.alert-primary {
+  background-color: #1B6C87; /* Cambia a tu color deseado */
+  color: white; /* Cambia el color del texto si es necesario */
+  font-size: 2rem; /* Tamaño de fuente más grande */
+  padding: 20px; /* Espaciado adicional dentro del cuadro */
+  text-align: center; /* Centrar el texto */
+  border-radius: 8px; /* Bordes redondeados para un mejor diseño */
+  box-shadow: 0 5px 5px rgba(44, 2, 121, 0.2); /* Sombra sutil para resaltar */
+  margin-bottom: 15px; /* Espaciado entre la alerta y la lista */
+}
+
+.alert.alert-primary1 {
+  background-color: #209b26; /* Cambia a tu color deseado */
+  color: white; /* Cambia el color del texto si es necesario */
+  width: 100%;
+  height: 30%;
+  font-size: 10px; /* Tamaño de fuente */
+  display: flex; /* Flexbox para centrar contenido */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  white-space: nowrap; /* Evita el salto de línea */
+  border-radius: 8px; /* Bordes redondeados */
+  margin-bottom: 0 !important; /* Espaciado entre la alerta y la lista */
+}
+
+.body-nutriologo {
+  // background: url('/assets/images/logo.jpeg');
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center; /* Cambiado a center */
   width: 100%;
 }
 
-.container{
-  max-width: 90vw;
+.container {
+  width: 60vw;
 }
 
-.containe{
-  max-width: 90vw;
-}
-.title-perfil{
-  margin-left: 3rem;
-  font-size: 32px;
-  text-align: left;
-  font-family: Nexa-Bold;
-  letter-spacing: 0px;
-  color: #231F20;
-  text-transform: capitalize;
-  opacity: 1;
-}
-
-.title-table{
-  margin-left: 3rem;
+.title-table {
   font-size: 28px;
-  text-align: left;
-  font-family: Nexa-Bold;
+  text-align: center;
+  font-family: Bold;
   letter-spacing: 0px;
-  color: #231F20;
+  color: #FFFFFF;
   text-transform: capitalize;
   opacity: 1;
 }
 
-//Estilos de la tabla
-table {
-    width: 100%;
-    padding-bottom: 1.5rem;
-}
-
-// .mat-elevation-z8{
-//     width: 100%;
-// }
-::ng-deep .mat-mdc-table{
-  table-layout: fixed!important;
-}
-.mat-mdc-header-cell {
-  border-bottom-color: #231F20;
-  font-family: Nexa-Bold!important;
-  font-size: 18px;
-  text-align: left;
+.title-table1 {
+  font-size: 20px;
+  text-align: center;;
+  font-family: Bold;
   letter-spacing: 0px;
-  color: #231F20;
+  color: #FFFFFF;
+  text-transform: capitalize;
   opacity: 1;
+  cursor: pointer!important;
 }
 
-.mat-mdc-cell {
-    text-align: left;
-    font-family: Nexa!important;
-    font-size: 15px!important;
-    letter-spacing: 0px!important;
-    color: #231F20!important;
-    opacity: 1!important;
+/* Estilo para los íconos */
+.icon-action {
+  font-size: 1.5rem; /* Tamaño más grande */
+  margin: 0 10px; /* Espaciado horizontal entre íconos */
+  transition: color 0.3s ease; /* Transición suave para el color */
 }
 
-//Editar
-.td-editar{
-    color: #39DD68!important;
-    cursor: pointer!important;
-    font-size: 20px!important;
-    text-align: center;
+.td{
+  font-size: 1.1rem; /* Tamaño más grande */
+  padding: 5px; /* Espaciado interno para las celdas */
+  transition: color 0.3s ease; /* Transición suave para el color */
+  cursor: pointer!important;
 }
 
-.td-editar:hover{
-    color: #39DD68!important;
-    font-size: 25px!important;
-    text-align: center;
+.editar{
+  color: #007bff; /* Color azul */
 }
 
-//Eliminar
-.td-eliminar{
-    color: #E84150!important;
-    cursor: pointer!important;
-    font-size: 20px!important;
-    text-align: center;
+.estadisticas{
+  color: #28a745; /* Color verde */
 }
 
-.td-eliminar:hover{
-    color: #ce1626!important;
-    font-size: 25px!important;
-    text-align: center;
+.eliminar{
+  color: #dc3545; /* Color rojo */
+}
+
+.row.mt-3.mb-5.text-center1 {
+  margin-bottom: 0 !important; /* Elimina margen inferior del contenedor del botón */
+}
+
+.list-group {
+  margin-top: 0; /* Asegura que no haya margen superior en la lista de pacientes */
 }
