@@ -7,25 +7,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <ng-container *ngIf="tipo!='registro-usuarios'; else registraUsers">
-            <!-- 1Todo el menú de los usuarios -->
+            
+            <!-- Todo el menú de los usuarios -->
+            <li class="nav-logo">
+              <img src="/assets/images/logo1.png" alt="Logo Nutriología" >
+            </li>
             <li class="nav-item">
-              <a class="nav-link active" id="principal" aria-current="page" (click)="clickNavLink('home')">Inicio</a>
+              <a class="nav-link" routerLink="/nutriologo-screen" routerLinkActive="active" id="principal" aria-current="page">Inicio</a>
             </li>
-            <li class="nav-item" *ngIf="rol!='paciente'">
-              <a class="nav-link" id="paciente" aria-current="page" (click)="clickNavLink('pacientes')">Pacientes</a>
+            <li class="nav-item" *ngIf="rol!='nutriologo'">
+              <a class="nav-link" routerLink="/patients" routerLinkActive="active" id="paciente" aria-current="page">Pacientes</a>
             </li>
-            <li class="nav-item" *ngIf="rol!='nutriologo' && rol!='paciente'">
-              <a class="nav-link" id="nutriologo" (click)="clickNavLink('nutriologos')">Nutriologos</a>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/estadisticas" routerLinkActive="active" id="estadisticas">Estadisticas</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Registrar
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" (click)="goRegistro()" *ngIf="rol!='paciente'">Paciente</a></li>
-                <li><a class="dropdown-item" (click)="goRegistro()" *ngIf="rol!='paciente' && rol!='nutriologo'">Nutriologo</a></li>
-              </ul>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/registro-usuarios/paciente" routerLinkActive="active" id="registro-usuarios-paciente">Registrar Paciente</a>
             </li>
+
           </ng-container>
           <ng-template #registraUsers>
             <label class="navbar-brand" href="#">Registro de usuarios del sistema</label>
@@ -37,8 +37,9 @@
               <i class="bi bi-person-circle"></i>
             </button>
             <ul class="dropdown-menu">
-              <li *ngIf="token != ''"><a class="dropdown-item" (click)="logout()">Cerrar Sesión</a></li>
-              <li *ngIf="tipo=='registro-usuarios' && token == ''"><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+              <li><a class="dropdown-item" (click)="logout()">Cerrar Sesión</a></li>
+              <!-- <li *ngIf="token != ''"><a class="dropdown-item" (click)="logout()">Cerrar Sesión</a></li>
+              <li *ngIf="tipo=='registro-usuarios' && token == ''"><a class="dropdown-item" href="#">Iniciar Sesión</a></li> -->
             </ul>
           </div>
         </form>

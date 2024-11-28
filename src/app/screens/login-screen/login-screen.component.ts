@@ -13,33 +13,43 @@ export class LoginScreenComponent implements OnInit {
   public password: string = '';
   public type: string = 'password';
   public errors: any = {};
+  public isLoading: boolean = false; // agregado por david para bandera login
 
-  constructor(private router: Router, private facadeService: FacadeService) {}
 
-  ngOnInit(): void {}
+  constructor(private router: Router, private facadeService: FacadeService,) {}
 
+  //agregado por david para bandera login
   public login() {
     this.errors = [];
-
+  
     this.errors = this.facadeService.validarLogin(this.username, this.password);
     if (!$.isEmptyObject(this.errors)){
       return false;
     }
-
-    // Si pasa la validación, ir a la página de home
-    this.facadeService.login(this.username, this.password).subscribe(
-      (response) => {
-        this.facadeService.saveUserData(response);
-        this.router.navigate(["home"]);
+  
+    this.isLoading = true; // Activar la bandera de carga
+  
+    this.facadeService.login(this.username, this.password).subscribe({
+      next: (response) => {
+        alert('Sesión Iniciada Correctamente');
+        console.log(response);
+        this.router.navigate(['/nutriologo-screen']);
+        this.isLoading = false; // Desactivar la bandera de carga
       },
-      (error) => {
-        alert("No se pudo iniciar sesión");
-      }
-    );
+      error: (response) => {
+        alert('¡Error!: No se Pudo Iniciar Sesión');
+        console.log(response.error);
+        this.isLoading = false; // Desactivar la bandera de carga
+      },
+    });
   }
+  
+
+  ngOnInit(): void {}
+ 
 
   public registrar() {
-    this.router.navigate(['registro-usuarios']);
+    this.router.navigate(['registro-usuarios/nutriologo/']);
   }
 
   public showPassword() {

@@ -4,5 +4,6 @@
 
 export const environment = {
   production: false,
-  url_api: "http://127.0.0.1:8000"
+  url_api: 'https://nutriologia-web-api.onrender.com',
+  // url_api: "http://127.0.0.1:8000"
 };

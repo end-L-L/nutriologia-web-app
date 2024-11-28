@@ -1,0 +1,35 @@
+<!-- chat.component.html -->
+<div class="flex flex-col h-screen">
+  <!-- Header -->
+  <header class="header">
+    <h1>🍎 Chat de Nutrición</h1>
+    <span class="alert-notification">1</span>
+  </header>
+
+  <div class="main-container">
+    <!-- Messages Section -->
+    <div class="messages">
+      <!-- Date Indicator -->
+      <div class="date-indicator">
+        {{ currentDate | date : "EEEE, d 'de' MMMM 'de' y" }}
+      </div>
+
+      <!-- Messages -->
+      <div *ngFor="let message of messages" class="flex" [ngClass]="message.sender === 'user' ? 'justify-end' : 'justify-start'">
+        <div class="{{ message.sender === 'user' ? 'user-message' : 'bot-message' }}">
+          {{ message.text }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <input type="text" placeholder="Escribe tu mensaje..." #messageInput />
+      <button (click)="sendMessage(messageInput)">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M3 14h9m5-7l5 5-5 5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

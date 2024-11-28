@@ -1,0 +1,61 @@
+<app-navbar [tipo]="tipo"></app-navbar>
+
+<div class="wrapper">
+  <div class="section-registro">
+
+    <div class="form-group col-12">
+      <label class="title-user">Dieta por tiempos</label>
+    </div>
+
+    <div class="row mt-3">
+      <div class="form-group col-12 d-flex justify-content-center mat1">
+        <mat-radio-group (change)="radioChange($event)" [disabled]="editar">
+          <mat-radio-button value="Lunes">Lunes</mat-radio-button>
+          <mat-radio-button value="Martes">Martes</mat-radio-button>
+          <mat-radio-button value="Miercoles">Miercoles</mat-radio-button>
+          <mat-radio-button value="Jueves">Jueves</mat-radio-button>
+          <mat-radio-button value="Viernes">Viernes</mat-radio-button>
+          <mat-radio-button value="Sabado">Sabado</mat-radio-button>
+          <mat-radio-button value="Domingo">Domingo</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- Sección de alimentos -->
+    <div *ngFor="let section of contadores; let sectionIndex = index" class="section">
+
+      <div class="contador-container">
+        <!-- Contador de la sección -->
+        <button class="button-2" (click)="decrementar(sectionIndex, 0)">-</button>
+        <span>{{ section[0] }}</span>
+        <button class="button-2" (click)="incrementar(sectionIndex, 0)">+</button>
+      </div>
+
+      <!-- Nombre de la sección -->
+      <span *ngIf="sectionIndex === 0">Proteínas</span>
+      <span *ngIf="sectionIndex === 1">Frutas</span>
+      <span *ngIf="sectionIndex === 2">Verduras</span>
+      <span *ngIf="sectionIndex === 3">Carbohidratos-legumbres</span>
+
+      <!-- Imagen de la sección -->
+      <img *ngIf="sectionIndex === 0" src="/assets/images/res.jpeg" alt="" class="section-image"/>
+      <img *ngIf="sectionIndex === 1" src="/assets/images/manzana.jpeg" alt="" class="section-image"/>
+      <img *ngIf="sectionIndex === 2" src="/assets/images/Espinacas.jpeg" alt="" class="section-image"/>
+      <img *ngIf="sectionIndex === 3" src="/assets/images/avena.jpeg" alt="" class="section-image"/>
+
+    </div>
+    <br><br>
+
+    <!-- Botones de acción -->
+    <div class="section-buttons">
+      <button class="btn btn-danger" (click)="regresar2()">Cancelar</button>
+      <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="guardar()">Guardar</button>
+      <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar2()">Actualizar</button>
+    </div>
+
+  </div>
+</div>
+
+

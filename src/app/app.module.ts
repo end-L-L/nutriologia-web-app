@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Requerido por Angular Material
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask'; // Agredado por david para la mask del telefono 10 digitos
 
 //Este import es para los servicios HTTP
 import { HttpClientModule } from '@angular/common/http';
@@ -26,10 +27,16 @@ import { LoginScreenComponent } from './screens/login-screen/login-screen.compon
 import { RegistroScreenComponent } from './screens/registro-screen/registro-screen.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './partials/navbar/navbar.component';
-import { RegistroAdminComponent } from './partials/registro-admin/registro-admin.component';
 import { RegistroNutriologoComponent } from './partials/registro-nutriologo/registro-nutriologo.component';
 import { RegistroPacienteComponent } from './partials/registro-paciente/registro-paciente.component';
 import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriologo-screen.component';
+import { EstadisticasComponent } from './screens/estadisticas/estadisticas.component';
+import { NgChartsModule } from 'ng2-charts';
+import { EliminarUserModalComponent } from './modals/eliminar-user-modal/eliminar-user-modal.component';
+import { EditarUserModalComponent } from './modals/editar-user-modal/editar-user-modal.component';
+import { DietaTiempoComponent } from './partials/dieta-tiempo/dieta-tiempo.component';
+import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.component';
+import { ChatPageComponent } from './chat/pages/chat-page/chat-page.component';
 
 @NgModule({
   declarations: [
@@ -37,10 +44,16 @@ import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriolog
     LoginScreenComponent,
     RegistroScreenComponent,
     NavbarComponent,
-    RegistroAdminComponent,
     RegistroNutriologoComponent,
     RegistroPacienteComponent,
-    NutriologoScreenComponent
+    NutriologoScreenComponent,
+    EstadisticasComponent,
+    EliminarUserModalComponent,
+    EditarUserModalComponent,
+    DietaTiempoComponent,
+    DietaPorcionComponent,
+    ChatPageComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -60,9 +73,13 @@ import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriolog
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgChartsModule,  
+    NgxMaskDirective // Agredado por david para la mask del telefono 10 digitos
   ],
-  providers: [],
+  providers: [
+    provideNgxMask() // Agredado por david para la mask del telefono 10 digitos
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

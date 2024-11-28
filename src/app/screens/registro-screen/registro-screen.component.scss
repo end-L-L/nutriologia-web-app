@@ -1,40 +1,87 @@
+//cambios agregados por david
+html,
+body {
+  height: 100% !important;
+  margin: 0 !important;
+}
+
 .wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: transparent;
+  min-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  background-color: #2591B5 !important;
 }
-
-
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/assets/images/login.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-
 
 .section-registro {
-  width: 100%;
-  max-width: 600px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 2rem;
-  z-index: 1;
-  position: relative;
+  width: 100% !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  padding: 2rem !important;
+  z-index: 1 !important;
+  position: relative !important;
+  background-color: #8ABBCB !important;
 }
+
+/* Footer Styles */
+.footer {
+  background-color: #085168 !important;
+  padding: 5px 0 !important;
+  width: 100% !important;
+  text-align: center !important;
+  position: relative !important;
+  bottom: 0 !important;
+}
+
+.footer .container {
+  max-width: 960px !important;
+  margin: 0 auto !important;
+}
+
+.footer .row {
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+}
+
+.footer .col {
+  flex: 1 !important;
+  padding: 5px !important;
+  min-width: 200px !important;
+}
+
+.footer h5 {
+  font-size: 15px !important;
+  margin-bottom: 5px !important;
+  color: white;
+}
+
+.footer ul {
+  list-style: none !important;
+  padding: 0 !important;
+}
+
+.footer ul li {
+  margin-bottom: 2px !important;
+}
+
+.footer ul li a {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+
+.footer ul li a:hover {
+  text-decoration: underline !important;
+}
+
+.footer .text-center {
+  text-align: center !important;
+}
+
+// fin de cambios por david
 
 .body-registro {
   width: 100%;
@@ -42,7 +89,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 1 rem;
+  gap: 1rem;
+  background-color: #8ABBCB;
 }
 
 .title-user {
@@ -55,14 +103,10 @@
   width: 100%;
 }
 
-.mat-input {
-  width: 100% !important;
-  margin-bottom: 1 rem; /* Añadir espaciado entre los campos */
-}
-
+.mat-input,
 mat-form-field {
   width: 100% !important;
-  text-align: left !important;
+  margin-bottom: 1rem;
 }
 
 .section-buttons {
@@ -73,31 +117,11 @@ mat-form-field {
   padding-bottom: 3rem;
 }
 
-.btn-primary {
-  width: 208px;
-  height: 48px;
-  background-color: #0f0203 !important;
-  border-color: #0f0203 !important;
-  border-radius: 8px !important;
-  text-align: center;
-  font-family: 'bold';
-  font-size: 16px;
-  font-weight: bold;
-  color: #FFFFFF;
-  transition: background-color 0.3s ease; /* Añadir una transición suave para el hover */
-}
-
-.btn-primary:hover {
-  background-color: #DC3545 !important;
-  border-color: #DC3545 !important;
-}
-
+.btn-primary,
 .btn-danger {
   width: 208px;
   height: 48px;
-  background-color: #eb1313 !important; /* Añadir color rojo para el botón de cancelar */
-  border-radius: 8px !important;
-  text-align: center;
+  border-radius: 8px;
   font-family: 'bold';
   font-size: 16px;
   font-weight: bold;
@@ -105,31 +129,87 @@ mat-form-field {
   transition: background-color 0.3s ease;
 }
 
-.btn-danger:hover {
-  background-color: #C82333 !important;
+.btn-primary {
+  background-color: #0f0203;
+  border-color: #0f0203;
+
+  &:hover {
+    background-color: #DC3545;
+    border-color: #DC3545;
+  }
+}
+
+.btn-danger {
+  background-color: #eb1313;
+
+  &:hover {
+    background-color: #C82333;
+  }
 }
 
 .eye-icon {
   cursor: pointer;
-  color: #7d6c6c; /* Color gris para el ícono del ojo */
-}
+  color: #7d6c6c;
 
-.eye-icon:hover {
-  color: #495057; /* Color oscuro al hacer hover */
+  &:hover {
+    color: #495057;
+  }
 }
 
 .invalid-feedback {
-  display: block!important;
+  display: block !important;
   width: 100%;
   font-size: 0.75rem;
   color: #ff5b5b;
   font-family: bold;
 }
 
-.img-slider {
-  width: 1400px;  // Ajusta el tamaño según lo necesario
-  height: 600px;  // Mantiene la proporción original de las imágenes
-  object-fit: cover; // Recorta la imagen si es necesario para llenar el espacio
-  border-radius: 8px; // Agrega bordes redondeados, opcional
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
+//camvios
+.img-slider {
+  width: 25%;
+  height: 25%;
+  height: auto;
+  border-radius: 8px;
+  animation: randomPosition 10s ease-in-out infinite alternate;
+  transition: transform 0.5s ease;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInScale 1.5s ease-in-out forwards, randomPosition 10s ease-in-out infinite alternate;
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes randomPosition {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-10px, 10px);
+  }
+
+  50% {
+    transform: translate(10px, -10px);
+  }
+
+  75% {
+    transform: translate(-10px, -10px);
+  }
+}
+
+.img-slider:hover {
+  transform: scale(1.05); // Efecto de ampliación al hacer hover
+}
