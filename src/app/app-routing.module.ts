@@ -8,6 +8,7 @@ import { NutriologoScreenComponent } from './screens/nutriologo-screen/nutriolog
 import { EstadisticasComponent } from './screens/estadisticas/estadisticas.component';
 import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.component';
 import { DietaTiempoComponent } from './partials/dieta-tiempo/dieta-tiempo.component';
+import { ChatPageComponent } from './chat/pages/chat-page/chat-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginScreenComponent, pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'dieta-porcion', component: DietaPorcionComponent, pathMatch: 'full' },
   { path: 'dieta-tiempo', component: DietaTiempoComponent, pathMatch: 'full' },
   { path: 'patients', loadChildren: () => import('./patients/patients.module').then((m) => m.PatientsModule), pathMatch: 'full' },
-  { path: 'estadisticas', component: EstadisticasComponent, pathMatch: 'full'},
+  { path: 'chat', component: ChatPageComponent, pathMatch: 'full' },
+  { path: 'estadisticas', component: EstadisticasComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

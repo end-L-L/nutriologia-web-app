@@ -36,6 +36,7 @@ import { EliminarUserModalComponent } from './modals/eliminar-user-modal/elimina
 import { EditarUserModalComponent } from './modals/editar-user-modal/editar-user-modal.component';
 import { DietaTiempoComponent } from './partials/dieta-tiempo/dieta-tiempo.component';
 import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.component';
+import { ChatPageComponent } from './chat/pages/chat-page/chat-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.co
     EditarUserModalComponent,
     DietaTiempoComponent,
     DietaPorcionComponent,
+    ChatPageComponent,
     
   ],
   imports: [
