@@ -5,6 +5,7 @@ import { FacadeService } from 'src/services/facade.service';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarUserModalComponent } from 'src/app/modals/editar-user-modal/editar-user-modal.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // agregado por Gerardo
 
 //Para poder usar jquery definir esto
 declare var $:any;
@@ -17,6 +18,7 @@ declare var $:any;
 export class RegistroPacienteComponent implements OnInit{
   @Input() rol: string = "";
   @Input() datos_user: any = {};
+  registroForm: FormGroup; //agregado por Gerardo
 
  //Para contraseñas
   public hide_1: boolean = false;
@@ -48,9 +50,78 @@ public objetivos: any[] = [
     public activatedRoute: ActivatedRoute,
     private pacienteService: PacienteService,
     private facadeService: FacadeService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private fb: FormBuilder // agregado por Gerardo
 
-  ){}
+
+
+  ){
+    //agregado por Gerardo
+    this.registroForm = this.fb.group({
+    first_name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+    last_name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+    });
+}
+    // agregado por Gerardo
+    validateLetters1(event: KeyboardEvent) {
+      const charCode = event.charCode;
+      if (charCode >= 48 && charCode <= 57) {
+        event.preventDefault();
+      }
+    }
+
+    // Agregado por Gerardo
+    validateNumbers(event: KeyboardEvent): void {
+      const charCode = event.charCode;
+      const input = event.target as HTMLInputElement;
+      const currentValue = input.value;
+      
+      // Permite solo números (charCode entre 48 y 57) y el retroceso (charCode 8)
+      if ((charCode < 48 || charCode > 57) && charCode !== 8) {
+        event.preventDefault();  // Evita que el carácter se registre si no es un número
+      }
+      
+      // Valida que no se exceda el valor máximo de 120
+      setTimeout(() => {
+        let currentAge = parseInt(currentValue, 10);
+        if (currentAge > 120) {
+          input.value = '120'; // Si es mayor a 120, establece el valor a 120
+          this.paciente.edad = '120'; // Actualiza el modelo de datos
+        }
+      }, 0); // Ejecuta después de la actualización del valor del campo
+    }
+    
+
+    //Agregado por Gerardo
+    validarFlotante(event: any, campo: string): void {
+      let value = event.target.value;
+    
+      // Asegurarse de que solo sean números y hasta dos decimales
+      let decimalIndex = value.indexOf('.');
+    
+      // Si el valor contiene un punto decimal
+      if (decimalIndex !== -1) {
+        let decimalPart = value.slice(decimalIndex + 1);
+        
+        // Limitar los decimales a dos
+        if (decimalPart.length > 2) {
+          value = parseFloat(value).toFixed(2); // Limitar a dos decimales
+        }
+      }
+    
+      // Asignar el valor corregido
+      this.paciente[campo] = value;
+    
+      // Validación de error si el valor no es un número o excede los límites
+      if (isNaN(value) || value < 0 || value > 999 || !/^(\d+(\.\d{0,2})?)?$/.test(value)) {
+        this.errors[campo] = "El valor debe ser un número válido entre 0 y 999, con hasta 2 decimales";
+      } else {
+        this.errors[campo] = "";
+      }
+    }
+    
+
+  
 
   ngOnInit(): void {
     //El primer if valida si existe un parámetro en la URL
