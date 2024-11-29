@@ -11,60 +11,171 @@
 
 .section-registro {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
+.titulo-centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title-user {
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
+  color: #ede6e6;
+  text-transform: capitalize;
+}
+
 .form-group {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20%;
-  /* Ajusta el alto del contenedor al 100% de la pantalla */
 }
 
-.title-user {
-  font-size: 28px;
+.contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 20px;
+}
+
+.columna {
+  flex: 1;
+  max-width: 50%;
+}
+
+.calendario {
+  border-right: 2px solid #ddd;
+  padding-right: 20px;
+}
+
+.alimentos {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-top: 22px;
+}
+
+.calendario-container {
   text-align: center;
-  font-family: Bold;
-  letter-spacing: 2px;
-  color: #000000;
-  text-transform: capitalize;
-  opacity: 1;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
 }
 
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendario-header button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  /* 7 columnas para los días del mes */
+  gap: 10px;
+  justify-items: center;
+  /* Centra los días en sus celdas */
+}
+
+.calendario-dia {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.calendario-dia.vacio {
+  background-color: transparent;
+  cursor: default;
+}
+
+.calendario-dia.guardado {
+  background-color: #a78bfa;
+  color: white;
+}
+
+.calendario-dia.seleccionado {
+  background-color: #34d399;
+  color: white;
+}
+
+.calendario-dia:hover {
+  background-color: #e5e5e5;
+}
+
+/* Estilos para los días de la semana */
+.dias-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  /* 7 columnas para los días de la semana */
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.dia {
+  font-weight: bold;
+  text-align: center;
+  justify-self: center;
+  /* Centra cada día de la semana */
+  font-size: 14px;
+}
+
+/* Estilos de los botones */
+.guardar-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #48b6cf;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.guardar-btn:hover {
+  background-color: #2b889d;
+}
+
+/* Sección de alimentos */
 .section {
   display: flex;
   align-items: center;
-  padding: 20px;
-  border: 1px solid #ccc;
-  margin: 10px 0;
+  justify-content: space-between;
+  padding: 15px;
   background-color: white;
-  border-radius: 10px;
-  width: 100%;
-  /* Asegura que todas las secciones tengan el mismo ancho */
-  max-width: 500px;
-  /* Ajusta el ancho máximo */
-  height: 100px;
-  /* Establece una altura uniforme */
-  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .contador-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
   border: 1px solid #ccc;
-  /* Borde gris */
   border-radius: 8px;
   padding: 5px 10px;
-  width: 100px;
-  /* Ajusta el ancho según sea necesario */
-  font-family: Arial, sans-serif;
-  /* Asegura que la fuente sea básica */
 }
 
 .button-2 {
@@ -72,10 +183,8 @@
   border: none;
   font-size: 18px;
   color: #1a73e8;
-  /* Color azul */
   cursor: pointer;
   padding: 0 5px;
-  /* Espacio alrededor del símbolo */
 }
 
 .button-2:focus {
@@ -83,60 +192,85 @@
 }
 
 .section-image {
-  width: 70px;
-  height: 70px;
-  margin-left: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
+/* Sección de botones (Cancelar y Guardar cambios) */
 .section-buttons {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 3rem;
+  margin-top: 20px;
 }
 
 .btn-primary {
   width: 208px;
   height: 48px;
-  background-color: #0799b6 !important;
-  border-color: #0799b6 !important;
-  border-radius: 8px !important;
-  opacity: 1;
-  //Fuente
-  text-align: center;
-  font-family: Bold;
+  background-color: #7eca3b;
+  border: none;
+  border-radius: 8px;
+  color: white;
   font-size: 16px;
   font-weight: bold;
-  letter-spacing: 0px;
-  color: #FFFFFF;
-  opacity: 1;
+  text-align: center;
 }
 
 .btn-primary:hover {
-  background-color: #0799b6 !important;
-  border-color: #0799b6 !important;
-
+  background-color: #5da91a;
 }
 
 .btn-danger {
   width: 208px;
   height: 48px;
-  border-radius: 8px !important;
-  opacity: 1;
-  //Fuente
-  text-align: center;
-  font-family: Bold;
+  background-color: #d9534f;
+  border: none;
+  border-radius: 8px;
+  color: white;
   font-size: 16px;
   font-weight: bold;
-  letter-spacing: 0px;
-  color: #FFFFFF;
-  opacity: 1;
+  text-align: center;
+}
+
+.btn-danger:hover {
+  background-color: #b52a25;
 }
 
 span {
   font-size: 18px;
   text-align: center;
   flex: 1;
+}
+
+.contador-container {
+  font-size: 16px;
+  background-color: #e7e7e7;
+}
+
+.contador-container .button-2 {
+  font-size: 20px;
+}
+
+.contador-container .button-2:hover {
+  color: #066c84;
+}
+
+.calendario-dia.seleccionado {
+  background-color: #34d399;
+  color: white;
+}
+
+.calendario-dia.guardado {
+  background-color: #a78bfa;
+  color: white;
+}
+
+.section-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
