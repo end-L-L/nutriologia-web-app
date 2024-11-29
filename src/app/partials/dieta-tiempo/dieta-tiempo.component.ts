@@ -26,6 +26,10 @@ export class DietaTiempoComponent implements OnInit{
   public editar:boolean = false;
   public idUser: Number = 0;
   public alimentos_json: any [] = [];
+  public contadores: number[][] = [[0], [0], [0], [0]];
+  public diaSeleccionado: string = '';
+  public dietaPorDia: any[] = [];
+
 
   public alimentos:any[]= [
     {value: '1', nombre: 'Carne'},
@@ -64,13 +68,6 @@ export class DietaTiempoComponent implements OnInit{
     {value: '5', nombre: 'Viernes', comidas: this.comidas},
     {value: '6', nombre: 'Sabado', comidas: this.comidas},
     {value: '7', nombre: 'Domingo', comidas: this.comidas},
-  ];
-
-  contadores = [
-    [0], // Proteínas
-    [0], // Frutas
-    [0], // Verduras
-    [0]  // Carbohidratos-legumbres
   ];
 
   constructor(
@@ -169,48 +166,50 @@ export class DietaTiempoComponent implements OnInit{
 
   }
 
-  public radioChange(event: MatRadioChange) {
-
-    if(event.value == "Lunes"){
-      this.tipo_dia = "Lunes"
-    }else if (event.value == "Martes"){
-      this.tipo_dia = "Martes"
-    }else if (event.value == "Miercoles"){
-      this.tipo_dia = "Miercoles"
-    }
+  radioChange(event: any): void {
+    this.diaSeleccionado = event.value;
   }
 
-  incrementar(sectionIndex: number, contadorIndex: number) {
+  incrementar(sectionIndex: number, contadorIndex: number): void {
     this.contadores[sectionIndex][contadorIndex]++;
   }
 
-  decrementar(sectionIndex: number, contadorIndex: number) {
+  decrementar(sectionIndex: number, contadorIndex: number): void {
     if (this.contadores[sectionIndex][contadorIndex] > 0) {
       this.contadores[sectionIndex][contadorIndex]--;
     }
   }
 
-  guardar() {
-    // const dataToSave = {
-    //   proteinas: this.contadores[0][0],
-    //   frutas: this.contadores[1][0],
-    //   verduras: this.contadores[2][0],
-    //   carbohidratosLegumbres: this.contadores[3][0]
-    // };
+  guardar(): void {
+    if (!this.diaSeleccionado) {
+      alert('Por favor, selecciona un día antes de guardar.');
+      return;
+    }
 
-    // // Llama al servicio para guardar los datos
-    // this.tiempoService.guardarDieta(dataToSave).subscribe(
-    //   response => {
-    //     console.log('Datos guardados exitosamente:', response);
-    //     alert("Datos guardados exitosamente");
-    //     this.resetearContadores();
-    //   },
-    //   error => {
-    //     console.error('Error al guardar los datos:', error);
-    //     alert("Error al guardar los datos");
-    //   }
-    // );
+    const dieta = {
+      dia: this.diaSeleccionado,
+      proteinas: this.contadores[0][0],
+      frutas: this.contadores[1][0],
+      verduras: this.contadores[2][0],
+      carbohidratosLegumbres: this.contadores[3][0],
+    };
+
+    this.dietaPorDia.push(dieta);
+
+    alert(`Dieta guardada para el día ${this.diaSeleccionado}.`);
+    console.log('Dieta guardada:', dieta);
+
+    this.diaSeleccionado = '';
+    this.contadores = [[0], [0], [0], [0]];
   }
+
+    regresar2(): void {
+      alert('Acción cancelada.');
+    }
+
+    actualizar2(): void {
+      alert('Función actualizar no implementada aún.');
+    }
 
 
   // Método para resetear los contadores
