@@ -36,7 +36,6 @@ import { EliminarUserModalComponent } from './modals/eliminar-user-modal/elimina
 import { EditarUserModalComponent } from './modals/editar-user-modal/editar-user-modal.component';
 import { DietaTiempoComponent } from './partials/dieta-tiempo/dieta-tiempo.component';
 import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.component';
-import { ChatPageComponent } from './chat/pages/chat-page/chat-page.component';
 
 @NgModule({
   declarations: [
@@ -52,8 +51,6 @@ import { ChatPageComponent } from './chat/pages/chat-page/chat-page.component';
     EditarUserModalComponent,
     DietaTiempoComponent,
     DietaPorcionComponent,
-    ChatPageComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -74,11 +71,11 @@ import { ChatPageComponent } from './chat/pages/chat-page/chat-page.component';
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
-    NgChartsModule,  
-    NgxMaskDirective // Agredado por david para la mask del telefono 10 digitos
+    NgChartsModule,
+    NgxMaskDirective, // Agredado por david para la mask del telefono 10 digitos
   ],
   providers: [
-    provideNgxMask() // Agredado por david para la mask del telefono 10 digitos
+    provideNgxMask(), // Agredado por david para la mask del telefono 10 digitos
   ],
   bootstrap: [AppComponent],
 })
