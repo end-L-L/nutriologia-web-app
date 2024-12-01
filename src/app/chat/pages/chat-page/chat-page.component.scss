@@ -37,6 +37,7 @@
 .main-container {
     width: 60%;
     margin: auto;
+    position: relative;
 }
 
 /* Messages section */
@@ -128,4 +129,11 @@
 .receiverMessage {
     display: flex;
     justify-content: start;
+}
+
+.powered-by {
+    position: absolute;
+    bottom: -8px;
+    left:4px;
+    opacity: 0.9;
 }
