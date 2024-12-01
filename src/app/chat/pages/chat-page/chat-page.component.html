@@ -4,6 +4,7 @@
   <header class="header">
     <h1>🍎 Chat de Nutrición</h1>
     <span class="alert-notification">1</span>
+    <div>{{ isOtherUserConnected() }}</div>
   </header>
 
   <div class="main-container">
@@ -15,21 +16,21 @@
       </div>
 
       <!-- Messages -->
-      <div *ngFor="let message of messages" class="flex" [ngClass]="message.sender === 'user' ? 'justify-end' : 'justify-start'">
-        <div class="{{ message.sender === 'user' ? 'user-message' : 'bot-message' }}">
+      <div *ngFor="let message of messages" [ngClass]="message.ownerId === myId ? 'ownerMessage' : 'receiverMessage'">
+        <div class="{{ message.ownerId === myId ? 'user-message' : 'bot-message' }}">
           {{ message.text }}
         </div>
       </div>
     </div>
 
     <!-- Input Area -->
-    <div class="input-area">
+    <form class="input-area" (submit)="sendMessage($event, messageInput)">
       <input type="text" placeholder="Escribe tu mensaje..." #messageInput />
-      <button (click)="sendMessage(messageInput)">
+      <button type="submit">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M3 14h9m5-7l5 5-5 5" />
         </svg>
       </button>
-    </div>
+    </form>
   </div>
 </div>

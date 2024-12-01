@@ -119,3 +119,13 @@
 .input-area button:hover {
     background-color: #059669;
 }
+
+.ownerMessage {
+    display: flex;
+    justify-content: end;
+}
+
+.receiverMessage {
+    display: flex;
+    justify-content: start;
+}
