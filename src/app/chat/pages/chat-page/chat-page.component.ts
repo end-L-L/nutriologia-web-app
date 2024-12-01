@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { io } from 'socket.io-client';
 import { environment } from 'src/environments/environment';
+import { Message } from '../../interfaces';
 
 @Component({
   selector: 'chat-page',
@@ -12,7 +13,7 @@ export class ChatPageComponent implements OnInit {
   private usersConnected: string[] = [];
 
   public currentDate = new Date();
-  public messages: { text: string; ownerId: string; receptorId: string; date: Date; id: string }[] = [];
+  public messages: Message[] = [];
   public myId = window.localStorage.getItem('userId');
 
   ngOnInit(): void {
