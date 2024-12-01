@@ -51,7 +51,6 @@ import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.co
     EditarUserModalComponent,
     DietaTiempoComponent,
     DietaPorcionComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -72,11 +71,11 @@ import { DietaPorcionComponent } from './partials/dieta-porcion/dieta-porcion.co
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
-    NgChartsModule,  
-    NgxMaskDirective // Agredado por david para la mask del telefono 10 digitos
+    NgChartsModule,
+    NgxMaskDirective, // Agredado por david para la mask del telefono 10 digitos
   ],
   providers: [
-    provideNgxMask() // Agredado por david para la mask del telefono 10 digitos
+    provideNgxMask(), // Agredado por david para la mask del telefono 10 digitos
   ],
   bootstrap: [AppComponent],
 })
