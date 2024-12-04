@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  //url_api: 'https://nutriologia-web-api.onrender.com',
+  url_api: 'https://nutriologia-web-api.onrender.com',
   CHAT_URL: 'http://localhost:3000',
-  url_api: "http://127.0.0.1:8000"
+  //url_api: "http://127.0.0.1:8000"
 };
