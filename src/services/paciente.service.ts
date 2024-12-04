@@ -38,6 +38,25 @@ export class PacienteService {
       'dieta': '',
     }
   }
+
+  public createPost(data: any){
+    return {
+      'first_name': data.first_name,
+      'last_name': data.last_name,
+      'email': data.email,
+      'password': data.password,
+      'telefono': data.telefono,
+      'edad': data.edad,
+      'peso': Number(data.peso),
+      'estatura': Number(data.estatura),
+      'objetivo': data.objetivo,
+      'tipo_dieta': Number(data.dieta),
+      'username': data.email,
+      'role': data.rol
+    }
+  }
+
+
 ///Validación para el formulario
   public validarPaciente(data: any, editar: boolean){
     console.log("Validando paciente... ", data);
@@ -113,32 +132,47 @@ export class PacienteService {
   //Aquí van los servicios HTTP
   //Servicio para registrar un nuevo usuario
   public registrarPaciente (data: any): Observable <any>{
-    return this.http.post<any>(`${environment.url_api}/paciente/`,data, httpOptions);
+    return this.http.post<any>(`${environment.url_api}/api/v1/pacientes/crear/`,data, httpOptions);
   }
 
   public obtenerListaPacientes (): Observable <any>{
-    var token = this.facadeService.getSessionToken();
-    var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-    return this.http.get<any>(`${environment.url_api}/lista-pacientes/`, {headers:headers});
+    return this.http.get<any>(`${environment.url_api}/api/v1/pacientes`, httpOptions);
   }
+
+  // public obtenerListaPacientes (): Observable <any>{
+  //   var token = this.facadeService.getSessionToken();
+  //   var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
+  //   return this.http.get<any>(`${environment.url_api}/lista-pacientes/`, {headers:headers});
+  // }
 
   //Obtener un solo usuario dependiendo su ID
   public getPacienteByID(idUser: Number){
-    return this.http.get<any>(`${environment.url_api}/paciente/?id=${idUser}`,httpOptions);
+    return this.http.get<any>(`${environment.url_api}/api/v1/pacientes/obtener/${idUser}`,httpOptions);
+  }
+
+  // editar paciente
+  public editarPaciente(data: any): Observable<any> {
+    return this.http.put<any>(`${environment.url_api}/api/v1/pacientes/actualizar/${data.id}`, data, httpOptions);
+  }
+
+  // eliminar paciente
+  public eliminarPaciente(idUser: number): Observable<any> {
+    return this.http.delete<any>(`${environment.url_api}/api/v1/pacientes/eliminar/${idUser}`, httpOptions);
   }
 
   //Servicio para actualizar un usuario
-  public editarPaciente (data: any): Observable <any>{
-    var token = this.facadeService.getSessionToken();
-    var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-    return this.http.put<any>(`${environment.url_api}/paciente-edit/`, data, {headers:headers});
-  }
+  // public editarPaciente (data: any): Observable <any>{
+  //   var token = this.facadeService.getSessionToken();
+  //   var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
+  //   return this.http.put<any>(`${environment.url_api}/paciente-edit/`, data, {headers:headers});
+  // }
   //Eliminar Admin
-  public eliminarPaciente(idUser: number): Observable <any>{
-    var token = this.facadeService.getSessionToken();
-    var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-    return this.http.delete<any>(`${environment.url_api}/paciente-edit/?id=${idUser}`,{headers:headers});
-  }
+  // public eliminarPaciente(idUser: number): Observable <any>{
+  //   var token = this.facadeService.getSessionToken();
+  //   var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
+  //   return this.http.delete<any>(`${environment.url_api}/paciente-edit/?id=${idUser}`,{headers:headers});
+  // }
+
   //Obtener el total de cada uno de los usuarios
   public getTotalUsuarios(){
     var token = this.facadeService.getSessionToken();

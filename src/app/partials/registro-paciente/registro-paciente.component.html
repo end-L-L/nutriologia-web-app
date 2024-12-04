@@ -83,8 +83,8 @@
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Tipo de dieta</mat-label>
           <mat-select [(ngModel)]="paciente.dieta">
-            <mat-option *ngFor="let dietas of dietas" [value]="dietas.viewValue">
-              {{ dietas.viewValue }}
+            <mat-option *ngFor="let dieta of dietas" [value]="dieta.value">
+              {{ dieta.viewValue }}
             </mat-option> <!-- Se añadió el cierre correcto de mat-option -->
           </mat-select>
         </mat-form-field>
