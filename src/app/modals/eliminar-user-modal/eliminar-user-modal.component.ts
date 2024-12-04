@@ -32,24 +32,26 @@ export class EliminarUserModalComponent implements OnInit{
 
   public eliminarUser(){
     if(this.rol == "nutriologo"){
-      this.nustriologoService.eliminarNutriologo(this.data.id).subscribe(
-        (response)=>{
+      this.nustriologoService.eliminarNutriologo(this.data.id).subscribe({
+        next: (response)=>{
           console.log(response);
           this.dialogRef.close({isDelete:true});
-        }, (error)=>{
+        }, 
+        error: (error)=>{
           this.dialogRef.close({isDelete:false});
         }
-      );
+      });
 
-    }else if(this.rol == "alumno"){
-      this.pacienteService.eliminarPaciente(this.data.id).subscribe(
-        (response)=>{
+    }else if(this.rol == "paciente"){
+      this.pacienteService.eliminarPaciente(this.data.id).subscribe({
+        next: (response)=>{
           console.log(response);
           this.dialogRef.close({isDelete:true});
-        }, (error)=>{
+        }, 
+        error: (error)=>{
           this.dialogRef.close({isDelete:false});
         }
-      );
+      });
 
     }
   }

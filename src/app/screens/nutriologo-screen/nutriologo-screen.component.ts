@@ -11,7 +11,7 @@ import { EliminarUserModalComponent } from 'src/app/modals/eliminar-user-modal/e
   templateUrl: './nutriologo-screen.component.html',
   styleUrls: ['./nutriologo-screen.component.scss']
 })
-export class NutriologoScreenComponent {
+export class NutriologoScreenComponent implements OnInit {
   public tipo:string = "nutriologo-screen";
   public name_user:string = "";
   public lista_pacientes:any[]= [];
@@ -23,7 +23,8 @@ export class NutriologoScreenComponent {
     { id: 3, nombre: 'Carlos García' },
     { id: 4, nombre: 'Ana Ramírez' },
     { id: 5, nombre: 'Luis Fernández' }
-];
+  ];
+
   constructor(
     public facadeService: FacadeService,
     private pacienteService: PacienteService,
@@ -34,47 +35,53 @@ export class NutriologoScreenComponent {
   ngOnInit(): void {
     //this.name_user = this.facadeService.getUserCompleteName();
     //Lista de admins
-    //this.obtenerPacientes();
+    this.obtenerPacientes();
   }
 
-  //Obtener lista de usuarios
-  public obtenerPacientes(){
-    this.pacienteService.obtenerListaPacientes().subscribe(
-      (response)=>{
-        this.lista_pacientes = response;
-        console.log("Lista users: ", this.lista_pacientes);
-      }, (error)=>{
-        alert("No se pudo obtener la lista de pacientes");
+  public obtenerPacientes() {
+    this.pacienteService.obtenerListaPacientes().subscribe({
+      next: (data: any[]) => {
+        this.pacientes = data.map((item: any) => {
+          return {
+            id: item.id,
+            nombre: `${item.user.first_name} ${item.user.last_name}`
+          };
+        });
+        console.log("Lista de pacientes: ", this.pacientes);
+      },
+      error: (error: any) => {
+        console.error(error);
       }
-    );
+    });
   }
 
-    //Funcion para editar
-    public goEditar(idUser: number){
-      this.router.navigate(["registro-usuarios/paciente/"+idUser]);
-    }
 
-    public delete(idUser: number){
-      const dialogRef = this.dialog.open(EliminarUserModalComponent,{
-        data: {id: idUser, rol: 'paciente'}, //Se pasan valores a través del componente
-        height: '288px',
-        width: '328px',
-      });
+  //Funcion para editar
+  public goEditar(idUser: number){
+    this.router.navigate(["registro-usuarios/paciente/"+idUser]);
+  }
 
-      dialogRef.afterClosed().subscribe(result => {
-        if(result.isDelete){
-          console.log("Paciente eliminado");
-          //Recargar página
-          window.location.reload();
-        }else{
-          alert("Paciente no eliminado ");
-          console.log("No se eliminó el paciente");
-        }
-      });
+  public delete(idUser: number){
+    const dialogRef = this.dialog.open(EliminarUserModalComponent,{
+      data: {id: idUser, rol: 'paciente'}, //Se pasan valores a través del componente
+      height: '288px',
+      width: '328px',
+    });
 
-    }
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.isDelete){
+        console.log("Paciente eliminado");
+        //Recargar página
+        window.location.reload();
+      }else{
+        alert("Paciente no eliminado ");
+        console.log("No se eliminó el paciente");
+      }
+    });
 
-    public goRegistrar(){
-      this.router.navigate(["registro-usuarios/paciente/"]);
-    }
+  }
+
+  public goRegistrar(){
+    this.router.navigate(["registro-usuarios/paciente/"]);
+  }
 }
