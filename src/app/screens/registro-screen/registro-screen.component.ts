@@ -105,10 +105,10 @@ export class RegistroScreenComponent implements OnInit{
         (response)=>{
           this.user = response;
           //Agregamos valores faltantes
-          this.user.first_name = response.user.first_name;
-          this.user.last_name = response.user.last_name;
-          this.user.email = response.user.email;
-          this.user.tipo_usuario = this.rol;
+          //this.user.first_name = response.user.first_name;
+          //this.user.last_name = response.user.last_name;
+          //this.user.email = response.user.email;
+          //this.user.tipo_usuario = this.rol;
           this.isPaciente = true;
           console.log("Datos paciente: ", this.user);
         }, (error)=>{

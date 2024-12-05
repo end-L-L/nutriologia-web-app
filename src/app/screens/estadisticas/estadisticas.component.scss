@@ -1,0 +1,28 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Esto crea 3 columnas iguales */
+    gap: 20px;
+    /* Espacio entre los cuadros */
+}
+
+.chart-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    /* Color de fondo opcional para los cuadros */
+    border-radius: 8px;
+}
+
+canvas {
+    width: 100%;
+    /* Asegura que el canvas ocupe todo el ancho de su contenedor */
+    height: 200px;
+    /* Ajusta la altura de los gráficos */
+    background-color: #e9e9e9;
+    /* Color de fondo del canvas para visibilidad */
+}

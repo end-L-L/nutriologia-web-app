@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'dieta-tiempo', component: DietaTiempoComponent, pathMatch: 'full' },
   { path: 'patients', loadChildren: () => import('./patients/patients.module').then((m) => m.PatientsModule), pathMatch: 'full' },
   { path: 'chat', loadChildren: () => import('./chat/chat.module').then((m) => m.ChatModule), pathMatch: 'full' },
-  { path: 'estadisticas', component: EstadisticasComponent, pathMatch: 'full' },
+  { path: 'estadisticas/:id', component: EstadisticasComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

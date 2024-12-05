@@ -13,214 +13,264 @@ import * as $ from 'jquery';
   templateUrl: './dieta-tiempo.component.html',
   styleUrls: ['./dieta-tiempo.component.scss'],
 })
-export class DietaTiempoComponent implements OnInit{
+
+export class DietaTiempoComponent implements OnInit {
 
   @Input() rol: string = "";
   @Input() datos_user: any = {};
 
-  public tipo:string = "dieta-tiempo";
-  public tipo_dia:string = "";
-  public tiempo:any= {};
+  public tipo: string = "dieta-tiempo";
+  public tipo_dia: string = "";
+  public tiempo: any = {};
   public token: string = "";
-  public errors:any={};
-  public editar:boolean = false;
+  public errors: any = {};
+  public editar: boolean = false;
   public idUser: Number = 0;
-  public alimentos_json: any [] = [];
-  public contadores: number[][] = [[0], [0], [0], [0]];
-  public diaSeleccionado: string = '';
-  public dietaPorDia: any[] = [];
+  public alimentos_json: any[] = [];
+  public mesActual: number = new Date().getMonth() + 1;  // Guardamos el mes como número
+  public dias: any[] = [];
+  public diasConValores: { [key: string]: any } = {};
+  public diasSeleccionados: string[] = [];
+  public contadores: number[] = [0, 0, 0, 0];
+  public anioActual: number = new Date().getFullYear();
+  public diasSemana: string[] = ['LU', 'MA', 'MI', 'JU', 'VI', 'SÁ', 'DO'];
 
-
-  public alimentos:any[]= [
-    {value: '1', nombre: 'Carne'},
-    {value: '2', nombre: 'Pollo'},
-    {value: '3', nombre: 'Pescado'},
-    {value: '4', nombre: 'Huevo'},
-    {value: '5', nombre: 'Lentejas'},
-    {value: '6', nombre: 'Manzana'},
-    {value: '7', nombre: 'Brocoli'},
-    {value: '8', nombre: 'Zanahoria'},
-    {value: '9', nombre: 'Espinaca'},
-    {value: '10', nombre: 'Naranja'},
-    {value: '11', nombre: 'Arroz'},
-    {value: '12', nombre: 'Maiz'},
-    {value: '13', nombre: 'Anena'},
-    {value: '14', nombre: 'Papa'},
-    {value: '15', nombre: 'Tortilla'},
-    {value: '16', nombre: 'Aguacate'},
-    {value: '17', nombre: 'Nuez'},
-    {value: '18', nombre: 'Semilla'},
-    {value: '19', nombre: 'Aceite_oliva'},
-    {value: '20', nombre: 'Mantequilla_mani'},
+  public alimentos: any[] = [
+    { value: '1', nombre: 'Carne' },
+    { value: '2', nombre: 'Pollo' },
+    { value: '3', nombre: 'Pescado' },
+    { value: '4', nombre: 'Huevo' },
+    { value: '5', nombre: 'Lentejas' },
+    { value: '6', nombre: 'Manzana' },
+    { value: '7', nombre: 'Brocoli' },
+    { value: '8', nombre: 'Zanahoria' },
+    { value: '9', nombre: 'Espinaca' },
+    { value: '10', nombre: 'Naranja' },
+    { value: '11', nombre: 'Arroz' },
+    { value: '12', nombre: 'Maiz' },
+    { value: '13', nombre: 'Anena' },
+    { value: '14', nombre: 'Papa' },
+    { value: '15', nombre: 'Tortilla' },
+    { value: '16', nombre: 'Aguacate' },
+    { value: '17', nombre: 'Nuez' },
+    { value: '18', nombre: 'Semilla' },
+    { value: '19', nombre: 'Aceite_oliva' },
+    { value: '20', nombre: 'Mantequilla_mani' },
   ];
 
-  public comidas:any[]= [
-    {value: '1', nombre: 'Desayuno', alimentos: this.alimentos},
-    {value: '2', nombre: 'Comida', alimentos: this.alimentos},
-    {value: '3', nombre: 'Cena', alimentos: this.alimentos},
-  ];
-
-  public dias:any[]= [
-    {value: '1', nombre: 'Luneas', comidas: this.comidas},
-    {value: '2', nombre: 'Martes', comidas: this.comidas},
-    {value: '3', nombre: 'Miercoles', comidas: this.comidas},
-    {value: '4', nombre: 'Jueves', comidas: this.comidas},
-    {value: '5', nombre: 'Viernes', comidas: this.comidas},
-    {value: '6', nombre: 'Sabado', comidas: this.comidas},
-    {value: '7', nombre: 'Domingo', comidas: this.comidas},
+  public comidas: any[] = [
+    { value: '1', nombre: 'Desayuno', alimentos: this.alimentos },
+    { value: '2', nombre: 'Comida', alimentos: this.alimentos },
+    { value: '3', nombre: 'Cena', alimentos: this.alimentos },
   ];
 
   constructor(
-    private location : Location,
+    private location: Location,
     private router: Router,
     public activatedRoute: ActivatedRoute,
     private tiempoService: TiempoService,
     private facadeService: FacadeService,
     public dialog: MatDialog
-  )
-  {}
+  ) { }
 
   ngOnInit(): void {
-    //El primer if valida si existe un parámetro en la URL
-    if(this.activatedRoute.snapshot.params['id'] != undefined){
+    if (this.activatedRoute.snapshot.params['id'] != undefined) {
       this.editar = true;
-      //Asignamos a nuestra variable global el valor del ID que viene por la URL
       this.idUser = this.activatedRoute.snapshot.params['id'];
-      console.log("ID User: ", this.idUser);
-      //Al iniciar la vista asignamos los datos del user
       this.tiempo = this.datos_user;
-    }else{
+    } else {
       this.tiempo = this.tiempoService.esquemaTiempo();
       this.tiempo.rol = this.rol;
       this.token = this.facadeService.getSessionToken();
     }
-    //Imprimir datos en consola
-    console.log("Tiempo: ", this.tiempo);
-
+    this.generarCalendario(new Date().getMonth() + 1, new Date().getFullYear());
   }
 
-  public regresar(){
+  public regresar() {
     this.location.back();
   }
 
-  public registrar(){
-    //Validar
-    this.errors = [];
-
-    this.errors = this.tiempoService.validarTiempo(this.tiempo, this.editar)
-    if(!$.isEmptyObject(this.errors)){
+  public registrar() {
+    this.errors = this.tiempoService.validarTiempo(this.tiempo, this.editar);
+    if (!$.isEmptyObject(this.errors)) {
       return false;
     }
-    // Validamos que las contraseñas coincidan
-    //Validar la contraseña
-    if(this.tiempo.password == this.tiempo.confirmar_password){
-      //Aquí si todo es correcto vamos a registrar - aquí se manda a consumir el servicio
+    if (this.tiempo.password == this.tiempo.confirmar_password) {
       this.tiempoService.registrarTiempo(this.tiempo).subscribe(
-        (response)=>{
+        (response) => {
           alert("Usuario registrado correctamente");
-          console.log("Usuario registrado: ", response);
           this.router.navigate(["home"]);
-        }, (error)=>{
+        }, (error) => {
           alert("No se pudo registrar usuario");
         }
       );
-    }else{
+    } else {
       alert("Las contraseñas no coinciden");
-      this.tiempo.password="";
-      this.tiempo.confirmar_password="";
+      this.tiempo.password = "";
+      this.tiempo.confirmar_password = "";
     }
   }
 
-  public actualizar(){
-    //Validación
-    this.errors = [];
-
-    this.errors = this.tiempoService.validarTiempo(this.tiempo, this.editar)
-    if(!$.isEmptyObject(this.errors)){
+  public actualizar() {
+    this.errors = this.tiempoService.validarTiempo(this.tiempo, this.editar);
+    if (!$.isEmptyObject(this.errors)) {
       return false;
     }
-
-    const dialogRef = this.dialog.open(EditarUserModalComponent,{
-      data: {rol: 'nutriologo'}, //Se pasan valores a través del componente
+    const dialogRef = this.dialog.open(EditarUserModalComponent, {
+      data: { rol: 'nutriologo' },
       height: '288px',
       width: '328px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result.isEdit){
+      if (result.isEdit) {
         this.tiempoService.editarTiempo(this.tiempo).subscribe(
-          (response)=>{
-            alert("La dieta se edito correctamente");
-            console.log("Dieta modificada: ", response);
-            //Si se editó, entonces mandar al home
+          (response) => {
+            alert("La dieta se editó correctamente");
             this.router.navigate(["nutriologo-screen"]);
-          }, (error)=>{
-            alert("No se edito la");
-            console.log("Error: ", error);
+          }, (error) => {
+            alert("No se editó la dieta");
           }
         );
-      }else{
-        console.log("No se editó al nutriologo");
       }
     });
-
   }
 
-  radioChange(event: any): void {
-    this.diaSeleccionado = event.value;
-  }
+  // Generar calendario con mes y año
+  generarCalendario(mes: number, anio: number): void {
+    this.mesActual = mes; // Guardamos solo el número del mes
+    this.anioActual = anio; // Guardamos el año
 
-  incrementar(sectionIndex: number, contadorIndex: number): void {
-    this.contadores[sectionIndex][contadorIndex]++;
-  }
+    const diasEnMes = new Date(anio, mes, 0).getDate();
+    const primerDia = new Date(anio, mes - 1, 1).getDay();
+    this.dias = [];
 
-  decrementar(sectionIndex: number, contadorIndex: number): void {
-    if (this.contadores[sectionIndex][contadorIndex] > 0) {
-      this.contadores[sectionIndex][contadorIndex]--;
+    // Llenar los días vacíos al inicio del mes
+    for (let i = 0; i < primerDia; i++) {
+      this.dias.push({ dia: null });
     }
+
+    // Llenar los días con el número del día
+    for (let dia = 1; dia <= diasEnMes; dia++) {
+      this.dias.push({ dia, fecha: `${dia}/${mes}/${anio}` });
+    }
+  }
+
+  // Cambiar mes (incrementar o decrementar)
+  cambiarMes(direccion: number): void {
+    let nuevoMes = this.mesActual + direccion;
+    let nuevoAnio = this.anioActual;
+
+    if (nuevoMes === 0) {
+      nuevoMes = 12;
+      nuevoAnio--;
+    } else if (nuevoMes === 13) {
+      nuevoMes = 1;
+      nuevoAnio++;
+    }
+
+    this.generarCalendario(nuevoMes, nuevoAnio);
+  }
+
+  // Obtener nombre del mes
+  obtenerNombreMes(mes: number): string {
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    return meses[mes - 1]; // Ajuste para que empiece desde 0
+  }
+
+  // Función de selección de días
+  toggleSeleccion(dia: any): void {
+    if (!dia.fecha) return;
+
+    const index = this.diasSeleccionados.indexOf(dia.fecha);
+
+    if (index > -1) {
+      this.diasSeleccionados.splice(index, 1);
+    } else {
+      this.diasSeleccionados.push(dia.fecha);
+    }
+
+    // Reiniciar el estado
+    this.resetdia();
+  }
+
+  // Asignar valores a los días seleccionados
+  asignarValores(): void {
+    const valores = {
+      proteinas: 2,
+      frutas: 3,
+      verduras: 4,
+      carbohidratos: 2
+    };
+
+    // Asignar valores a los días seleccionados
+    this.diasSeleccionados.forEach(dia => {
+      this.diasConValores[dia] = { ...valores };
+    });
+
+    // Limpiar selección
+    this.diasSeleccionados = [];
+    alert("Valores guardados");
+  }
+
+  // Obtener clase CSS de los días
+  obtenerClase(dia: any): string {
+    if (!dia.fecha) return 'vacio';
+    if (this.diasSeleccionados.includes(dia.fecha)) return 'seleccionado';
+    if (this.diasConValores[dia.fecha]) return 'guardado';
+    return '';
   }
 
   guardar(): void {
-    if (!this.diaSeleccionado) {
-      alert('Por favor, selecciona un día antes de guardar.');
-      return;
-    }
+    // Guardar los valores actuales de los contadores
+    const valores = [...this.contadores];
 
-    const dieta = {
-      dia: this.diaSeleccionado,
-      proteinas: this.contadores[0][0],
-      frutas: this.contadores[1][0],
-      verduras: this.contadores[2][0],
-      carbohidratosLegumbres: this.contadores[3][0],
-    };
+    // Asignar los valores a los días seleccionados
+    this.diasSeleccionados.forEach(dia => {
+      this.diasConValores[dia] = valores;
+    });
 
-    this.dietaPorDia.push(dieta);
+    // Mostrar un mensaje de confirmación
+    alert('Cambios guardados');
 
-    alert(`Dieta guardada para el día ${this.diaSeleccionado}.`);
-    console.log('Dieta guardada:', dieta);
-
-    this.diaSeleccionado = '';
-    this.contadores = [[0], [0], [0], [0]];
+    // Reiniciar el estado
+    this.resetCalendario();
   }
 
-    regresar2(): void {
-      alert('Acción cancelada.');
-    }
+  resetCalendario(): void {
+    // Limpiar días seleccionados
+    this.diasSeleccionados = [];
 
-    actualizar2(): void {
-      alert('Función actualizar no implementada aún.');
-    }
+    // Reiniciar los contadores a 0
+    this.contadores = [0, 0, 0, 0];
 
+    // Limpiar valores guardados de todos los días
+    this.diasConValores = {};
 
-  // Método para resetear los contadores
-  resetearContadores() {
-    this.contadores = [
-      [0], // Proteínas
-      [0], // Frutas
-      [0], // Verduras
-      [0]  // Carbohidratos-legumbres
-    ];
+    // Regenerar el calendario para el día siguiente
+    this.generarCalendario(this.mesActual, this.anioActual);
   }
+
+  resetdia(): void {
+    // Reiniciar los contadores a 0
+    this.contadores = [0, 0, 0, 0];
+  }
+
+
+  cancelar(): void {
+    this.diasSeleccionados = [];
+    alert('Operación cancelada');
+
+    // Reiniciar el estado
+    this.resetCalendario();
+  }
+
+  incrementar(index: number): void {
+    this.contadores[index]++;
+  }
+
+  decrementar(index: number): void {
+    if (this.contadores[index] > 0) this.contadores[index]--;
+  }
+
 }
-
-

@@ -6,19 +6,20 @@
             <label class="title-user" for="tipo_usuario">Ingresa los datos del paciente</label>
           </div>
         </div>
-
+         <!-- Agregado por Gerardo-->
         <mat-form-field class="mat-input" appearance="outline">
-            <mat-label>Nombre</mat-label>
-            <input matInput [(ngModel)]="paciente.first_name" placeholder="Escribe nombre">
+          <mat-label>Nombre</mat-label>
+          <input matInput [(ngModel)]="paciente.first_name" placeholder="Escribe nombre" (keypress)="validateLetters1($event)">
         </mat-form-field>
         <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>
 
+        <!-- Agregado por Gerardo-->
         <mat-form-field class="mat-input" appearance="outline">
-          <mat-label>Apellido</mat-label>
-          <input matInput [(ngModel)]="paciente.last_name" placeholder="Escribe apellidos">
-      </mat-form-field>
-      <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
-
+          <mat-label>Apellidos</mat-label>
+          <input matInput [(ngModel)]="paciente.last_name" placeholder="Escribe apellidos" (keypress)="validateLetters1($event)">
+        </mat-form-field>
+        <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
+        
         <mat-form-field class="mat-input" appearance="outline">
             <mat-label>Correo electrónico</mat-label>
             <input matInput [(ngModel)]="paciente.email" placeholder="Escribe correo electrónico" [disabled]="editar">
@@ -45,21 +46,25 @@
         </mat-form-field>
         <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
 
+        <!-- Agregado por Gerardo-->
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Edad</mat-label>
-          <input matInput [(ngModel)]="paciente.edad" placeholder="Escribe edad">
+          <input matInput [(ngModel)]="paciente.edad" placeholder="Escribe edad" 
+                 (keypress)="validateNumbers($event)" 
+                 type="number" min="0" max="120" />
         </mat-form-field>
-        <div *ngIf="errors.edad" class="invalid-feedback">{{ errors.edad }}</div>
-
+        
+        <!-- Agregado por Gerardo-->
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Peso</mat-label>
-          <input matInput [(ngModel)]="paciente.peso" placeholder="Escribe peso">
+          <input matInput [(ngModel)]="paciente.peso" placeholder="Escribe peso" type="number" min="0" max="999" step="0.01" (input)="validarFlotante($event, 'peso')" pattern="^\d*(\.\d{0,2})?$">
         </mat-form-field>
         <div *ngIf="errors.peso" class="invalid-feedback">{{ errors.peso }}</div>
-
+        
+        <!-- Agregado por Gerardo-->
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Estatura</mat-label>
-          <input matInput [(ngModel)]="paciente.estatura" placeholder="Escribe estatura">
+          <input matInput [(ngModel)]="paciente.estatura" placeholder="Escribe estatura" type="number" min="0" max="999" step="0.01" (input)="validarFlotante($event, 'estatura')" pattern="^\d*(\.\d{0,2})?$">
         </mat-form-field>
         <div *ngIf="errors.estatura" class="invalid-feedback">{{ errors.estatura }}</div>
 
@@ -78,8 +83,8 @@
         <mat-form-field class="mat-input" appearance="outline">
           <mat-label>Tipo de dieta</mat-label>
           <mat-select [(ngModel)]="paciente.dieta">
-            <mat-option *ngFor="let dietas of dietas" [value]="dietas.viewValue">
-              {{ dietas.viewValue }}
+            <mat-option *ngFor="let dieta of dietas" [value]="dieta.value">
+              {{ dieta.viewValue }}
             </mat-option> <!-- Se añadió el cierre correcto de mat-option -->
           </mat-select>
         </mat-form-field>
@@ -89,4 +94,3 @@
             <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
         </div>
 </div>
-

@@ -3,59 +3,74 @@
 <div class="wrapper">
   <div class="section-registro">
 
-    <div class="form-group col-12">
-      <label class="title-user">Dieta por tiempos</label>
-    </div>
-
-    <div class="row mt-3">
-      <div class="form-group col-12 d-flex justify-content-center mat1">
-        <mat-radio-group (change)="radioChange($event)" [disabled]="editar">
-          <mat-radio-button value="Lunes">Lunes</mat-radio-button>
-          <mat-radio-button value="Martes">Martes</mat-radio-button>
-          <mat-radio-button value="Miercoles">Miercoles</mat-radio-button>
-          <mat-radio-button value="Jueves">Jueves</mat-radio-button>
-          <mat-radio-button value="Viernes">Viernes</mat-radio-button>
-          <mat-radio-button value="Sabado">Sabado</mat-radio-button>
-          <mat-radio-button value="Domingo">Domingo</mat-radio-button>
-        </mat-radio-group>
+    <!-- Título centrado -->
+    <div class="titulo-centrado">
+      <div class="form-group col-12">
+        <label class="title-user">Dieta por tiempos</label>
       </div>
     </div>
 
     <br>
 
-    <!-- Sección de alimentos -->
-    <div *ngFor="let section of contadores; let sectionIndex = index" class="section">
+    <!-- Contenedor principal para dividir columnas -->
+    <div class="contenido">
 
-      <div class="contador-container">
-        <!-- Contador de la sección -->
-        <button class="button-2" (click)="decrementar(sectionIndex, 0)">-</button>
-        <span>{{ section[0] }}</span>
-        <button class="button-2" (click)="incrementar(sectionIndex, 0)">+</button>
+      <!-- Columna izquierda: Calendario -->
+      <div class="columna calendario">
+        <div class="calendario-container">
+          <br>
+          <div class="calendario-header">
+            <button (click)="cambiarMes(-1)" class="nav-btn">&#8592;</button>
+            <span>{{ obtenerNombreMes(mesActual) }} {{ anioActual }}</span>
+            <button (click)="cambiarMes(1)" class="nav-btn">&#8594;</button>
+          </div>
+          <br>
+          <!-- Encabezado de días de la semana -->
+          <div class="dias-semana">
+            <span *ngFor="let dia of diasSemana" class="dia">{{ dia }}</span>
+          </div>
+          <br>
+          <!-- Grid de días -->
+          <div class="calendario-grid">
+            <div class="calendario-dia" *ngFor="let dia of dias" [ngClass]="obtenerClase(dia)" (click)="toggleSeleccion(dia)">
+              {{ dia.dia || '' }}
+            </div>
+          </div>
+          <br>
+          <button (click)="asignarValores()" class="guardar-btn">Guardar valores</button>
+        </div>
       </div>
 
-      <!-- Nombre de la sección -->
-      <span *ngIf="sectionIndex === 0">Proteínas</span>
-      <span *ngIf="sectionIndex === 1">Frutas</span>
-      <span *ngIf="sectionIndex === 2">Verduras</span>
-      <span *ngIf="sectionIndex === 3">Carbohidratos-legumbres</span>
+      <!-- Columna derecha: Sección de alimentos -->
+      <div class="columna alimentos">
+        <div
+          *ngFor="let section of contadores; let sectionIndex = index"
+          class="section"
+        >
+          <div class="contador-container">
+            <button class="button-2" (click)="decrementar(sectionIndex)">-</button>
+            <span>{{ section }}</span>
+            <button class="button-2" (click)="incrementar(sectionIndex)">+</button>
+          </div>
 
-      <!-- Imagen de la sección -->
-      <img *ngIf="sectionIndex === 0" src="/assets/images/res.jpeg" alt="" class="section-image"/>
-      <img *ngIf="sectionIndex === 1" src="/assets/images/manzana.jpeg" alt="" class="section-image"/>
-      <img *ngIf="sectionIndex === 2" src="/assets/images/Espinacas.jpeg" alt="" class="section-image"/>
-      <img *ngIf="sectionIndex === 3" src="/assets/images/avena.jpeg" alt="" class="section-image"/>
+          <span *ngIf="sectionIndex === 0">Proteínas</span>
+          <span *ngIf="sectionIndex === 1">Frutas</span>
+          <span *ngIf="sectionIndex === 2">Verduras</span>
+          <span *ngIf="sectionIndex === 3">Carbohidratos-legumbres</span>
 
+          <img *ngIf="sectionIndex === 0" src="/assets/images/res.jpeg" alt="" class="section-image"/>
+          <img *ngIf="sectionIndex === 1" src="/assets/images/manzana.jpeg" alt="" class="section-image"/>
+          <img *ngIf="sectionIndex === 2" src="/assets/images/Espinacas.jpeg" alt="" class="section-image"/>
+          <img *ngIf="sectionIndex === 3" src="/assets/images/avena.jpeg" alt="" class="section-image"/>
+        </div>
+      </div>
     </div>
-    <br><br>
+    <br>
 
-    <!-- Botones de acción -->
     <div class="section-buttons">
-      <button class="btn btn-danger" (click)="regresar2()">Cancelar</button>
-      <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="guardar()">Guardar</button>
-      <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar2()">Actualizar</button>
+      <button class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+      <button class="btn btn-primary" type="submit" (click)="guardar()">Guardar cambios</button>
     </div>
 
   </div>
 </div>
-
-
