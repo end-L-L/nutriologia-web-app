@@ -20,6 +20,26 @@ export class EstadisticasComponent implements OnInit{
   public chartCalorias: any;
   public chartPorciones: any;  
   public chartPesoMensual: any; 
+  public pacienteId: number;
+
+  constructor(
+    private seguimientoCalorico: EstadisticasCaloriasService,
+    private seguimientoPorPorciones: EstadisticasPorcionService,
+    private seguimientoPorPesomensual: EstadisticasPesoMensualService,
+    private route: ActivatedRoute,
+
+  ){}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.pacienteId = +params['id'];
+    })
+    //console.log("ID del paciente: ", this.pacienteId);
+
+    this.cargarGraficaCalorias();
+    this.cargarGraficaPorciones();
+    this.cargarDatosDinamicos(); 
+  }
 
   public lineChartData: any = {
     labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
@@ -54,28 +74,12 @@ export class EstadisticasComponent implements OnInit{
   };
 
   public lineChartPlugins = [DatalabelsPlugin];
-  public pacienteId: number = 0;
 
-  constructor(
-    private seguimientoCalorico: EstadisticasCaloriasService,
-    private seguimientoPorPorciones: EstadisticasPorcionService,
-    private seguimientoPorPesomensual: EstadisticasPesoMensualService,
-    private route: ActivatedRoute,
 
-  ){}
-
-  ngOnInit() {
-    this.cargarDatosDinamicos(); 
-    this.cargarGraficaCalorias();
-    this.cargarGraficaPorciones();
-    this.route.params.subscribe(params => {
-      this.pacienteId = +params['id'];
-    })
-  }
-
-  cargarGraficaCalorias(): void {
-    this.seguimientoCalorico.obtenerSeguimientos(this.pacienteId).subscribe(
-      (datos) => {
+  public cargarGraficaCalorias(): void {
+    this.seguimientoCalorico.obtenerSeguimientos(this.pacienteId).subscribe({
+      next:(datos) => {
+        console.log('Datos de seguimiento calórico:', datos);
         // Procesar los datos del backend para usarlos en la gráfica
         const caloriasConsumidas = datos[0]?.calorias_consumidas || 0;
         const caloriasRecomendadas = datos[0]?.calorias_recomendadas || 0;
@@ -112,14 +116,14 @@ export class EstadisticasComponent implements OnInit{
           options: options,
         });
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al obtener datos de seguimiento calórico:', error);
       }
-    );
+    });
   }
   cargarGraficaPorciones(): void {
-    this.seguimientoPorPorciones.obtenerPorciones(this.pacienteId).subscribe(
-      (datos) => {
+    this.seguimientoPorPorciones.obtenerPorciones(this.pacienteId).subscribe({
+      next: (datos) => {
         const porcionesConsumidas = datos[0]?.porciones_consumidas || 0;
         const porcionesRecomendadas = datos[0]?.porciones_recomendadas || 0;
         const porcionesExcedentes = datos[0]?.porciones_excedentes || 0;
@@ -154,16 +158,16 @@ export class EstadisticasComponent implements OnInit{
           options: options,
         });
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al obtener datos de seguimiento de porciones:', error);
       }
-    );
+    });
   }
   
   // Cargar datos dinámicos para el gráfico de línea
   cargarDatosDinamicos(): void {
-    this.seguimientoPorPesomensual.getPesosMensuales(this.pacienteId).subscribe(
-      (datos) => {
+    this.seguimientoPorPesomensual.obtenerPesosMensuales(this.pacienteId).subscribe({
+      next: (datos) => {
         if (datos && datos.length) {
           const meses = datos.map((d: any) => d.mes);
           const pesos = datos.map((d: any) => d.peso_calculado);
@@ -180,9 +184,9 @@ export class EstadisticasComponent implements OnInit{
           });
         }
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al obtener datos de peso mensual:', error);
       }
-    );
+    });
   }
 }
