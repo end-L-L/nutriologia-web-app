@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 import { ModalHistorialComponent } from '../../components/modal-historial/modal-historial.component';
 import { debounceTime } from 'rxjs';
 import { FoodService } from '../../services';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { ChatService } from 'src/app/chat/services/chat.service';
 
 @Component({
   selector: 'patients-main-page',
@@ -38,7 +40,12 @@ export class MainComponent implements OnInit {
     grasasMax: 100,
   };
 
-  constructor(private dialog: MatDialog, private foodService: FoodService) {}
+  constructor(
+    private dialog: MatDialog,
+    private foodService: FoodService,
+    private readonly authService: AuthService,
+    private readonly chatService: ChatService
+  ) {}
 
   ngOnInit(): void {
     this.form.valueChanges.pipe(debounceTime(500)).subscribe(({ amount, name, unit }) => {
@@ -48,6 +55,24 @@ export class MainComponent implements OnInit {
       this.foodService.getFoodsData(name)?.subscribe((response) => {
         console.log(response);
       });
+    });
+
+    this.authService.getUser().subscribe((response) => {
+      /**
+       * SUPPOSE TO GET THE USER DATA, SO WE CAN EXTRACT THE ID
+       * TO FIND IT ON THE CHAT SERVICE TO RETRIEVE THE CHAT USER ID TO GET THE ROOM
+       * BUT BACKEND ROUTE TO GET THE USER DATA IS NOT IMPLEMENTED YET
+       */
+      const { id } = response;
+      this.chatService.getUser(id, 'patient').subscribe((response) => {
+        const { data } = response;
+        const [user] = data;
+        window.localStorage.setItem('userId', user.id);
+      });
+      /**
+       * ALSO HERE WE SHOULD GET THE NUTRITIONIST ID TO GET THE ROOM
+       * BUT BACKEND HASN'T RELATIONS FOR PATIENTS AND NUTRITIONISTS
+       */
     });
   }
 
