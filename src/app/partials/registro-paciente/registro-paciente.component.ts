@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarUserModalComponent } from 'src/app/modals/editar-user-modal/editar-user-modal.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // agregado por Gerardo
+import { ChatService } from 'src/app/chat/services/chat.service';
 
 //Para poder usar jquery definir esto
 declare var $:any;
@@ -45,6 +46,7 @@ public objetivos: any[] = [
 ];
 
   constructor(
+    private readonly chatService: ChatService,
     private location : Location,
     private router: Router,
     public activatedRoute: ActivatedRoute,
@@ -161,6 +163,22 @@ public objetivos: any[] = [
 
       this.pacienteService.registrarPaciente(post_data).subscribe({
         next: (response) => {
+          // EXAMPLE response:
+          // {message: patient_created_id: 1}
+          const stringifyResponse = JSON.stringify(response);
+
+          const dirtyId = stringifyResponse.split(' ')[stringifyResponse.split(' ').length - 1];
+          const id = dirtyId.split(':')[1].slice(0, -1);
+
+          this.chatService
+            .uploadUser({
+              externalId: Number(id),
+              name: `${post_data.first_name} ${post_data.last_name}`,
+            })
+            .subscribe((response) => {
+              console.log(response);
+            });
+            
           alert('Usuario Registrado Correctamente');
           //console.log(response);
           this.router.navigate(['nutriologo-screen']);
