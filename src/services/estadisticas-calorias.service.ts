@@ -17,7 +17,11 @@ export class EstadisticasCaloriasService {
     private http: HttpClient,
   ) { }
 
+  // obtenerSeguimientos(id: number): Observable<any>{
+  //   return this.http.get<any>(`${environment.url_api}/seguimiento-calorias/?paciente=${id}`, httpOptions);
+  // }
+
   obtenerSeguimientos(id: number): Observable<any>{
-    return this.http.get<any>(`${environment.url_api}/seguimiento-calorias/?paciente=${id}`, httpOptions);
+    return this.http.get<any>(`${environment.url_api}/api/v1/paciente/s-calorico/obtener/${id}`, httpOptions);
   }
 }

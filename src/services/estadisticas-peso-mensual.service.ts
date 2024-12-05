@@ -15,8 +15,12 @@ export class EstadisticasPesoMensualService {
     private http: HttpClient,
   ) { }
 
-  getPesosMensuales(id: number): Observable<any>
-  {
-    return this.http.get<any>(`${environment.url_api}/peso-mensual/?paciente=${id}`);
+  // getPesosMensuales(id: number): Observable<any>
+  // {
+  //   return this.http.get<any>(`${environment.url_api}/peso-mensual/?paciente=${id}`);
+  // }
+
+  obtenerPesosMensuales(id: number): Observable<any>{
+    return this.http.get<any>(`${environment.url_api}/api/v1/paciente/peso/obtener/${id}`, httpOptions);
   }
 }

@@ -55,6 +55,11 @@ export class NutriologoScreenComponent implements OnInit {
     });
   }
 
+  // funcion para redirigir a la pantalla de estadisticas
+  public goEstadisticas(idUser: number){
+    this.router.navigate(["estadisticas/"+idUser]);
+  }
+
 
   //Funcion para editar
   public goEditar(idUser: number){

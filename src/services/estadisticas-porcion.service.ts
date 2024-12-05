@@ -16,7 +16,11 @@ export class EstadisticasPorcionService {
     private http: HttpClient,
   ) { }
 
+  // obtenerPorciones(id: number): Observable<any>{
+  //   return this.http.get<any>(`${environment.url_api}/porciones/?paciente=${id}`, httpOptions );
+  // }
+
   obtenerPorciones(id: number): Observable<any>{
-    return this.http.get<any>(`${environment.url_api}/porciones/?paciente=${id}`, httpOptions );
+    return this.http.get<any>(`${environment.url_api}/api/v1/paciente/s-porciones/obtener/${id}`, httpOptions);
   }
 }

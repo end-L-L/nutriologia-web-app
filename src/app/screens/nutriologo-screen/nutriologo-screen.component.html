@@ -32,7 +32,7 @@
                   {{ paciente.nombre }}
                   <div>
                     <span class="me-3">
-                      <td class="td estadisticas">
+                      <td class="td estadisticas" (click)="goEstadisticas(paciente.id)">
                         <i class="bi bi-graph-up-arrow"></i>
                       </td>
 
