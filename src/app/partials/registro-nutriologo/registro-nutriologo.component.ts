@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarUserModalComponent } from 'src/app/modals/editar-user-modal/editar-user-modal.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChatService } from 'src/app/chat/services/chat.service';
 
 //Para poder usar jquery definir esto
 declare var $:any;
@@ -35,7 +36,8 @@ export class RegistroNutriologoComponent implements OnInit{
   public idUser: Number = 0;
 
   constructor(
-    private location : Location,
+    private readonly chatService: ChatService,
+    private location: Location,
     private router: Router,
     public activatedRoute: ActivatedRoute,
     private nustriologoService: NutriologoService,
@@ -105,6 +107,22 @@ export class RegistroNutriologoComponent implements OnInit{
 
       this.nustriologoService.registrarNutriologo(post_data).subscribe({
         next: (response) => {
+          // Example response:
+          // {mensaje: id-nutriologo-creado: 2}
+          const stringifyResponse = JSON.stringify(response);
+
+          const dirtyId = stringifyResponse.split(' ')[stringifyResponse.split(' ').length - 1];
+          const id = dirtyId.split(':')[1].slice(0, -1);
+
+          this.chatService
+            .uploadUser({
+              externalId: Number(id),
+              name: `${post_data.first_name} ${post_data.last_name}`,
+            })
+            .subscribe((response) => {
+              console.log(response);
+            });
+
           alert('Usuario Registrado Correctamente');
           //console.log(response);
           this.router.navigate(['']);
