@@ -16,4 +16,8 @@ export class ChatService {
       user,
     });
   }
+
+  public getUser(id: number, from: 'patient' | 'nutriologo'): Observable<ServerResponse<User[]>> {
+    return this.http.get<ServerResponse<User[]>>(`${environment.CHAT_URL}/user/${id}-${from}`);
+  }
 }
