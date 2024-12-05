@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { FacadeService } from 'src/services/facade.service';
 declare var $: any;
 
@@ -15,24 +16,26 @@ export class LoginScreenComponent implements OnInit {
   public errors: any = {};
   public isLoading: boolean = false; // agregado por david para bandera login
 
-
-  constructor(private router: Router, private facadeService: FacadeService,) {}
+  constructor(private router: Router, private facadeService: FacadeService, private readonly cookieService: CookieService) {}
 
   //agregado por david para bandera login
   public login() {
     this.errors = [];
-  
+
     this.errors = this.facadeService.validarLogin(this.username, this.password);
-    if (!$.isEmptyObject(this.errors)){
+    if (!$.isEmptyObject(this.errors)) {
       return false;
     }
-  
+
     this.isLoading = true; // Activar la bandera de carga
-  
+
     this.facadeService.login(this.username, this.password).subscribe({
       next: (response) => {
         alert('Sesión Iniciada Correctamente');
-        console.log(response);
+
+        const ONE_DAY = 60 * 60 * 24;
+        this.cookieService.set('session', response.access, ONE_DAY, '/');
+
         this.router.navigate(['/nutriologo-screen']);
         this.isLoading = false; // Desactivar la bandera de carga
       },
@@ -43,10 +46,8 @@ export class LoginScreenComponent implements OnInit {
       },
     });
   }
-  
 
   ngOnInit(): void {}
- 
 
   public registrar() {
     this.router.navigate(['registro-usuarios/nutriologo/']);
